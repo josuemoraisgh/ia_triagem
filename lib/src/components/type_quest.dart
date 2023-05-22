@@ -89,8 +89,8 @@ class _TypeQuestState extends State<TypeQuest> {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(Icons.grid_view_rounded, color: Colors.black54),
                       SizedBox(width: 15),
                       Text(
@@ -166,8 +166,8 @@ class _TypeQuestState extends State<TypeQuest> {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  Row(
-                    children: const [
+                  const Row(
+                    children: [
                       Icon(Icons.admin_panel_settings, color: Colors.black54),
                       SizedBox(width: 15),
                       Text(

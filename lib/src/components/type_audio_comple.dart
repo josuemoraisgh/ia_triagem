@@ -72,10 +72,10 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
             child: Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.only(top: 20),
-              child: Column(
+              child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: const [
+                children:  [
                   CircularProgressIndicator(),
                   SizedBox(
                     height: 10,

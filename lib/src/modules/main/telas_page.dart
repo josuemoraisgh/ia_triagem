@@ -116,8 +116,23 @@ class TelasPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18.0),
                   side: const BorderSide(color: Colors.white))),
         ),
-        child: Row(
-          children: const [
+        onPressed: resp.isEmpty
+            ? null
+            : () {
+                //if (startTime != null) {
+                //final endTime = DateTime.now();
+                //final deltaTime = endTime.difference(startTime!);
+                //int seconds = deltaTime.inSeconds;
+                //debugPrint(seconds.toString());
+                //if(telas[id]!['isSendAnswer']) RespostasStorageRepository().addResp(question: questionNumber, answer: resp, timeSpent: seconds.toString());
+                //}
+                debugPrint((id! + 1).toString());
+                debugPrint(resp.toString());
+                //if(telas[id]!['isSendAnswer']) RespostasStorageRepository().addResp(question: questionNumber,answer: resp);
+                Modular.to.popAndPushNamed("/", arguments: id! + 1);
+              },
+        child: const Row(
+          children: [
             Padding(
               padding: EdgeInsets.only(
                 left: 15,
@@ -138,21 +153,6 @@ class TelasPage extends StatelessWidget {
             Icon(Icons.arrow_forward),
           ],
         ),
-        onPressed: resp.isEmpty
-            ? null
-            : () {
-                //if (startTime != null) {
-                //final endTime = DateTime.now();
-                //final deltaTime = endTime.difference(startTime!);
-                //int seconds = deltaTime.inSeconds;
-                //debugPrint(seconds.toString());
-                //if(telas[id]!['isSendAnswer']) RespostasStorageRepository().addResp(question: questionNumber, answer: resp, timeSpent: seconds.toString());
-                //}
-                debugPrint((id! + 1).toString());
-                debugPrint(resp.toString());
-                //if(telas[id]!['isSendAnswer']) RespostasStorageRepository().addResp(question: questionNumber,answer: resp);
-                Modular.to.popAndPushNamed("/", arguments: id! + 1);
-              },
       ),
     );
   }

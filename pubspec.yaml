@@ -6,23 +6,25 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: '>=2.19.6'
 
 
 dependencies:
   flutter:
     sdk: flutter  
-  just_audio: ^0.9.28
+  just_audio: ^0.9.33
   flutter_colorpicker: ^1.0.3        
   flutter_modular: ^5.0.3
-  card_settings: ^3.0.1
-  brasil_fields: ^1.5.0
- 
+  card_settings:
+    path: assets/card_settings
+  brasil_fields: ^1.13.1
+  intl: ^0.18.1
+  pattern_formatter: ^3.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^2.0.1
 
 flutter:
   uses-material-design: true
