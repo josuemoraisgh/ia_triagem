@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../modules/main/parameters.dart';
 import 'package:brasil_fields/brasil_fields.dart';
 import 'header_card.dart';
 
@@ -17,10 +16,21 @@ class TypeQuest extends StatefulWidget {
 class _TypeQuestState extends State<TypeQuest> {
   final _formKey = GlobalKey<FormState>();
   String idade = "";
-  String gender = "";
   String schooling = "";
   String time = "";
   String data = "";
+  String gender = "";
+  String genderother = "";
+  String generoRegistro = "";
+  String raca = "";
+  String qtdadeIrmaos = "";
+  String estadocivil = "";
+  String isUnicoFilho = "";
+  String qtdadefilhos = "";
+  String qtdadefilhosmenores = "";
+  String religiao = "";
+  String renda = "";
+  String laudosaudemental = "";
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +40,20 @@ class _TypeQuestState extends State<TypeQuest> {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
           widget.answer.value = {
-            'idade': idade,
-            'genero': gender,
-            'schooling': schooling,
+            'data': data,
             'time': time,
-            'data': data
+            'idade': idade,
+            'genero': gender == 'other' ? genderother : gender,
+            'generoRegistro': generoRegistro,
+            'raça': raca,
+            'qtdadeirmaos': qtdadeIrmaos,
+            "estadocivil": estadocivil,
+            'qtdadefilhos': isUnicoFilho == "Não" ? qtdadefilhos : "0",
+            'qtdadefilhosmenores': qtdadefilhosmenores,
+            'religiao': religiao,
+            'schooling': schooling,
+            'renda': renda,
+            'laudosaudemental': laudosaudemental
           };
         } else {
           widget.answer.value = {};
@@ -44,16 +63,10 @@ class _TypeQuestState extends State<TypeQuest> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          HeaderCard(
-            widgetBody: Text(telas[widget.id]!['header'],
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                    fontSize: 26, height: 2, color: Colors.black)),
-          ),
           const SizedBox(height: 10),
           HeaderCard(
             headerTitle: const Text(
-              "Informações Gerais",
+              "Questionário Sociodemográfico",
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 26, height: 2, color: Colors.white),
             ),
@@ -62,10 +75,57 @@ class _TypeQuestState extends State<TypeQuest> {
               child: Column(
                 children: <Widget>[
                   TextFormField(
+                    initialValue: time,
+                    decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        icon: Icon(Icons.lock_clock),
+                        labelText: 'Que horas são?'),
+                    keyboardType: TextInputType.datetime,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      HoraInputFormatter(),
+                    ],
+                    autovalidateMode: AutovalidateMode.always,
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Horário Inválido!!';
+                      } else if ((value.isEmpty) || (value.length != 5)) {
+                        return 'Horário Inválido!!';
+                      }
+                      return null;
+                    },
+                    onChanged: (v) => setState(() => time = v),
+                  ),
+                  TextFormField(
+                    initialValue: data,
+                    decoration: const InputDecoration(
+                        border: UnderlineInputBorder(),
+                        icon: Icon(Icons.date_range),
+                        labelText: 'Data de hoje?'),
+                    keyboardType: TextInputType.datetime,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      DataInputFormatter(),
+                    ],
+                    autovalidateMode: AutovalidateMode.always,
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Data atual Incorreta!!';
+                      } else if ((value.isEmpty) || (value.length != 10)) {
+                        return 'Data atual Incorreta!!';
+                      }
+                      return null;
+                    },
+                    onChanged: (v) => setState(() => data = v),
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  TextFormField(
                     decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         icon: Icon(Icons.attribution),
-                        labelText: "Idade *"),
+                        labelText: "Qua a sua Idade?"),
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
@@ -91,7 +151,7 @@ class _TypeQuestState extends State<TypeQuest> {
                   const SizedBox(height: 15),
                   const Row(
                     children: [
-                      Icon(Icons.grid_view_rounded, color: Colors.black54),
+                      Icon(Icons.transgender, color: Colors.black54),
                       SizedBox(width: 15),
                       Text(
                         "Gênero *",
@@ -112,16 +172,6 @@ class _TypeQuestState extends State<TypeQuest> {
                           child: Column(
                             children: [
                               RadioListTile(
-                                title: const Text("Masculino",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "male",
-                                groupValue: gender,
-                                onChanged: (value) {
-                                  gender = value.toString();
-                                  state.didChange(gender);
-                                },
-                              ),
-                              RadioListTile(
                                 title: const Text("Feminino",
                                     style: TextStyle(fontSize: 13)),
                                 value: "female",
@@ -132,7 +182,17 @@ class _TypeQuestState extends State<TypeQuest> {
                                 },
                               ),
                               RadioListTile(
-                                title: const Text("Outro",
+                                title: const Text("Masculino",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "male",
+                                groupValue: gender,
+                                onChanged: (value) {
+                                  gender = value.toString();
+                                  state.didChange(gender);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Outro (Qual?)",
                                     style: TextStyle(fontSize: 13)),
                                 value: "other",
                                 groupValue: gender,
@@ -141,6 +201,35 @@ class _TypeQuestState extends State<TypeQuest> {
                                   state.didChange(gender);
                                 },
                               ),
+                              if (gender == 'other')
+                                TextFormField(
+                                  initialValue: genderother,
+                                  decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: "Qual o seu gênero?"),
+                                  keyboardType: TextInputType.name,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter
+                                        .singleLineFormatter,
+                                  ],
+                                  autovalidateMode: AutovalidateMode.always,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return 'Descrição invalida!! Corrija por favor';
+                                    } else if ((value.isEmpty) ||
+                                        (value.length < 3)) {
+                                      return 'Descrição invalida!! Corrija por favor';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (value) => setState(
+                                    () {
+                                      genderother = value.toString();
+                                      _formKey.currentState!
+                                          .didChangeDependencies();
+                                    },
+                                  ),
+                                ),
                               RadioListTile(
                                 title: const Text("Prefiro não dizer",
                                     style: TextStyle(fontSize: 13)),
@@ -149,6 +238,321 @@ class _TypeQuestState extends State<TypeQuest> {
                                 onChanged: (value) {
                                   gender = value.toString();
                                   state.didChange(gender);
+                                },
+                              ),
+                            ],
+                          ));
+                    },
+                    validator: (String? value) {
+                      if (value == null) {
+                        return 'Por favor escolha um item';
+                      } else if (value.isEmpty) {
+                        return 'Por favor escolha um item';
+                      }
+                      return (null);
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  const Row(
+                    children: [
+                      Icon(Icons.wc, color: Colors.black54),
+                      SizedBox(width: 15),
+                      Text(
+                        "Qual foi o sexo atribuído no seu nascimento?",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            decorationColor: Colors.black),
+                      ),
+                    ],
+                  ),
+                  FormField(
+                    initialValue: "",
+                    autovalidateMode: AutovalidateMode.always,
+                    builder: (FormFieldState<String> state) {
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              RadioListTile(
+                                title: const Text("Feminino",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "female",
+                                groupValue: generoRegistro,
+                                onChanged: (value) {
+                                  generoRegistro = value.toString();
+                                  state.didChange(generoRegistro);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Masculino",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "male",
+                                groupValue: generoRegistro,
+                                onChanged: (value) {
+                                  generoRegistro = value.toString();
+                                  state.didChange(generoRegistro);
+                                },
+                              ),
+                            ],
+                          ));
+                    },
+                    validator: (String? value) {
+                      if (value == null) {
+                        return 'Por favor escolha um item';
+                      } else if (value.isEmpty) {
+                        return 'Por favor escolha um item';
+                      }
+                      return (null);
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  const Row(
+                    children: [
+                      Icon(Icons.person, color: Colors.black54),
+                      SizedBox(width: 15),
+                      Text(
+                        "Assinale a alternativa que identifica a sua Cor ou Raça:",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            decorationColor: Colors.black),
+                      ),
+                    ],
+                  ),
+                  FormField(
+                    initialValue: "",
+                    autovalidateMode: AutovalidateMode.always,
+                    builder: (FormFieldState<String> state) {
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              RadioListTile(
+                                title: const Text("Preta",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Preta",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Branca",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Branca",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Parda",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Parda",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Amarela",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Amarela",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("IndÍgena",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "IndÍgena",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                            ],
+                          ));
+                    },
+                    validator: (String? value) {
+                      if (value == null) {
+                        return 'Por favor escolha um item';
+                      } else if (value.isEmpty) {
+                        return 'Por favor escolha um item';
+                      }
+                      return (null);
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  const Row(
+                    children: [
+                      Icon(Icons.diversity_3, color: Colors.black54),
+                      SizedBox(width: 15),
+                      Text(
+                        "Dentro de sua família, você é o(a) único(a) filho(a)?",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            decorationColor: Colors.black),
+                      ),
+                    ],
+                  ),
+                  FormField(
+                    initialValue: "",
+                    autovalidateMode: AutovalidateMode.always,
+                    builder: (FormFieldState<String> state) {
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              RadioListTile(
+                                title: const Text("Sim",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Sim",
+                                groupValue: isUnicoFilho,
+                                onChanged: (value) {
+                                  isUnicoFilho = value.toString();
+                                  state.didChange(isUnicoFilho);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Não",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Não",
+                                groupValue: isUnicoFilho,
+                                onChanged: (value) {
+                                  isUnicoFilho = value.toString();
+                                  state.didChange(isUnicoFilho);
+                                },
+                              ),
+                              if (isUnicoFilho == "Não")
+                                TextFormField(
+                                  initialValue: qtdadefilhos,
+                                  decoration: const InputDecoration(
+                                      border: UnderlineInputBorder(),
+                                      labelText: "Quantos irmãos?"),
+                                  keyboardType: TextInputType.number,
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.digitsOnly,
+                                  ],
+                                  autovalidateMode: AutovalidateMode.always,
+                                  validator: (value) {
+                                    if (value == null) {
+                                      return 'Quantidade invalida!! Corrija por favor';
+                                    } else if ((value.isEmpty)) {
+                                      return 'Quantidade invalida!! Corrija por favor';
+                                    }
+                                    return null;
+                                  },
+                                  onChanged: (value) => setState(
+                                    () {
+                                      qtdadefilhos = value.toString();
+                                      _formKey.currentState!
+                                          .didChangeDependencies();
+                                    },
+                                  ),
+                                ),
+                            ],
+                          ));
+                    },
+                    validator: (String? value) {
+                      if (value == null) {
+                        return 'Por favor escolha um item';
+                      } else if (value.isEmpty) {
+                        return 'Por favor escolha um item';
+                      }
+                      return (null);
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  const Row(
+                    children: [
+                      Icon(Icons.person, color: Colors.black54),
+                      SizedBox(width: 15),
+                      Text(
+                        "Qual o seu estado civil?",
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.black,
+                            decorationColor: Colors.black),
+                      ),
+                    ],
+                  ),
+                  FormField(
+                    initialValue: "",
+                    autovalidateMode: AutovalidateMode.always,
+                    builder: (FormFieldState<String> state) {
+                      return Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Column(
+                            children: [
+                              RadioListTile(
+                                title: const Text("Solteiro (a):",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Solteiro",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Casado (a)",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Casado",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Viúvo (a)",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Viúvo",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("Separação legal (judicial ou divórcio)",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Separação",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text("outro",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "outro",
+                                groupValue: raca,
+                                onChanged: (value) {
+                                  raca = value.toString();
+                                  state.didChange(raca);
                                 },
                               ),
                             ],
@@ -240,50 +644,6 @@ class _TypeQuestState extends State<TypeQuest> {
                       }
                       return (null);
                     },
-                  ),
-                  TextFormField(
-                    initialValue: time,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        icon: Icon(Icons.lock_clock),
-                        labelText: 'Que horas é agora?'),
-                    keyboardType: TextInputType.datetime,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      HoraInputFormatter(),
-                    ],
-                    autovalidateMode: AutovalidateMode.always,
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Horário Inválido!!';
-                      } else if ((value.isEmpty) || (value.length != 5)) {
-                        return 'Horário Inválido!!';
-                      }
-                      return null;
-                    },
-                    onChanged: (v) => setState(() => time = v),
-                  ),
-                  TextFormField(
-                    initialValue: data,
-                    decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        icon: Icon(Icons.date_range),
-                        labelText: 'Qual é a data de hoje?'),
-                    keyboardType: TextInputType.datetime,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      DataInputFormatter(),
-                    ],
-                    autovalidateMode: AutovalidateMode.always,
-                    validator: (value) {
-                      if (value == null) {
-                        return 'Data atual Incorreta!!';
-                      } else if ((value.isEmpty) || (value.length != 10)) {
-                        return 'Data atual Incorreta!!';
-                      }
-                      return null;
-                    },
-                    onChanged: (v) => setState(() => data = v),
                   ),
                 ],
               ),
