@@ -12,6 +12,6 @@ class TelasModule extends Module {
   final List<ModularRoute> routes = [
     ChildRoute("/",
         child: (_, args) =>
-            TelasPage(startTime: DateTime.now(), id: args.data ?? 2)),
+            TelasPage(startTime: DateTime.now(), id: args.data ?? 1)),
   ];
 }
