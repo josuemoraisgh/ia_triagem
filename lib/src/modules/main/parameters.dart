@@ -44,7 +44,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'header':
-        'Você possui algum diagnóstico laudado por um profissional da saúde?',
+        'Você possui algum diagnóstico em relação ao seu estado de saúde mental, laudado por um profissional da saúde?',
     'type': 'laudo',
   },
   4: {
