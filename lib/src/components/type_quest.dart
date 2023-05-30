@@ -81,7 +81,7 @@ class _TypeQuestState extends State<TypeQuest> {
                     decoration: const InputDecoration(
                         border: UnderlineInputBorder(),
                         icon: Icon(Icons.lock_clock),
-                        labelText: 'Que horas são?'),
+                        labelText: 'Que horas são neste instante?'),
                     keyboardType: TextInputType.datetime,
                     inputFormatters: [
                       FilteringTextInputFormatter.digitsOnly,
@@ -445,10 +445,10 @@ class _TypeQuestState extends State<TypeQuest> {
                               ),
                               if (isUnicoIrmao == "Não")
                                 TextFormField(
-                                  initialValue: qtdadefilhos,
+                                  initialValue: qtdadeIrmaos,
                                   decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
-                                      labelText: "Quantos irmãos?"),
+                                      labelText: "Quantos irmãos voçê tem?"),
                                   keyboardType: TextInputType.number,
                                   inputFormatters: [
                                     FilteringTextInputFormatter.digitsOnly,
@@ -631,7 +631,7 @@ class _TypeQuestState extends State<TypeQuest> {
                                   initialValue: qtdadefilhos,
                                   decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
-                                      labelText: "Quantos irmãos?"),
+                                      labelText: "Quantos filhos voçê tem?"),
                                   keyboardType: TextInputType.number,
                                   inputFormatters: [
                                     FilteringTextInputFormatter.digitsOnly,
