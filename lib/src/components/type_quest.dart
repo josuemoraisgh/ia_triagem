@@ -500,7 +500,7 @@ class _TypeQuestState extends State<TypeQuest> {
                     ],
                   ),
                   FormField(
-                    initialValue: "",
+                    initialValue: estadocivil,
                     autovalidateMode: AutovalidateMode.always,
                     builder: (FormFieldState<String> state) {
                       return Padding(
@@ -511,30 +511,30 @@ class _TypeQuestState extends State<TypeQuest> {
                                 title: const Text("Solteiro (a):",
                                     style: TextStyle(fontSize: 13)),
                                 value: "Solteiro",
-                                groupValue: raca,
+                                groupValue: estadocivil,
                                 onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
                                 },
                               ),
                               RadioListTile(
                                 title: const Text("Casado (a)",
                                     style: TextStyle(fontSize: 13)),
                                 value: "Casado",
-                                groupValue: raca,
+                                groupValue: estadocivil,
                                 onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
                                 },
                               ),
                               RadioListTile(
                                 title: const Text("Viúvo (a)",
                                     style: TextStyle(fontSize: 13)),
                                 value: "Viúvo",
-                                groupValue: raca,
+                                groupValue: estadocivil,
                                 onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
                                 },
                               ),
                               RadioListTile(
@@ -542,20 +542,31 @@ class _TypeQuestState extends State<TypeQuest> {
                                     "Separação legal (judicial ou divórcio)",
                                     style: TextStyle(fontSize: 13)),
                                 value: "Separação",
-                                groupValue: raca,
+                              groupValue: estadocivil,
                                 onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
+                                },
+                              ),
+                              RadioListTile(
+                                title: const Text(
+                                    "Amaziado",
+                                    style: TextStyle(fontSize: 13)),
+                                value: "Amaziado",
+                                groupValue: estadocivil,
+                                onChanged: (value) {
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
                                 },
                               ),
                               RadioListTile(
                                 title: const Text("outro",
                                     style: TextStyle(fontSize: 13)),
                                 value: "outro",
-                                groupValue: raca,
+                                groupValue: estadocivil,
                                 onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
+                                  estadocivil = value.toString();
+                                  state.didChange(estadocivil);
                                 },
                               ),
                             ],
