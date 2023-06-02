@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import '../modules/main/parameters.dart';
+import '../modules/home/parameters.dart';
 import 'header_card.dart';
 
 class TypeAudioComplete extends StatefulWidget {

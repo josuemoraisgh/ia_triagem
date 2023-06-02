@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../modules/main/parameters.dart';
+import '../modules/home/parameters.dart';
 import 'header_card.dart';
 
 class TypeComplete extends StatefulWidget {

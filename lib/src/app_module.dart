@@ -1,6 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'notfound_page.dart';
-import 'modules/main/telas_module.dart';
+import 'modules/home/telas_module.dart';
 
 class AppModule extends Module {
   @override

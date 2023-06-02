@@ -15,6 +15,10 @@ dependencies:
   just_audio: ^0.9.33
   flutter_colorpicker: ^1.0.3        
   flutter_modular: ^5.0.3
+  hive: ^2.2.3
+  hive_generator: ^2.0.0
+  hive_flutter: ^1.1.0  
+  http: ^0.13.5
   card_settings:
     path: assets/card_settings
   brasil_fields: ^1.13.1

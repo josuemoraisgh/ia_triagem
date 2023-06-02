@@ -6,7 +6,8 @@ import 'header_card.dart';
 class TypeQuest extends StatefulWidget {
   final int id;
   final ValueNotifier<Map<String, dynamic>> answer;
-  const TypeQuest({Key? key, required this.id, required this.answer})
+  final DateTime? startTime;
+  const TypeQuest({Key? key, required this.id,required this.startTime, required this.answer})
       : super(key: key);
 
   @override
@@ -33,7 +34,23 @@ class _TypeQuestState extends State<TypeQuest> {
   String religiao = "";
   String renda = "";
   String laudosaudemental = "";
+/*
 
+if (startTime != null) {
+                  final endTime = DateTime.now();
+                  final deltaTime = endTime.difference(startTime!);
+                  int seconds = deltaTime.inSeconds;
+                  if (telas[id]!['isSendAnswer']) {
+                    controller.storage
+                        .addData([id!, seconds.toString(), resp.toString()]);
+                  }
+                  debugPrint("${(id! + 1).toString()}; ${seconds.toString()} ;${resp.toString()}");                  
+                }
+                Modular.to.popAndPushNamed("/", arguments: id! + 1);
+              },
+
+
+*/
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -774,9 +791,9 @@ class _TypeQuestState extends State<TypeQuest> {
                                   decoration: const InputDecoration(
                                       border: UnderlineInputBorder(),
                                       labelText: "Qual religião?"),
-                                  keyboardType: TextInputType.number,
+                                  keyboardType: TextInputType.name,
                                   inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly,
+                                    FilteringTextInputFormatter.singleLineFormatter,
                                   ],
                                   autovalidateMode: AutovalidateMode.always,
                                   validator: (value) {

@@ -303,9 +303,19 @@
       "description": "Play popular games for free",
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_dark.png/1.6.15/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_hc.png/1.6.15/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_light.png/1.6.15/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_dark.png/1.6.16/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_hc.png/1.6.16/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_light.png/1.6.16/asset"
+         },
+         "raster_icon|flight:msEdgeHubAppGamesNewIconController": {
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_dark_controller.png/1.6.16/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_hc_controller.png/1.6.16/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_light_controller.png/1.6.16/asset"
+         },
+         "raster_icon|flight:msEdgeHubAppGamesNewIconJoystick": {
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_dark_joystick.png/1.6.16/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_hc_joystick.png/1.6.16/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_games_maximal_light_joystick.png/1.6.16/asset"
          }
       },
       "id": "96defd79-4015-4a32-bd09-794ff72183ef",
@@ -337,7 +347,7 @@
          "url|flight:msEdgeHubAppWGITopGamesAndSearchbar": "https://www.msn.com/widgets/fullpage/gaming/widget?experiences=CasualGamesHub&sharedHeader=1&item=flights%3Aprg-cg-wgitg,prg-cg-l1wgi",
          "url|flight:msEdgeHubAppWGITopSearchbar": "https://www.msn.com/widgets/fullpage/gaming/widget?experiences=CasualGamesHub&sharedHeader=1&item=flights%3Aprg-cg-l1wgi"
       },
-      "version": "1.6.15"
+      "version": "1.6.16"
    }, {
       "auto_show": {
          "enabled": true,
@@ -1686,13 +1696,13 @@
          "resize_disabled": true
       },
       "default_locale": "en",
-      "description": "Watch movies on the web",
+      "description": "Easily browse and find movies that fit your mood",
       "flights": [ "msEdgeHubAppTheater" ],
       "icon": {
          "raster_icon": {
-            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_maximal_dark.png/1.0.2/asset",
-            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_hc.png/1.0.2/asset",
-            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_maximal_light.png/1.0.2/asset"
+            "dark_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_maximal_dark.png/1.0.3/asset",
+            "high_contrast": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_hc.png/1.0.3/asset",
+            "light_mode": "https://edgeassetservice.azureedge.net/assets/edge_hub_apps_theater_maximal_light.png/1.0.3/asset"
          }
       },
       "id": "3458dfd2-bf1b-4d00-a6dd-a74a59d523c7",
@@ -1704,7 +1714,7 @@
          "url": "https://www.bing.com/theater?features=theater",
          "url|locale:zh_CN": "https://cn.bing.com/theater?features=theater"
       },
-      "version": "1.0.2"
+      "version": "1.0.3"
    }, {
       "custom_actions": [ {
          "action": {
