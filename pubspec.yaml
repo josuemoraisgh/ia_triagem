@@ -24,6 +24,7 @@ dependencies:
   brasil_fields: ^1.13.1
   intl: ^0.18.1
   pattern_formatter: ^3.0.0
+  collection: ^1.17.1
 
 dev_dependencies:
   flutter_test:

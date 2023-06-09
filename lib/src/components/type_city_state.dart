@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeCityState extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeCityState({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -34,15 +34,15 @@ class _TypeCityStateState extends State<TypeCityState> {
           onChanged: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              widget.answer.value = {'answer': answer};
+              widget.answer.value = [answer.join(",")];
             } else {
-              widget.answer.value = {};
+              widget.answer.value = [];
             }
           },
           autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
           child: Column(
             children:
-                _montaAternativas(telas[widget.id]!['op'] as List<String>),
+                _montaAternativas(telas[widget.id]!['options'] as List<String>),
           ),
         ),
       ),
@@ -73,7 +73,7 @@ class _TypeCityStateState extends State<TypeCityState> {
           },
           onChanged: (value) {
             setState(() {
-              answer[i] = value.toString();
+              answer[i] = "$value; ${DateTime.now().toString()}";
             });
           },
         ),

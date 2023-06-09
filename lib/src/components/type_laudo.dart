@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../modelView/custom_radio_list.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeLaudo extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeLaudo({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -16,24 +18,18 @@ class _TypeLaudoState extends State<TypeLaudo> {
   final _formKey = GlobalKey<FormState>();
   String hasLaudo = "";
   String typeLaudo = "";
-  String outroNome = "";
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       onChanged: () {
-        if (_formKey.currentState!.validate() || hasLaudo == "nao") {
+        if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          widget.answer.value = {
-            'laudo': hasLaudo == "sim"
-                ? typeLaudo == 'outro'
-                    ? outroNome
-                    : typeLaudo
-                : "não",
-          };
+          if (hasLaudo == "não") typeLaudo = "";
+          widget.answer.value = [hasLaudo == "não" ? "não" : typeLaudo];
         } else {
-          widget.answer.value = {};
+          widget.answer.value = [];
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
@@ -95,10 +91,6 @@ class _TypeLaudoState extends State<TypeLaudo> {
                         return 'Por favor escolha um item';
                       } else if ((value == 'sim') && (typeLaudo == "")) {
                         return 'Por favor escolha um item';
-                      } else if ((value == 'sim') &&
-                          (typeLaudo == "outro") &&
-                          (outroNome == "")) {
-                        return 'Por favor escolha um item';
                       }
                       return (null);
                     },
@@ -109,172 +101,40 @@ class _TypeLaudoState extends State<TypeLaudo> {
                         const SizedBox(height: 15),
                         const Divider(),
                         const SizedBox(height: 15),
-                        const Row(
-                          children: [
-                            Icon(Icons.admin_panel_settings,
-                                color: Colors.black54),
-                            SizedBox(width: 15),
-                            Text(
+                        CustomRadioList(
+                          anwserFunc: (value) => typeLaudo =
+                              "$value; ${DateTime.now().toString()}",
+                          description:
                               "Caso afirmativo, selecione o diagnóstico\n correspondente. *",
-                              textAlign: TextAlign.justify,
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: Colors.black,
-                                  decorationColor: Colors.black),
-                            ),
+                          icon: const Icon(Icons.admin_panel_settings,
+                              color: Colors.black54),
+                          hasPrefiroNaoDizer: false,
+                          itens: const [
+                            "Transtornos de Ansiedade",
+                            "Transtornos Alimentares",
+                            "Transtorno Bipolar",
+                            "Transtornos Depressivos",
+                            "Transtorno Obsessivo-compulsivo",
+                            "Transtorno da personalidade borderline",
+                            "Transtorno da personalidade histriônica",
+                            "Transtorno da personalidade narcisista",
+                            "Transtorno da personalidade paranoide",
                           ],
-                        ),
-                        FormField(
-                          initialValue: "",
-                          autovalidateMode: AutovalidateMode.always,
-                          builder: (FormFieldState<String> state1) {
-                            return Padding(
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                children: [
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtornos de Ansiedade",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "ansiedade",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text("Transtornos Alimentares",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "alimentares",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text("Transtorno Bipolar",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "bipolar",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text("Transtornos Depressivos",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "depressivos",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtorno Obsessivo-compulsivo",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "obsessivo-compulsivo",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtorno da personalidade borderline",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "borderline",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtorno da personalidade histriônica",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "histriônica",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtorno da personalidade narcisista",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "narcisista",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Transtorno da personalidade paranoide",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "paranoide",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      typeLaudo = value.toString();
-                                      state1.didChange(typeLaudo);
-                                    },
-                                  ),
-                                  RadioListTile(
-                                    title: const Text(
-                                        "Outro tipo de transtorno",
-                                        style: TextStyle(fontSize: 13)),
-                                    value: "outro",
-                                    groupValue: typeLaudo,
-                                    onChanged: (value) {
-                                      setState(
-                                        () {
-                                          typeLaudo = value.toString();
-                                          state1.didChange(typeLaudo);
-                                        },
-                                      );
-                                    },
-                                  ),
-                                  if (typeLaudo == 'outro')
-                                    TextFormField(
-                                      initialValue: outroNome,
-                                      decoration: const InputDecoration(
-                                        border: UnderlineInputBorder(),
-                                        labelText:
-                                            'Digite a denominação desse outro tipo de transtorno',
-                                      ),
-                                      keyboardType: TextInputType.name,
-                                      autovalidateMode: AutovalidateMode.always,
-                                      validator: (value) {
-                                        if (value == null) {
-                                          return 'Digite a denominação desse outro tipo de transtorno';
-                                        } else if (value.length < 4) {
-                                          return 'Digite a denominação desse outro tipo de transtorno';
-                                        }
-                                        return null;
-                                      },
-                                      onChanged: (v) =>
-                                          setState(() => outroNome = v),
-                                    ),
-                                ],
-                              ),
-                            );
-                          },
-                          validator: (String? value) {
-                            if (value == null) {
-                              return 'Por favor escolha um item';
-                            } else if (value.length < 3) {
-                              return 'Por favor escolha um item';
+                          otherLabel: "Outro tipo de transtorno",
+                          labelText:
+                              'Digite a denominação desse outro tipo de transtorno',
+                          inputFormatters: [
+                            FilteringTextInputFormatter.singleLineFormatter,
+                          ],
+                          validator: (value) {
+                            if (hasLaudo == 'sim') {
+                              if (value == null) {
+                                return 'Digite a denominação desse outro tipo de transtorno';
+                              } else if (value.length < 4) {
+                                return 'Digite a denominação desse outro tipo de transtorno';
+                              }
                             }
-                            return (null);
+                            return null;
                           },
                         ),
                       ],

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeSobre extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeSobre({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -17,7 +17,7 @@ class _TypeSobreState extends State<TypeSobre> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 2)).then((value) {
-      widget.answer.value = {'data': 'Sucess'};
+      widget.answer.value = ['Sucess'];
     });
   }
 

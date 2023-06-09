@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeFiveErrors extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
-  const TypeFiveErrors({Key? key, required this.id, required this.answer})
+
+  const TypeFiveErrors({Key? key, required this.id})
       : super(key: key);
 
   @override
@@ -13,8 +13,6 @@ class TypeFiveErrors extends StatefulWidget {
 }
 
 class _TypeFiveErrorsState extends State<TypeFiveErrors> {
-  String answer = "";
-
   @override
   void initState() {
     super.initState();
@@ -27,7 +25,6 @@ class _TypeFiveErrorsState extends State<TypeFiveErrors> {
 
   @override
   Widget build(BuildContext context) {
-    widget.answer.value = {'answer': ''};
     return Column(
       children: [
         HeaderCard(

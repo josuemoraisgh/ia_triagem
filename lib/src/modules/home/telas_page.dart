@@ -5,14 +5,13 @@ import '../../components/type_five_errors.dart';
 import '../../components/type_city_state.dart';
 import '../../components/type_clean.dart';
 import '../../components/type_complete.dart';
-import '../../components/type_consc_aten.dart';
-import '../../components/type_intel.dart';
-import '../../components/type_join_dots.dart';
+import '../../components/type_form.dart';
 import '../../components/type_laudo.dart';
 import '../../components/type_quest.dart';
 import '../../components/type_sobre.dart';
 import '../../components/type_terms.dart';
 import '../../components/type_yes_no.dart';
+import '../../modelView/display_frame.dart';
 import '../../notfound_page.dart';
 import 'parameters.dart';
 import 'telas_controller.dart';
@@ -23,16 +22,29 @@ double typeSpace(BuildContext context) {
   return ((size.width - tamDesejado) > 0 ? (size.width - tamDesejado) / 2 : 0);
 }
 
-class TelasPage extends StatelessWidget {
-  final controller = TelasController();
+class TelasPage extends StatefulWidget {
+  final TelasController? controller;
   final int? id;
-  final Map<String,dynamic>? answer;
-  TelasPage({Key? key, required this.id, required this.answer}) : super(key: key);
+  const TelasPage({Key? key, required this.id, this.controller}) : super(key: key);
+
+  @override
+  State<TelasPage> createState() => _TelasPageState();
+}
+
+class _TelasPageState extends State<TelasPage> {
+  late TelasController controller;
+  final answerNotifier = ValueNotifier<List<String>>([]);
+
+  @override
+  void initState() {
+    super.initState();
+    controller = widget.controller ?? Modular.get<TelasController>();
+  }
 
   @override
   Widget build(BuildContext context) {
     double tam = typeSpace(context);
-    return id == null
+    return widget.id == null
         ? const NotFoundPage()
         : Scaffold(
             body: Container(
@@ -51,12 +63,12 @@ class TelasPage extends StatelessWidget {
                           padding: const EdgeInsets.only(
                               left: 0, top: 10, right: 10, bottom: 0),
                           alignment: Alignment.bottomRight,
-                          child: Text(id.toString()),
+                          child: Text(widget.id.toString()),
                         ),
                         const Spacer(
                           flex: 1,
                         ),
-                        if (telas[id]!['hasProx'])
+                        if (telas[widget.id]!['hasProx'])
                           Container(
                             padding: const EdgeInsets.only(
                                 left: 0, top: 10, right: 10, bottom: 0),
@@ -70,45 +82,41 @@ class TelasPage extends StatelessWidget {
   }
 
   Widget typeMainFunciton() {
-    switch (telas[id]!['type'] as String) {
+    switch (telas[widget.id]!['style'] as String) {
+      case 'display_Frame':
+        return (DisplayFrame(id: widget.id!));
       case 'clean':
-        return (TypeClean(id: id!, answer: controller.answer));
+        return (TypeClean(id: widget.id!));
       case 'sobre':
-        return (TypeSobre(id: id!, answer: controller.answer));
+        return (TypeSobre(id: widget.id!, answer: answerNotifier));
       case 'terms':
-        return (TypeTerms(id: id!, answer: controller.answer));
+        return (TypeTerms(id: widget.id!, answer: answerNotifier));
       case 'quest':
-        return (TypeQuest(
-            id: id!, startTime: DateTime.now(), answer: controller.answer));
+        return (TypeQuest(id: widget.id!, answer: answerNotifier));
       case 'laudo':
-        return (TypeLaudo(id: id!, answer: controller.answer));
-      case 'consc_aten':
-        return (TypeConscAten(id: id!, answer: controller.answer));
-      case 'intel':
-        return (TypeIntel(id: id!, answer: controller.answer));
+        return (TypeLaudo(id: widget.id!, answer: answerNotifier));        
+      case 'form':
+        return (TypeForm(id: widget.id!, answer: answerNotifier));
       case 'yes_no':
-        return (TypeYesNo(id: id!, answer: controller.answer));
+        return (TypeYesNo(id: widget.id!, answer: answerNotifier));
       case 'complete':
-        return (TypeComplete(id: id!, answer: controller.answer));
+        return (TypeComplete(id: widget.id!, answer: answerNotifier));
       case 'five_errors':
-        return (TypeFiveErrors(id: id!, answer: controller.answer));
-      case 'join_dots':
-        return (TypeJoinDots(id: id!, answer: controller.answer));
+        return (TypeFiveErrors(id: widget.id!));
       case 'audio_complete':
-        return (TypeAudioComplete(id: id!, answer: controller.answer));
+        return (TypeAudioComplete(id: widget.id!, answer: answerNotifier));
       case 'city_state':
-        return (TypeCityState(id: id!, answer: controller.answer));
+        return (TypeCityState(id: widget.id!, answer: answerNotifier));
       default:
         return (const Center(child: Text("Pagina não Encontrada !!")));
     }
   }
 
   Widget _proximaButton() {
-    return ValueListenableBuilder<Map<String, dynamic>>(
-      valueListenable: controller.answer,
-      builder:
-          (BuildContext context, Map<String, dynamic> resp, Widget? child) =>
-              ElevatedButton(
+    return ValueListenableBuilder<List<String>>(
+      valueListenable: answerNotifier,
+      builder: (BuildContext context, List<String> resp, Widget? child) =>
+          ElevatedButton(
         style: ButtonStyle(
           fixedSize: MaterialStateProperty.all<Size>(const Size(180, 50)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -119,8 +127,9 @@ class TelasPage extends StatelessWidget {
         onPressed: resp.isEmpty
             ? null
             : () {
-                debugPrint("${(id! + 1).toString()};${resp.toString()}");
-                Modular.to.popAndPushNamed("/", arguments: id! + 1);
+                debugPrint("${(widget.id! + 1).toString()};${resp.toString()}");
+                Modular.to.popAndPushNamed("/", arguments: widget.id! + 1);
+                controller.answer += answerNotifier.value;
               },
         child: const Row(
           children: [

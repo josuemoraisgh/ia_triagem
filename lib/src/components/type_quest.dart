@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:brasil_fields/brasil_fields.dart';
-import 'header_card.dart';
+import '../modelView/custom_radio_list.dart';
+import '../modelView/header_card.dart';
 
 class TypeQuest extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
-  final DateTime? startTime;
-  const TypeQuest({Key? key, required this.id,required this.startTime, required this.answer})
+  final ValueNotifier<List<String>> answer;
+  const TypeQuest({Key? key, required this.id, required this.answer})
       : super(key: key);
 
   @override
@@ -16,41 +16,20 @@ class TypeQuest extends StatefulWidget {
 
 class _TypeQuestState extends State<TypeQuest> {
   final _formKey = GlobalKey<FormState>();
-  String idade = "";
-  String schooling = "";
-  String time = "";
-  String data = "";
-  String gender = "";
-  String genderother = "";
-  String generoRegistro = "";
-  String raca = "";
-  String isUnicoIrmao = "";
-  String qtdadeIrmaos = "";
-  String estadocivil = "";
-  String possuiFilhos = "";
-  String qtdadefilhos = "";
-  String qtdadefilhosmenores = "";
-  String possuiReligiao = "";
-  String religiao = "";
-  String renda = "";
-  String laudosaudemental = "";
-/*
+  String idade = "",
+      schooling = "",
+      time = "",
+      data = "",
+      gender = "",
+      generoRegistro = "",
+      raca = "",
+      qtdadeIrmaos = "",
+      estadocivil = "",
+      qtdadefilhos = "",
+      qtdadefilhosmenores = "",
+      religiao = "",
+      renda = "";
 
-if (startTime != null) {
-                  final endTime = DateTime.now();
-                  final deltaTime = endTime.difference(startTime!);
-                  int seconds = deltaTime.inSeconds;
-                  if (telas[id]!['isSendAnswer']) {
-                    controller.storage
-                        .addData([id!, seconds.toString(), resp.toString()]);
-                  }
-                  debugPrint("${(id! + 1).toString()}; ${seconds.toString()} ;${resp.toString()}");                  
-                }
-                Modular.to.popAndPushNamed("/", arguments: id! + 1);
-              },
-
-
-*/
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -58,24 +37,23 @@ if (startTime != null) {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          widget.answer.value = {
-            'data': data,
-            'time': time,
-            'idade': idade,
-            'genero': gender == 'other' ? genderother : gender,
-            'generoRegistro': generoRegistro,
-            'raça': raca,
-            'qtdadeirmaos': isUnicoIrmao == "Não" ? qtdadeIrmaos : "0",
-            "estadocivil": estadocivil,
-            'qtdadefilhos': possuiFilhos == "Sim" ? qtdadefilhos : "0",
-            'qtdadefilhosmenores': qtdadefilhosmenores,
-            'religiao':
-                possuiReligiao == "Tenho religião" ? religiao : "Sem religião",
-            'schooling': schooling,
-            'renda': renda,
-          };
+          widget.answer.value = [
+            data,
+            time,
+            idade,
+            gender,
+            generoRegistro,
+            raca,
+            qtdadeIrmaos,
+            estadocivil,
+            qtdadefilhos,
+            qtdadefilhosmenores,
+            religiao,
+            schooling,
+            renda
+          ];
         } else {
-          widget.answer.value = {};
+          widget.answer.value = [];
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
@@ -113,7 +91,8 @@ if (startTime != null) {
                       }
                       return null;
                     },
-                    onChanged: (v) => setState(() => time = v),
+                    onChanged: (v) => setState(
+                        () => time = "$v; ${DateTime.now().toString()}"),
                   ),
                   TextFormField(
                     initialValue: data,
@@ -135,7 +114,8 @@ if (startTime != null) {
                       }
                       return null;
                     },
-                    onChanged: (v) => setState(() => data = v),
+                    onChanged: (v) => setState(
+                        () => data = "$v; ${DateTime.now().toString()}"),
                   ),
                   const SizedBox(height: 15),
                   const Divider(),
@@ -168,100 +148,36 @@ if (startTime != null) {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.transgender, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Gênero *",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        gender = "$value; ${DateTime.now().toString()}",
+                    description: "Gênero *",
+                    icon: const Icon(Icons.transgender, color: Colors.black54),
+                    hasPrefiroNaoDizer: true,
+                    itens: const ["Feminino", "Masculino"],
+                    labelText: "Qual o seu gênero?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.singleLineFormatter,
                     ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Feminino",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "female",
-                                groupValue: gender,
-                                onChanged: (value) {
-                                  gender = value.toString();
-                                  state.didChange(gender);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Masculino",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "male",
-                                groupValue: gender,
-                                onChanged: (value) {
-                                  gender = value.toString();
-                                  state.didChange(gender);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Outro (Qual?)",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "other",
-                                groupValue: gender,
-                                onChanged: (value) {
-                                  gender = value.toString();
-                                  state.didChange(gender);
-                                },
-                              ),
-                              if (gender == 'other')
-                                TextFormField(
-                                  initialValue: genderother,
-                                  decoration: const InputDecoration(
-                                      border: UnderlineInputBorder(),
-                                      labelText: "Qual o seu gênero?"),
-                                  keyboardType: TextInputType.name,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter
-                                        .singleLineFormatter,
-                                  ],
-                                  autovalidateMode: AutovalidateMode.always,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Descrição invalida!! Corrija por favor';
-                                    } else if ((value.isEmpty) ||
-                                        (value.length < 3)) {
-                                      return 'Descrição invalida!! Corrija por favor';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => setState(
-                                    () {
-                                      genderother = value.toString();
-                                      _formKey.currentState!
-                                          .didChangeDependencies();
-                                    },
-                                  ),
-                                ),
-                              RadioListTile(
-                                title: const Text("Prefiro não dizer",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Prefiro não dizer",
-                                groupValue: gender,
-                                onChanged: (value) {
-                                  gender = value.toString();
-                                  state.didChange(gender);
-                                },
-                              ),
-                            ],
-                          ));
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Descrição invalida!! Corrija por favor';
+                      } else if ((value.isEmpty) || (value.length < 3)) {
+                        return 'Descrição invalida!! Corrija por favor';
+                      }
+                      return null;
                     },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        generoRegistro = "$value; ${DateTime.now().toString()}",
+                    description: "Qual foi o sexo atribuído no seu nascimento?",
+                    icon: const Icon(Icons.wc, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const ["Feminino", "Masculino"],
                     validator: (String? value) {
                       if (value == null) {
                         return 'Por favor escolha um item';
@@ -274,222 +190,122 @@ if (startTime != null) {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.wc, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Qual foi o sexo atribuído no seu nascimento?",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
-                    ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Feminino",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "female",
-                                groupValue: generoRegistro,
-                                onChanged: (value) {
-                                  generoRegistro = value.toString();
-                                  state.didChange(generoRegistro);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Masculino",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "male",
-                                groupValue: generoRegistro,
-                                onChanged: (value) {
-                                  generoRegistro = value.toString();
-                                  state.didChange(generoRegistro);
-                                },
-                              ),
-                            ],
-                          ));
-                    },
-                    validator: (String? value) {
-                      if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
-                      }
-                      return (null);
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.person, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        raca = "$value; ${DateTime.now().toString()}",
+                    description:
                         "Assinale a alternativa que identifica a sua Cor ou Raça:",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
+                    icon: const Icon(Icons.person, color: Colors.black54),
+                    hasPrefiroNaoDizer: true,
+                    itens: const [
+                      "Preta",
+                      "Branca",
+                      "Parda",
+                      "Amarela",
+                      "IndÍgena"
                     ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Preta",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Preta",
-                                groupValue: raca,
-                                onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Branca",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Branca",
-                                groupValue: raca,
-                                onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Parda",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Parda",
-                                groupValue: raca,
-                                onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Amarela",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Amarela",
-                                groupValue: raca,
-                                onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("IndÍgena",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "IndÍgena",
-                                groupValue: raca,
-                                onChanged: (value) {
-                                  raca = value.toString();
-                                  state.didChange(raca);
-                                },
-                              ),
-                            ],
-                          ));
-                    },
-                    validator: (String? value) {
+                    labelText: "Qual a sua Cor ou Raça ?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.singleLineFormatter,
+                    ],
+                    validator: (value) {
                       if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
+                        return 'Descrição invalida!! Corrija por favor';
+                      } else if ((value.isEmpty) || (value.length < 3)) {
+                        return 'Descrição invalida!! Corrija por favor';
                       }
-                      return (null);
+                      return null;
                     },
                   ),
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.diversity_3, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        qtdadeIrmaos = "$value; ${DateTime.now().toString()}",
+                    description:
                         "Dentro de sua família, você é o(a) único(a) filho(a)?",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
+                    icon: const Icon(Icons.diversity_3, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const ["Sim"],
+                    otherLabel: "Não",
+                    labelText: "Quantos irmãos voçê tem?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
                     ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Sim",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Sim",
-                                groupValue: isUnicoIrmao,
-                                onChanged: (value) {
-                                  isUnicoIrmao = value.toString();
-                                  state.didChange(isUnicoIrmao);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Não",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Não",
-                                groupValue: isUnicoIrmao,
-                                onChanged: (value) {
-                                  isUnicoIrmao = value.toString();
-                                  state.didChange(isUnicoIrmao);
-                                },
-                              ),
-                              if (isUnicoIrmao == "Não")
-                                TextFormField(
-                                  initialValue: qtdadeIrmaos,
-                                  decoration: const InputDecoration(
-                                      border: UnderlineInputBorder(),
-                                      labelText: "Quantos irmãos voçê tem?"),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
-                                  autovalidateMode: AutovalidateMode.always,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Quantidade invalida!! Corrija por favor';
-                                    } else if ((value.isEmpty)) {
-                                      return 'Quantidade invalida!! Corrija por favor';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => setState(
-                                    () {
-                                      qtdadeIrmaos = value.toString();
-                                      _formKey.currentState!
-                                          .didChangeDependencies();
-                                    },
-                                  ),
-                                ),
-                            ],
-                          ));
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Quantidade invalida!! Corrija por favor';
+                      } else if ((value.isEmpty)) {
+                        return 'Quantidade invalida!! Corrija por favor';
+                      }
+                      return null;
                     },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        estadocivil = "$value; ${DateTime.now().toString()}",
+                    description: "Qual o seu estado civil?",
+                    icon: const Icon(Icons.diversity_2, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const [
+                      "Solteiro (a):",
+                      "Casado (a)",
+                      "Viúvo (a)",
+                      "Separação legal (judicial ou divórcio)",
+                      "Amaziado",
+                    ],
+                    labelText: "Qual estado civil ?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.singleLineFormatter,
+                    ],
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Descrição invalida!! Corrija por favor';
+                      } else if ((value.isEmpty) || (value.length < 3)) {
+                        return 'Descrição invalida!! Corrija por favor';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        qtdadefilhos = "$value; ${DateTime.now().toString()}",
+                    description: "Possui filhos(as)?",
+                    icon: const Icon(Icons.group_add, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const ["Não"],
+                    otherLabel: "Sim",
+                    labelText: "Quantos filhos voçê tem?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.singleLineFormatter,
+                    ],
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Quantidade invalida!! Corrija por favor';
+                      } else if ((value.isEmpty)) {
+                        return 'Quantidade invalida!! Corrija por favor';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        qtdadefilhos = "$value; ${DateTime.now().toString()}",
+                    description: "Possui filhos(as) menores de 6 anos?",
+                    icon:
+                        const Icon(Icons.child_friendly, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const ["Não", "Sim"],
                     validator: (String? value) {
                       if (value == null) {
                         return 'Por favor escolha um item';
@@ -502,93 +318,47 @@ if (startTime != null) {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.person, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Qual o seu estado civil?",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        religiao = "$value; ${DateTime.now().toString()}",
+                    description: "Religião *",
+                    icon: const Icon(Icons.church, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const ["Sem religião"],
+                    otherLabel: "Tenho religião (Qual?)",
+                    labelText: "Qual estado civil ?",
+                    inputFormatters: [
+                      FilteringTextInputFormatter.singleLineFormatter,
                     ],
-                  ),
-                  FormField(
-                    initialValue: estadocivil,
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Solteiro (a):",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Solteiro",
-                                groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Casado (a)",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Casado",
-                                groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Viúvo (a)",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Viúvo",
-                                groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Separação legal (judicial ou divórcio)",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Separação",
-                              groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Amaziado",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Amaziado",
-                                groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("outro",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "outro",
-                                groupValue: estadocivil,
-                                onChanged: (value) {
-                                  estadocivil = value.toString();
-                                  state.didChange(estadocivil);
-                                },
-                              ),
-                            ],
-                          ));
+                    validator: (value) {
+                      if (value == null) {
+                        return 'Religião invalida!! Corrija por favor';
+                      } else if ((value.isEmpty)) {
+                        return 'Religião invalida!! Corrija por favor';
+                      }
+                      return null;
                     },
+                  ),
+                  const SizedBox(height: 15),
+                  const Divider(),
+                  const SizedBox(height: 15),
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        schooling = "$value; ${DateTime.now().toString()}",
+                    description: "Escolaridade *",
+                    icon: const Icon(Icons.school, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const [
+                      "Sem Escolaridade",
+                      "Ensino Fundamental (1º grau) incompleto",
+                      "Ensino Fundamental (1º grau) completo",
+                      "Ensino Médio (2º grau) incompleto",
+                      "Ensino Médio (2º grau) completo",
+                      "Superior Incompleto",
+                      "Superior Completo",
+                      "Mestrado",
+                      "Doutorado",
+                    ],
                     validator: (String? value) {
                       if (value == null) {
                         return 'Por favor escolha um item';
@@ -601,475 +371,23 @@ if (startTime != null) {
                   const SizedBox(height: 15),
                   const Divider(),
                   const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.group_add, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Possui filhos(as)?",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
-                    ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Não",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Não",
-                                groupValue: possuiFilhos,
-                                onChanged: (value) {
-                                  possuiFilhos = value.toString();
-                                  state.didChange(possuiFilhos);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Sim",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Sim",
-                                groupValue: possuiFilhos,
-                                onChanged: (value) {
-                                  possuiFilhos = value.toString();
-                                  state.didChange(possuiFilhos);
-                                },
-                              ),
-                              if (possuiFilhos == "Sim")
-                                TextFormField(
-                                  initialValue: qtdadefilhos,
-                                  decoration: const InputDecoration(
-                                      border: UnderlineInputBorder(),
-                                      labelText: "Quantos filhos voçê tem?"),
-                                  keyboardType: TextInputType.number,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.digitsOnly,
-                                  ],
-                                  autovalidateMode: AutovalidateMode.always,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Quantidade invalida!! Corrija por favor';
-                                    } else if ((value.isEmpty)) {
-                                      return 'Quantidade invalida!! Corrija por favor';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => setState(
-                                    () {
-                                      qtdadefilhos = value.toString();
-                                      _formKey.currentState!
-                                          .didChangeDependencies();
-                                    },
-                                  ),
-                                ),
-                            ],
-                          ));
-                    },
-                    validator: (String? value) {
-                      if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
-                      }
-                      return (null);
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.child_friendly, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Possui filhos(as) menores de 6 anos?",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
-                    ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: Column(
-                          children: [
-                            RadioListTile(
-                              title: const Text("Não",
-                                  style: TextStyle(fontSize: 13)),
-                              value: "Não",
-                              groupValue: qtdadefilhosmenores,
-                              onChanged: (value) {
-                                qtdadefilhosmenores = value.toString();
-                                state.didChange(qtdadefilhosmenores);
-                              },
-                            ),
-                            RadioListTile(
-                              title: const Text("Sim",
-                                  style: TextStyle(fontSize: 13)),
-                              value: "Sim",
-                              groupValue: qtdadefilhosmenores,
-                              onChanged: (value) {
-                                qtdadefilhosmenores = value.toString();
-                                state.didChange(qtdadefilhosmenores);
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    validator: (String? value) {
-                      if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
-                      }
-                      return (null);
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.church, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Religião *",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
-                    ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Sem religião",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Sem religião",
-                                groupValue: possuiReligiao,
-                                onChanged: (value) {
-                                  possuiReligiao = value.toString();
-                                  state.didChange(possuiReligiao);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Tenho religião (Qual?)",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Tenho religião",
-                                groupValue: possuiReligiao,
-                                onChanged: (value) {
-                                  possuiReligiao = value.toString();
-                                  state.didChange(possuiReligiao);
-                                },
-                              ),
-                              if (possuiReligiao == "Tenho religião")
-                                TextFormField(
-                                  initialValue: religiao,
-                                  decoration: const InputDecoration(
-                                      border: UnderlineInputBorder(),
-                                      labelText: "Qual religião?"),
-                                  keyboardType: TextInputType.name,
-                                  inputFormatters: [
-                                    FilteringTextInputFormatter.singleLineFormatter,
-                                  ],
-                                  autovalidateMode: AutovalidateMode.always,
-                                  validator: (value) {
-                                    if (value == null) {
-                                      return 'Religião invalida!! Corrija por favor';
-                                    } else if ((value.isEmpty)) {
-                                      return 'Religião invalida!! Corrija por favor';
-                                    }
-                                    return null;
-                                  },
-                                  onChanged: (value) => setState(
-                                    () {
-                                      religiao = value.toString();
-                                      _formKey.currentState!
-                                          .didChangeDependencies();
-                                    },
-                                  ),
-                                ),
-                            ],
-                          ));
-                    },
-                    validator: (String? value) {
-                      if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
-                      }
-                      return (null);
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.school, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
-                        "Escolaridade *",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
-                    ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Sem Escolaridade",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Sem Escolaridade",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Ensino Fundamental (1º grau) incompleto",
-                                    style: TextStyle(fontSize: 13)),
-                                value:
-                                    "Ensino Fundamental (1º grau) incompleto",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Ensino Fundamental (1º grau) completo",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Ensino Fundamental (1º grau) completo",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Ensino Médio (2º grau) incompleto",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Ensino Médio (2º grau) incompleto",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Ensino Médio (2º grau) completo",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Ensino Médio (2º grau) completo",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Superior Incompleto",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Superior Incompleto",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Superior Completo",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Superior Completo",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Mestrado",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mestrado",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Doutorado",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Doutorado",
-                                groupValue: schooling,
-                                onChanged: (value) {
-                                  schooling = value.toString();
-                                  state.didChange(schooling);
-                                },
-                              ),
-                            ],
-                          ));
-                    },
-                    validator: (String? value) {
-                      if (value == null) {
-                        return 'Por favor escolha um item';
-                      } else if (value.isEmpty) {
-                        return 'Por favor escolha um item';
-                      }
-                      return (null);
-                    },
-                  ),
-                  const SizedBox(height: 15),
-                  const Divider(),
-                  const SizedBox(height: 15),
-                  const Row(
-                    children: [
-                      Icon(Icons.attach_money, color: Colors.black54),
-                      SizedBox(width: 15),
-                      Text(
+                  CustomRadioList(
+                    anwserFunc: (value) =>
+                        renda = "$value; ${DateTime.now().toString()}",
+                    description:
                         "Renda familiar mensal de sua casa (somatória)",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 15,
-                            color: Colors.black,
-                            decorationColor: Colors.black),
-                      ),
+                    icon: const Icon(Icons.attach_money, color: Colors.black54),
+                    hasPrefiroNaoDizer: false,
+                    itens: const [
+                      "Até 1 salário mínimo",
+                      "Mais de 1 a 2 salários mínimos",
+                      "Mais de 2 a 3 salários mínimos",
+                      "Mais de 3 a 5 salários mínimos",
+                      "Mais de 5 a 8 salários mínimos",
+                      "Mais de 8 a 12 salários mínimos",
+                      "Mais de 12 a 20 salários mínimos",
+                      "Mais de 20 salários mínimos",
                     ],
-                  ),
-                  FormField(
-                    initialValue: "",
-                    autovalidateMode: AutovalidateMode.always,
-                    builder: (FormFieldState<String> state) {
-                      return Padding(
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              RadioListTile(
-                                title: const Text("Até 1 salário mínimo",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Até 1 salário mínimo",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 1 a 2 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 1 a 2 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 2 a 3 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 2 a 3 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 3 a 5 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 3 a 5 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 5 a 8 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 5 a 8 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 8 a 12 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 8 a 12 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text(
-                                    "Mais de 12 a 20 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 12 a 20 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                              RadioListTile(
-                                title: const Text("Mais de 20 salários mínimos",
-                                    style: TextStyle(fontSize: 13)),
-                                value: "Mais de 20 salários mínimos",
-                                groupValue: renda,
-                                onChanged: (value) {
-                                  renda = value.toString();
-                                  state.didChange(renda);
-                                },
-                              ),
-                            ],
-                          ));
-                    },
                     validator: (String? value) {
                       if (value == null) {
                         return 'Por favor escolha um item';

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeAudioComplete extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeAudioComplete({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -100,14 +100,10 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
         onChanged: () {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
-            widget.answer.value = {
-              'answer1': seguencia1,
-              'answer2': seguencia2,
-              'answer3': seguencia3
-            };
+            widget.answer.value = [seguencia1,seguencia2,seguencia3];
           } else {
-            widget.answer.value = {};
-          }
+          widget.answer.value = [];
+        }
         },
         autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
         child: Container(
@@ -120,7 +116,7 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
                 const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
             child: Column(
               children:
-                  _montaAternativas(telas[widget.id]!['op'] as List<String>),
+                  _montaAternativas(telas[widget.id]!['options'] as List<String>),
             ),
           ),
         ),

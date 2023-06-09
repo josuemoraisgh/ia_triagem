@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeYesNo extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeYesNo({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -15,6 +15,7 @@ class TypeYesNo extends StatefulWidget {
 class _TypeYesNoState extends State<TypeYesNo> {
   final _formKey = GlobalKey<FormState>();
   List<String> answer = [];
+  List<String> answerAux = [];
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +31,15 @@ class _TypeYesNoState extends State<TypeYesNo> {
           onChanged: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              widget.answer.value = {'answer': answer};
+              widget.answer.value = [answer.join(";")];
             } else {
-              widget.answer.value = {};
+              widget.answer.value = [];
             }
           },
           autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
           child: Column(
             children:
-                _montaAternativas(telas[widget.id]!['op'] as List<String>),
+                _montaAternativas(telas[widget.id]!['options'] as List<String>),
           ),
         ),
       ),
@@ -49,8 +50,9 @@ class _TypeYesNoState extends State<TypeYesNo> {
     List<Widget> widgetList = [];
     for (int i = 0; i < items.length; i++) {
       answer.add("");
+      answerAux.add("");
       widgetList.add(const SizedBox(height: 10));
-      widgetList.add(Text((telas[widget.id]!['op'][i] as String),
+      widgetList.add(Text((telas[widget.id]!['options'][i] as String),
           style: const TextStyle(fontSize: 24.0)));
       widgetList.add(const SizedBox(height: 10));
       widgetList.add(
@@ -64,12 +66,11 @@ class _TypeYesNoState extends State<TypeYesNo> {
                   child: RadioListTile(
                     title: const Text("Sim", style: TextStyle(fontSize: 18.0)),
                     value: "Sim",
-                    groupValue: answer[i],
+                    groupValue: answerAux[i],
                     onChanged: (value) {
-                      setState(() {
-                        answer[i] = value.toString();
-                        state.didChange(answer[i]);
-                      });
+                      answerAux[i] = value.toString();
+                      answer[i] = "$value; ${DateTime.now().toString()}";
+                      state.didChange(answer[i]);
                     },
                   ),
                 ),
@@ -77,14 +78,11 @@ class _TypeYesNoState extends State<TypeYesNo> {
                   child: RadioListTile(
                     title: const Text("Não", style: TextStyle(fontSize: 18.0)),
                     value: "Não",
-                    groupValue: answer[i],
+                    groupValue: answerAux[i],
                     onChanged: (value) {
-                      setState(
-                        () {
-                          answer[i] = value.toString();
-                          state.didChange(answer[i]);
-                        },
-                      );
+                      answerAux[i] = value.toString();
+                      answer[i] = "$value; ${DateTime.now().toString()}";
+                      state.didChange(answer[i]);
                     },
                   ),
                 ),

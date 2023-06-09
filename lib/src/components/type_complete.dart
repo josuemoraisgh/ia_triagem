@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeComplete extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeComplete({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -35,9 +35,9 @@ class _TypeCompleteState extends State<TypeComplete> {
           onChanged: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
-              widget.answer.value = {'answer': seguencia};
+              widget.answer.value = [seguencia];
             } else {
-              widget.answer.value = {};
+              widget.answer.value = [];
             }
           },
           autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
@@ -45,7 +45,7 @@ class _TypeCompleteState extends State<TypeComplete> {
             children: <Widget>[
               const SizedBox(width: 15),
               Text(
-                telas[widget.id]!['op'],
+                telas[widget.id]!['options'],
                 textAlign: TextAlign.justify,
                 style: const TextStyle(
                     fontSize: 35,
@@ -75,9 +75,6 @@ class _TypeCompleteState extends State<TypeComplete> {
                   seguencia = v;
                   if (v.isNotEmpty) {
                     _formKey.currentState!.save();
-                    widget.answer.value = {'answer': seguencia};
-                  } else {
-                    widget.answer.value = {};
                   }
                 },
               ),

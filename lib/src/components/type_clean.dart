@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeClean extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
-  const TypeClean({Key? key, required this.id, required this.answer})
+  const TypeClean({Key? key, required this.id})
       : super(key: key);
 
   @override
@@ -15,7 +14,6 @@ class TypeClean extends StatefulWidget {
 class _TypeCleanState extends State<TypeClean> {
   @override
   Widget build(BuildContext context) {
-    widget.answer.value = {"anser": ""};
     return HeaderCard(
       headerTitle: Text(
         telas[widget.id]!['header'],

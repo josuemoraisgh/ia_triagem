@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../modules/home/parameters.dart';
-import 'header_card.dart';
+import '../modelView/header_card.dart';
 
 class TypeTerms extends StatefulWidget {
   final int id;
-  final ValueNotifier<Map<String, dynamic>> answer;
+  final ValueNotifier<List<String>> answer;
   const TypeTerms({Key? key, required this.id, required this.answer})
       : super(key: key);
 
@@ -20,8 +20,7 @@ class _TypeTermsState extends State<TypeTerms> {
   bool checkBoxValue = false;
   @override
   void initState() {
-    super.initState();
-    widget.answer.value = {};
+    super.initState();  
   }
 
   _senderMessage() {
@@ -35,9 +34,9 @@ class _TypeTermsState extends State<TypeTerms> {
   _changeComboBox(bool? newValue) {
     newValue ??= false;
     if (newValue) {
-      widget.answer.value = {'aceito': true};
+      widget.answer.value = [DateTime.now().toString()];
     } else {
-      widget.answer.value = {};
+      widget.answer.value = [];
     }
     setState(() => checkBoxValue = newValue!);
   }
