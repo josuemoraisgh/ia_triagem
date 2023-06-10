@@ -9,6 +9,7 @@ class DisplayFrame extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String body = telas[id]!['body'] ?? "";
     return SingleChildScrollView(
       child: HeaderCard(
         headerTitle: telas[id]!['header'] == "" || telas[id]!['header'] == null
@@ -23,55 +24,55 @@ class DisplayFrame extends StatelessWidget {
           children: <Widget>[
                 Container(
                   alignment: Alignment.center,
-                  decoration: telas[id]!['hasFrame'] ?? true
+                  decoration: telas[id]!['body_hasFrame'] ?? true
                       ? BoxDecoration(
                           border: Border.all(width: 3.0, color: Colors.black),
                           color: Colors.white,
                         )
                       : null,
-                  child: telas[id]!['body_type'] ==
-                          "audio" // body_type: text || image || audio
-                      ? SizedBox(
+                  child: (body == "") &&
+                          (telas[id]!['body_hasFrame'] ??
+                              true) // body_type = vazio
+                      ? const SizedBox(
                           height: 300.0,
                           width: 400.0,
-                          child: Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.only(top: 20),
-                            child: const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                CircularProgressIndicator(),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text("Tocando áudio!!"),
-                              ],
-                            ),
-                          ),
                         )
-                      : telas[id]!['body_type'] == "image" &&
-                              telas[id]!['body'] == ""
-                          ? const SizedBox(
+                      : body.contains('.mp3') // body_type = audio
+                          ? SizedBox(
                               height: 300.0,
                               width: 400.0,
+                              child: Container(
+                                alignment: Alignment.center,
+                                margin: const EdgeInsets.only(top: 20),
+                                child: const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    CircularProgressIndicator(),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text("Tocando áudio!!"),
+                                  ],
+                                ),
+                              ),
                             )
-                          : telas[id]!['body_type'] ==
-                                  "image" //  body_type: text || image || audio
-                              ? telas[id]!['hasFrame'] ?? true
+                          : body.contains('.png') // body_type = image
+                              ? telas[id]!['body_hasFrame'] ?? true
                                   ? Image.asset(
-                                      telas[id]!['body'], //assets/arvore2.png
-                                      height: 300.0,
+                                      body, //assets/arvore2.png
+                                      //height: 300.0,
                                       width: 400.0,
                                       alignment: Alignment.center,
                                     )
                                   : Image.asset(
-                                      telas[id]!['body'], //assets/arvore2.png
+                                      body, //assets/arvore2.png
                                       alignment: Alignment.bottomCenter,
                                     )
-                              : telas[id]!['hasFrame'] ?? true
+                              : telas[id]!['body_hasFrame'] ??
+                                      true // body_type = texto
                                   ? Text(
-                                      telas[id]!['body'],
+                                      body,
                                       textAlign: TextAlign.center,
                                       style: const TextStyle(
                                         fontSize: 100.0,
@@ -79,18 +80,22 @@ class DisplayFrame extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )
-                                  : Text(
-                                      telas[id]!['body'],
-                                      textAlign: TextAlign.justify,
-                                      style: const TextStyle(
-                                          fontSize: 20,
-                                          color: Colors.black,
-                                          decorationColor: Colors.black),
-                                    ),
+                                  : body.isNotEmpty
+                                      ? Text(
+                                          body,
+                                          textAlign: TextAlign.justify,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black,
+                                              decorationColor: Colors.black),
+                                        )
+                                      : null,
                 ),
               ] +
               (widgets != null
-                  ? <Widget>[const SizedBox(height: 15)] + widgets!
+                  ? !(telas[id]!['body_hasFrame'] ?? true) && body.isNotEmpty
+                      ? <Widget>[const SizedBox(height: 15)] + widgets!
+                      : widgets!
                   : []),
         ),
       ),

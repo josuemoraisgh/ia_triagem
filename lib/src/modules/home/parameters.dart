@@ -64,14 +64,10 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
-    'header': '', //Titulo do card
-    'body_type': 'image', // body_type: text || image || audio,
-    'body': 'assets/arvore_free.png',
-    'question': 'O que você viu na tela anterior',
-    'options_type': 'text', // options_type: text || image
-    'options_columns_size': 1,
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': 'assets/arvore_free.png', // body_type: image
+    'question':
+        'O que você viu na tela anterior', //Se <> Null -> Apresenta o corpo em uma tela e o options em outra
     'options': [
       "Jesus Cristo",
       "Coração",
@@ -79,7 +75,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "Árvore",
       "Não vi nada",
       "Outra coisa"
-    ],
+    ], // options_type: text
   },
   7: {
     'hasProx': true,
@@ -92,14 +88,8 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
-    'header': '', //Titulo do card
-    'body_type': 'image', // body_type: text || image || audio,
-    'body': '',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
     'question': 'O que você viu na tela anterior',
-    'options_type': 'text', // options_type: text || image
-    'options_columns_size': 1,
     'options': [
       "Jesus Cristo",
       "Coração",
@@ -121,15 +111,12 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
+    'body_hasFrame': true, //Imprime um quadro em volta do body
     'body': '2 - 7',
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
     'options_columns_size': 3,
     'options': ["1 - 5", "4 - 7", "2 - 7", "2 - 8", "9 - 4", "7 - 2"],
   },
@@ -137,15 +124,12 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
+    'body_hasFrame': true, //Imprime um quadro em volta do body        
     'body': '5 - 6 - 4',
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
     'options_columns_size': 2,
     'options': [
       "5 - 7 - 1",
@@ -154,21 +138,18 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "4 - 6 - 5",
       "5 - 4 - 6",
       "5 - 6 - 4"
-    ],
+    ], // options_type: text || image
   },
   12: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
-    'body': '6 - 4 - 3 - 9',
+    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body': '6 - 4 - 3 - 9',// mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
     'options_columns_size': 2,
     'options': [
       "6 - 4 - 9 - 3",
@@ -177,21 +158,18 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "5 - 4 - 3 - 8",
       "1 - 5 - 2 - 9",
       "6 - 4 - 3 - 7"
-    ],
+    ], // options_type: text || image
   },
   13: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
-    'body': '4 - 2 - 7 - 3 - 1',
+    'body_hasFrame': true, //Imprime um quadro em volta do body         
+    'body': '4 - 2 - 7 - 3 - 1',// mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
     'options_columns_size': 2,
     'options': [
       "2 - 1 - 4 - 7 - 9",
@@ -200,22 +178,18 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "7 - 5 - 1 - 4 - 2 ",
       "4 - 2 - 7 - 3 - 1",
       "6 - 3 - 1 - 5 - 9"
-    ],
+    ],// options_type: text || image
   },
   14: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
-    'body':  '6 - 1 - 9 - 4 - 7 - 3',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': '6 - 1 - 9 - 4 - 7 - 3',// mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
-    'options_columns_size': 1,
     'options': [
       "6 - 1 - 4 - 7 - 3 - 9",
       "2 - 1 - 8 - 3 - 9 - 5",
@@ -223,22 +197,18 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "6 - 4 - 5 - 8 - 3 - 7",
       "2 - 8 - 6 - 4 - 7 - 3",
       "6 - 1 - 9 - 4 - 5 - 2"
-    ],
+    ],// options_type: text || image
   },
   15: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': true, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_type': 'text', // mode_card: text || image || audio
-    'body':  '5 - 9 - 1 - 7 - 4 - 2 - 8',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': '5 - 9 - 1 - 7 - 4 - 2 - 8',// mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'text', // options_type: text || image
-    'options_columns_size': 1,
     'options': [
       "5 - 8 - 1 - 7 - 4 - 3 - 8",
       "5 - 9 - 1 - 7 - 4 - 8",
@@ -260,23 +230,18 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': false, //Imprime um quadro em volta do body
-    'isTwoScreem': false, //Apresenta o corpo em uma tela e o options em outra
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'body_type': 'image', // mode_card: text || image || audio
-    'body':  'assets/one_screem_1.png',
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_type': 'image', // options_type: text || image
-    'options_columns_size': 1,
+    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body': 'assets/intel_1.png',
+    'options_columns_size': 3,        
     'options': [
-      'assets/one_screem_1a.png',
-      'assets/one_screem_1b.png',
-      'assets/one_screem_1c.png',
-      'assets/one_screem_1d.png',
-      'assets/one_screem_1e.png',
-      'assets/one_screem_1f.png'
+      'assets/intel_1a.png',
+      'assets/intel_1b.png',
+      'assets/intel_1c.png',
+      'assets/intel_1d.png',
+      'assets/intel_1e.png',
+      'assets/intel_1f.png'
     ],
   },
   18: {
@@ -291,18 +256,15 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       'Há muitos momentos que você se alimenta de forma exagerada?',
     ],
   },
-  19: {
+  19:  {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': true, //Imprime um quadro em volta do body
-    'isTwoScreem': false, //Apresenta o corpo em uma tela e o options em outra
     'header':
-        'Qual das imagens abaixo completa a sequência a seguir ?', //Titulo do card
-    'body_type': 'image', // mode_card: text || image || audio
-    'body':  'assets/intel_1.png',
-    'options_type': 'image', // options_type: text || image
-    'options_columns_size': 3,
+        'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
+    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body': 'assets/intel_1.png',
+    'options_columns_size': 3,        
     'options': [
       'assets/intel_1a.png',
       'assets/intel_1b.png',
@@ -355,8 +317,9 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
   25: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
+    'style': 'form',
     'header': 'Observe as palavras a seguir:',
+    'body_hasFrame': false, //Imprime um quadro em volta do body      
     'body': """
 
     1) MUITOS    2) OCEANO    3) PEIXES    4) E
@@ -365,9 +328,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
 
 Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque a ordem correta:
 """,
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'text', //Texto nas respostas
-    'itens_row': 2,
+    'options_columns_size': 2,
     'options': [
       '1 - 4 - 6 - 2 - 5 - 3 - 7',
       '6 - 2 - 4 - 7 - 5 - 1 - 3',
@@ -404,13 +365,9 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'hasFrame': false,
-    'isTwoScreem': false,
     'header': "Selecione qual o período do dia atual.",
-    'body': "",
-    'body_type': 'text', //Texto nas respostas
+    'body_hasFrame': false, //Imprime um quadro em volta do body 
     'options_columns_size': 1,
-    'options_type': 'text', //Texto nas respostas
     'options': [
       'Manhã: 6:00 às 11:59 horas',
       'Tarde: 12:00 às 17:59 horas',

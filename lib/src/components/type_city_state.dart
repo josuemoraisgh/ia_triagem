@@ -59,7 +59,7 @@ class _TypeCityStateState extends State<TypeCityState> {
           decoration: InputDecoration(
             border: const UnderlineInputBorder(),
             icon: const Icon(Icons.attribution),
-            labelText: telas[widget.id]!['op'][i],
+            labelText: telas[widget.id]!['options'][i],
           ),
           keyboardType: TextInputType.name,
           autovalidateMode: AutovalidateMode.always,

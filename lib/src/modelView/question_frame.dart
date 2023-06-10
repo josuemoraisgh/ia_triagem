@@ -42,7 +42,6 @@ class _QuestionFrameState extends State<QuestionFrame> {
                 answer = "$value; ${DateTime.now().toString()}",
             hasPrefiroNaoDizer: false,
             itens: telas[widget.id]!['options'],
-            optionsIsText: telas[widget.id]!['options_type'] == 'text',
             optionsColumnsSize: telas[widget.id]!['options_columns_size'],
             validator: (String? value) {
               if (value == null) {

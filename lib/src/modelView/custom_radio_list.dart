@@ -9,7 +9,6 @@ class CustomRadioList extends StatefulWidget {
   final List<String> itens;
   final String? otherLabel;
   final bool hasPrefiroNaoDizer;
-  final bool? optionsIsText;
   final int? optionsColumnsSize;
   final String? labelText;
   final List<TextInputFormatter>? inputFormatters;
@@ -25,7 +24,6 @@ class CustomRadioList extends StatefulWidget {
     this.labelText,
     this.inputFormatters,
     this.validator,
-    this.optionsIsText,
     this.optionsColumnsSize,
   });
 
@@ -34,10 +32,9 @@ class CustomRadioList extends StatefulWidget {
 }
 
 class _CustomRadioListState extends State<CustomRadioList> {
-  static const double fontSize = 18; 
+  static const double fontSize = 18;
   String anwser = "";
   String anwserOther = "";
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +53,7 @@ class _CustomRadioListState extends State<CustomRadioList> {
                     fontSize: 15,
                     color: Colors.black,
                     decorationColor: Colors.black),
-              ),              
+              ),
             ],
           ),
         if (widget.description != null) const SizedBox(height: 15),
@@ -78,7 +75,7 @@ class _CustomRadioListState extends State<CustomRadioList> {
               (iten) => Expanded(
                 child: RadioListTile(
                   //contentPadding: const EdgeInsets.all(2),
-                  title: widget.optionsIsText ?? true
+                  title: !iten.contains('.png') && !iten.contains('.mp3')
                       ? Text(iten, style: const TextStyle(fontSize: fontSize))
                       : Image.asset(
                           iten,

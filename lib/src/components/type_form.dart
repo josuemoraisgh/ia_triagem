@@ -24,9 +24,12 @@ class _TypeFormState extends State<TypeForm> {
   @override
   void initState() {
     super.initState();
-    if ((telas[widget.id]!['body_type'] != "audio") ||
-        ((telas[widget.id]!['body'] as String).isEmpty)) {
-      if (telas[widget.id]!['isTwoScreem'] ?? true) {
+    if ((((telas[widget.id]!['body'] == null) ||
+                (telas[widget.id]!['body'] as String).isEmpty) &&
+            (telas[widget.id]!['body_hasFrame'] ?? true)) ||
+        ((telas[widget.id]!['body'] != null) &&
+            !(telas[widget.id]!['body'] as String).contains('.mp3'))) {
+      if (telas[widget.id]!['question'] != null) {
         Future.delayed(const Duration(seconds: 3)).then((value) {
           setState(() {
             imageClose = true;
@@ -34,7 +37,10 @@ class _TypeFormState extends State<TypeForm> {
         });
       }
     } else {
-      _init();
+      if ((telas[widget.id]!['body'] != null) &&
+          (telas[widget.id]!['body'] as String).isNotEmpty) {
+        _init();
+      }
     }
   }
 
@@ -45,7 +51,7 @@ class _TypeFormState extends State<TypeForm> {
     //await player.setAsset(path); //load audio from assets
     player.play().then((value) {
       setState(() {
-        if (telas[widget.id]!['isTwoScreem'] ?? true) imageClose = true;
+        if (telas[widget.id]!['question'] != null) imageClose = true;
       });
     });
   }
@@ -62,8 +68,7 @@ class _TypeFormState extends State<TypeForm> {
         ? QuestionFrame(id: widget.id, answer: widget.answer)
         : DisplayFrame(
             id: widget.id,
-            widgets: telas[widget.id]!['isTwoScreem'] == null ||
-                    telas[widget.id]!['isTwoScreem'] == true
+            widgets: telas[widget.id]!['question'] != null
                 ? []
                 : [
                     Form(
@@ -83,8 +88,6 @@ class _TypeFormState extends State<TypeForm> {
                             answer = "$value; ${DateTime.now().toString()}",
                         hasPrefiroNaoDizer: false,
                         itens: telas[widget.id]!['options'],
-                        optionsIsText:
-                            telas[widget.id]!['options_type'] == 'text',
                         optionsColumnsSize:
                             telas[widget.id]!['options_columns_size'],
                         validator: (String? value) {
