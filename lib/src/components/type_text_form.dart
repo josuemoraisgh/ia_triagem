@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import '../modules/home/parameters.dart';
 import '../modelView/header_card.dart';
 
-class TypeCityState extends StatefulWidget {
+class TypeTextForm extends StatefulWidget {
   final int id;
   final ValueNotifier<List<String>> answer;
-  const TypeCityState({Key? key, required this.id, required this.answer})
+  const TypeTextForm({Key? key, required this.id, required this.answer})
       : super(key: key);
 
   @override
-  State<TypeCityState> createState() => _TypeCityStateState();
+  State<TypeTextForm> createState() => _TypeTextFormState();
 }
 
-class _TypeCityStateState extends State<TypeCityState> {
+class _TypeTextFormState extends State<TypeTextForm> {
   final _formKey = GlobalKey<FormState>();
   List<String> answer = [];
 
@@ -41,25 +41,36 @@ class _TypeCityStateState extends State<TypeCityState> {
           },
           autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
           child: Column(
-            children:
-                _montaAternativas(telas[widget.id]!['options'] as List<String>),
+            children: _montaAternativas(),
           ),
         ),
       ),
     );
   }
 
-  List<Widget> _montaAternativas(List<String> items) {
+  List<Widget> _montaAternativas() {
     List<Widget> widgetList = [];
-    for (int i = 0; i < items.length; i++) {
+    final bool hasText = (telas[widget.id]!['labelText'] as List).isEmpty;
+    for (int i = 0; i < (telas[widget.id]!['labelText'] as List).length; i++) {
       answer.add("");
+      if (hasText) {
+        widgetList.add(const SizedBox(width: 15));
+        widgetList.add(Text(
+          telas[widget.id]!['options'][i],
+          textAlign: TextAlign.justify,
+          style: const TextStyle(
+              fontSize: 35, color: Colors.black, decorationColor: Colors.black),
+        ));
+      }
       widgetList.add(const SizedBox(width: 15));
       widgetList.add(
         TextFormField(
           decoration: InputDecoration(
             border: const UnderlineInputBorder(),
-            icon: const Icon(Icons.attribution),
-            labelText: telas[widget.id]!['options'][i],
+            icon: telas[widget.id]!['icons'] != null
+                ? Icon(telas[widget.id]!['icons'][i])
+                : null,
+            labelText: telas[widget.id]!['labelText'][i],
           ),
           keyboardType: TextInputType.name,
           autovalidateMode: AutovalidateMode.always,

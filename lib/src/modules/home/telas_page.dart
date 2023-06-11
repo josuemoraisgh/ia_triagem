@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../components/type_audio_comple.dart';
 import '../../components/type_five_errors.dart';
-import '../../components/type_city_state.dart';
+import '../../components/type_text_form.dart';
 import '../../components/type_clean.dart';
-import '../../components/type_complete.dart';
 import '../../components/type_form.dart';
 import '../../components/type_laudo.dart';
 import '../../components/type_quest.dart';
@@ -25,7 +24,8 @@ double typeSpace(BuildContext context) {
 class TelasPage extends StatefulWidget {
   final TelasController? controller;
   final int? id;
-  const TelasPage({Key? key, required this.id, this.controller}) : super(key: key);
+  const TelasPage({Key? key, required this.id, this.controller})
+      : super(key: key);
 
   @override
   State<TelasPage> createState() => _TelasPageState();
@@ -94,19 +94,17 @@ class _TelasPageState extends State<TelasPage> {
       case 'quest':
         return (TypeQuest(id: widget.id!, answer: answerNotifier));
       case 'laudo':
-        return (TypeLaudo(id: widget.id!, answer: answerNotifier));        
+        return (TypeLaudo(id: widget.id!, answer: answerNotifier));
       case 'form':
         return (TypeForm(id: widget.id!, answer: answerNotifier));
       case 'yes_no':
         return (TypeYesNo(id: widget.id!, answer: answerNotifier));
-      case 'complete':
-        return (TypeComplete(id: widget.id!, answer: answerNotifier));
       case 'five_errors':
         return (TypeFiveErrors(id: widget.id!));
       case 'audio_complete':
         return (TypeAudioComplete(id: widget.id!, answer: answerNotifier));
-      case 'city_state':
-        return (TypeCityState(id: widget.id!, answer: answerNotifier));
+      case 'text_form':
+        return (TypeTextForm(id: widget.id!, answer: answerNotifier));
       default:
         return (const Center(child: Text("Pagina não Encontrada !!")));
     }

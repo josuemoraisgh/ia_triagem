@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 const Map<int, Map<String, dynamic>> telas = {
   1: {
     'hasProx': true,
@@ -126,7 +128,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body_hasFrame': true, //Imprime um quadro em volta do body
     'body': '5 - 6 - 4',
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
@@ -146,8 +148,8 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body        
-    'body': '6 - 4 - 3 - 9',// mode_card: text || image || audio
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': '6 - 4 - 3 - 9', // mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'options_columns_size': 2,
@@ -166,8 +168,8 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body         
-    'body': '4 - 2 - 7 - 3 - 1',// mode_card: text || image || audio
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': '4 - 2 - 7 - 3 - 1', // mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'options_columns_size': 2,
@@ -178,7 +180,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "7 - 5 - 1 - 4 - 2 ",
       "4 - 2 - 7 - 3 - 1",
       "6 - 3 - 1 - 5 - 9"
-    ],// options_type: text || image
+    ], // options_type: text || image
   },
   14: {
     'hasProx': true,
@@ -187,7 +189,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
     'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '6 - 1 - 9 - 4 - 7 - 3',// mode_card: text || image || audio
+    'body': '6 - 1 - 9 - 4 - 7 - 3', // mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'options': [
@@ -197,7 +199,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       "6 - 4 - 5 - 8 - 3 - 7",
       "2 - 8 - 6 - 4 - 7 - 3",
       "6 - 1 - 9 - 4 - 5 - 2"
-    ],// options_type: text || image
+    ], // options_type: text || image
   },
   15: {
     'hasProx': true,
@@ -206,7 +208,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
     'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '5 - 9 - 1 - 7 - 4 - 2 - 8',// mode_card: text || image || audio
+    'body': '5 - 9 - 1 - 7 - 4 - 2 - 8', // mode_card: text || image || audio
     'question':
         'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'options': [
@@ -232,9 +234,9 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body_hasFrame': true, //Imprime um quadro em volta do body
     'body': 'assets/intel_1.png',
-    'options_columns_size': 3,        
+    'options_columns_size': 3,
     'options': [
       'assets/intel_1a.png',
       'assets/intel_1b.png',
@@ -256,15 +258,15 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       'Há muitos momentos que você se alimenta de forma exagerada?',
     ],
   },
-  19:  {
+  19: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body        
+    'body_hasFrame': true, //Imprime um quadro em volta do body
     'body': 'assets/intel_1.png',
-    'options_columns_size': 3,        
+    'options_columns_size': 3,
     'options': [
       'assets/intel_1a.png',
       'assets/intel_1b.png',
@@ -289,37 +291,45 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
   21: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'complete',
+    'style': 'text_form',
     'header': 'Complete a sequência a seguir:',
-    'options': '2, 4, 8, 16, ?',
+    'options': ['2, 4, 8, 16, ?'],
+    'labelText': ["Seguência *"],
+    'icons': [Icons.confirmation_num],
   },
   22: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'complete',
+    'style': 'text_form',
     'header': 'Complete a sequência a seguir:',
-    'options': '1, 3, 9, ?',
+    'options': ['1, 3, 9, ?'],
+    'labelText': ["Seguência *"],
+    'icons': [Icons.confirmation_num],
   },
   23: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'complete',
+    'style': 'text_form',
     'header': 'Complete a sequência a seguir:',
-    'options': '3, 7, 11, 15, ? ',
+    'options': ['3, 7, 11, 15, ? '],
+    'labelText': ["Seguência *"],
+    'icons': [Icons.confirmation_num],
   },
   24: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'complete',
+    'style': 'text_form',
     'header': 'Complete a sequência a seguir:',
-    'options': '32, 16, 8, ? ',
+    'options': ['32, 16, 8, ? '],
+    'labelText': ["Seguência *"],
+    'icons': [Icons.confirmation_num],
   },
   25: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header': 'Observe as palavras a seguir:',
-    'body_hasFrame': false, //Imprime um quadro em volta do body      
+    'body_hasFrame': false, //Imprime um quadro em volta do body
     'body': """
 
     1) MUITOS    2) OCEANO    3) PEIXES    4) E
@@ -353,20 +363,19 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   27: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'city_state',
+    'style': 'text_form',
     'header':
         'Preencha o campo a seguir com o nome da cidade e estado onde você está agora.',
-    'options': [
-      'CIDADE:',
-      'ESTADO:',
-    ]
+    //'options': ['CIDADE:', 'ESTADO:'],
+    'labelText': ['CIDADE:', 'ESTADO:'],
+    'icons': [Icons.location_city, Icons.location_history],
   },
   28: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header': "Selecione qual o período do dia atual.",
-    'body_hasFrame': false, //Imprime um quadro em volta do body 
+    'body_hasFrame': false, //Imprime um quadro em volta do body
     'options_columns_size': 1,
     'options': [
       'Manhã: 6:00 às 11:59 horas',
@@ -391,10 +400,12 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   36: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'two_screens',
-    'mode_card': 'audio', // mode_card: text || image || audiheader '',
-    'content': "assets/audios/aguacorrente-edited_v2.mp3",
+    'style': 'form',
+    'header': '',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
     'question': 'Qual das opções corresponde ao som escutado?',
+    'options_columns_size': 2,
     'options': [
       "Pássaros",
       "Barulho de água",
@@ -408,7 +419,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
-    'header': "Responda as questões abaixo:",
+    'header': 'Responda as questões abaixo:',
     'options': [
       'Diariamente, há momentos em que você sente como o se chão oscilasse?',
       'Durante o dia há vários momentos em que você se sente irritadao e impaciente?',
@@ -420,13 +431,12 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   38: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'two_screens',
+    'style': 'form',
     'header': '',
-    'type_card': 'audio', // type_card: text || image || audio
-    'card': '',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
     'question': 'Qual das opções corresponde ao som escutado?',
-    'type_options': 'text', // type_options: text || image
-    'columns_size': 1,
+    'options_columns_size': 2,
     'options': [
       "Pássaros",
       "Barulho de água",
@@ -439,13 +449,13 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   39: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
+    'style': 'form',
     'header':
-        "Observe a imagem a seguir e selecione qual alternativa corresponde ao que você vê",
-    'type_card': 'image', // type_card: text || image || audio
-    'card': 'assets/Ebbinghaus.png',
-    'type_options': 'text', // type_options: text || image
-    'columns_size': 2,
+        'Observe a imagem a seguir e selecione qual alternativa corresponde ao que você vê',
+    'body_hasFrame': true, //Imprime um quadro em volta do body
+    'body': 'assets/Ebbinghaus.png', // body_type: audio
+    'question': 'Qual das opções corresponde ao som escutado?',
+    'options_columns_size': 2,
     'options': [
       'Pessoa',
       'Bola rabiscada',
@@ -477,8 +487,6 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   42: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'two_screens',
-    'mode_card': 'audio', // mode_card: text || image || audiheader '',
     'content': '',
     'question': 'Qual das opções corresponde ao som escutado?',
     'options': [
