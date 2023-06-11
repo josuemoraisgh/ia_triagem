@@ -28,7 +28,8 @@ class _TypeFormState extends State<TypeForm> {
                 (telas[widget.id]!['body'] as String).isEmpty) &&
             (telas[widget.id]!['body_hasFrame'] ?? true)) ||
         ((telas[widget.id]!['body'] != null) &&
-            !(telas[widget.id]!['body'] as String).contains('.mp3'))) {
+            !(telas[widget.id]!['body'] as String).contains('.mp3')) ||
+        (telas[widget.id]!['body'] == '.mp3')) {
       if (telas[widget.id]!['question'] != null) {
         Future.delayed(const Duration(seconds: 3)).then((value) {
           setState(() {

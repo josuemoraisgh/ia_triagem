@@ -23,7 +23,7 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
   void initState() {
     super.initState();
     if ((telas[widget.id]!['mode'] != "audio") ||
-        ((telas[widget.id]!['image'] as String).isEmpty)) {
+        ((telas[widget.id]!['body'] as String).isEmpty)) {
       imageClose = true;
     } else {
       _init();
@@ -31,7 +31,7 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
   }
 
   Future<void> _init() async {
-    final String path = telas[widget.id]!['image'];
+    final String path = telas[widget.id]!['body'];
     await player.setAsset(path); //load audio from assets
     player.play().then((value) {
       setState(() {
@@ -75,7 +75,7 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
               child: const Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children:  [
+                children: [
                   CircularProgressIndicator(),
                   SizedBox(
                     height: 10,
@@ -100,10 +100,10 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
         onChanged: () {
           if (_formKey.currentState!.validate()) {
             _formKey.currentState!.save();
-            widget.answer.value = [seguencia1,seguencia2,seguencia3];
+            widget.answer.value = [seguencia1, seguencia2, seguencia3];
           } else {
-          widget.answer.value = [];
-        }
+            widget.answer.value = [];
+          }
         },
         autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
         child: Container(
@@ -115,8 +115,8 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
             padding:
                 const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
             child: Column(
-              children:
-                  _montaAternativas(telas[widget.id]!['options'] as List<String>),
+              children: _montaAternativas(
+                  telas[widget.id]!['options'] as List<String>),
             ),
           ),
         ),
