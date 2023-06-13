@@ -1,7 +1,11 @@
 # This is a generated file; do not edit or check into version control.
-audio_service=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audio_service-0.18.10\\
-audio_service_web=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audio_service_web-0.1.1\\
 audio_session=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audio_session-0.1.16\\
+audioplayers=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers-4.1.0\\
+audioplayers_android=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers_android-3.0.2\\
+audioplayers_darwin=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers_darwin-4.1.0\\
+audioplayers_linux=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers_linux-2.1.0\\
+audioplayers_web=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers_web-3.1.0\\
+audioplayers_windows=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\audioplayers_windows-2.0.2\\
 file_picker=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\file_picker-5.3.2\\
 flutter_plugin_android_lifecycle=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\flutter_plugin_android_lifecycle-2.0.15\\
 just_audio=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\just_audio-0.9.34\\
@@ -11,4 +15,3 @@ path_provider_android=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.
 path_provider_foundation=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_foundation-2.2.3\\
 path_provider_linux=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_linux-2.1.11\\
 path_provider_windows=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\path_provider_windows-2.1.7\\
-sqflite=C:\\Users\\josue\\AppData\\Local\\Pub\\Cache\\hosted\\pub.dev\\sqflite-2.2.8+4\\

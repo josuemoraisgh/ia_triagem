@@ -20,14 +20,12 @@ class _TypeTermsState extends State<TypeTerms> {
   bool checkBoxValue = false;
   @override
   void initState() {
-    super.initState();  
+    super.initState();
   }
 
-  _senderMessage() {
-    if (_formKey.currentState?.validate() ?? false) {
-      //Faça aqui o codigo com a mensagem final message = textController.text;
-      textController.text = '';
-    }
+  _sendEmailMessage() {
+    //Faça aqui o codigo Eviando a mensagem para o Email no textController.text;
+    textController.text = '';
     focusNode.requestFocus();
   }
 
@@ -111,7 +109,7 @@ class _TypeTermsState extends State<TypeTerms> {
                     animation: textController,
                     builder: (context, _) {
                       return IconButton(
-                        onPressed: _senderMessage,
+                        onPressed: _sendEmailMessage,
                         icon: const Icon(Icons.send),
                       );
                     },

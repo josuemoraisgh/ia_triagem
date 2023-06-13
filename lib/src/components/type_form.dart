@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:just_audio_background/just_audio_background.dart';
 import '../modelView/custom_radio_list.dart';
 import '../modelView/display_frame.dart';
 import '../modelView/question_frame.dart';
@@ -26,45 +25,38 @@ class _TypeFormState extends State<TypeForm> {
   void initState() {
     super.initState();
     final String body = telas[widget.id]!['body'] ?? "";
-    if ((telas[widget.id]!['question'] != null) &&
-        (!body.contains('.mp3') || body == '.mp3')) {
+    if ((telas[widget.id]!['question'] != null) && !body.contains('.mp3')) {
       Future.delayed(const Duration(seconds: 3)).then((value) {
         setState(() {
           imageClose = true;
         });
       });
-    } else {
-      if ((telas[widget.id]!['body'] != null) &&
-          (telas[widget.id]!['body'] as String).isNotEmpty) {
-        _init();
-      }
     }
   }
 
-  Future<void> _init() async {
-    //final String path = telas[widget.id]!['body'];
-    try {
-      await player.setAudioSource(
-        AudioSource.uri(
-          Uri.parse("asset:///${telas[widget.id]!['body']}"),
-          tag: MediaItem(
-            // Specify a unique ID for each media item:
-            id: '1',
-            // Metadata to display in the notification:
-            album: "Album name",
-            title: "Song name",
-            artUri: Uri.parse('https://example.com/albumart.jpg'),
-          ),
-        ),
-      );
-      //await player.setAsset(path); //load audio from assets
-      player.play().then((value) {
+  void playMusic(String fileName) async {
+    if (fileName != '.mp3') {
+      try {
+        await player.setAudioSource(
+          AudioSource.uri(Uri.parse("asset:///$fileName")),
+          initialPosition: Duration.zero,
+          preload: true,
+        );
+        //await player.setAsset(path); //load audio from assets
+        player.play().then((value) {
+          setState(() {
+            if (telas[widget.id]!['question'] != null) imageClose = true;
+          });
+        });
+      } catch (e) {
+        debugPrint("Error loading audio source: $e");
+      }
+    } else {
+      Future.delayed(const Duration(seconds: 3)).then((value) {
         setState(() {
-          if (telas[widget.id]!['question'] != null) imageClose = true;
+          imageClose = true;
         });
       });
-    } catch (e) {
-      debugPrint("Error loading audio source: $e");
     }
   }
 
@@ -113,6 +105,7 @@ class _TypeFormState extends State<TypeForm> {
                       ),
                     ),
                   ],
+            playMusic: playMusic,
           );
   }
 }

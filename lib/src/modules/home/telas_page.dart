@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../components/type_audio_comple.dart';
 import '../../components/type_five_errors.dart';
 import '../../components/type_text_form.dart';
 import '../../components/type_clean.dart';
@@ -101,8 +100,6 @@ class _TelasPageState extends State<TelasPage> {
         return (TypeYesNo(id: widget.id!, answer: answerNotifier));
       case 'five_errors':
         return (TypeFiveErrors(id: widget.id!));
-      case 'audio_complete':
-        return (TypeAudioComplete(id: widget.id!, answer: answerNotifier));
       case 'text_form':
         return (TypeTextForm(id: widget.id!, answer: answerNotifier));
       default:

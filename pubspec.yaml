@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter  
   just_audio: ^0.9.34
-  just_audio_background: ^0.0.1-beta.10
+  audioplayers: ^4.1.0
   flutter_colorpicker: ^1.0.3        
   flutter_modular: ^5.0.3
   hive: ^2.2.3
@@ -37,17 +37,21 @@ flutter:
   assets:
     - assets/assinatura_resia.png
     - assets/assinatura_keiji.png
-    - assets/audios/aguacorrente-edited_v2.mp3
-    - assets/audios/chuva_edited.mp3
-    - assets/audios/chuva.mp3
-    - assets/audios/chuva_edited.wav
-    - assets/audios/quatro_palavras.mp3
-    - assets/audios/dez_palavras.mp3
-    - assets/AI_1.jpg
     - assets/arvore_free.png
-    - assets/coracao_free.png
-    - assets/casa_free.png
-    - assets/rosa_free.png
+    - assets/olho1.png
+    - assets/olho2.png
+    - assets/olho3.png
+    - assets/olho4.png
+    - assets/olho5.png
+    - assets/olho6.png
+    - assets/olho7.png
+    - assets/olho8.png
+    - assets/olho9.png
+    - assets/olho10.png
+    - assets/olho11.png
+    - assets/olho12.png
+    - assets/olho13.png
+    - assets/olho14.png                                
     - assets/intel_1.png
     - assets/intel_1a.png
     - assets/intel_1b.png
@@ -55,6 +59,17 @@ flutter:
     - assets/intel_1d.png
     - assets/intel_1e.png
     - assets/intel_1f.png
+    - assets/Ebbinghaus.png
+    - assets/audios/aguacorrente-edited_v2.mp3
+    - assets/audios/chuva_edited.mp3
+    - assets/audios/chuva.mp3
+    - assets/audios/chuva_edited.wav
+    - assets/audios/quatro_palavras.mp3
+    - assets/audios/dez_palavras.mp3
+    - assets/AI_1.jpg
+    - assets/coracao_free.png
+    - assets/casa_free.png
+    - assets/rosa_free.png
     - assets/intel_2.png
     - assets/intel_2a.png
     - assets/intel_2b.png
@@ -87,4 +102,4 @@ flutter:
     - assets/motorcycle_free.png
     - assets/cat_free.png
     - assets/cachorro_free.png
-    - assets/Ebbinghaus.png
+
