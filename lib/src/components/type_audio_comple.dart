@@ -22,8 +22,9 @@ class _TypeAudioCompleteState extends State<TypeAudioComplete> {
   @override
   void initState() {
     super.initState();
-    if ((telas[widget.id]!['mode'] != "audio") ||
-        ((telas[widget.id]!['body'] as String).isEmpty)) {
+    final String body = telas[widget.id]!['body'] ?? "";
+    if ((telas[widget.id]!['question'] != null) &&
+        (!body.contains('.mp3') || body == '.mp3')) {
       imageClose = true;
     } else {
       _init();

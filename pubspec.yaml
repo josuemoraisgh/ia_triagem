@@ -13,6 +13,7 @@ dependencies:
   flutter:
     sdk: flutter  
   just_audio: ^0.9.34
+  just_audio_background: ^0.0.1-beta.10
   flutter_colorpicker: ^1.0.3        
   flutter_modular: ^5.0.3
   hive: ^2.2.3
