@@ -66,17 +66,21 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': 'assets/arvore_free.png', // body_type: image
-    'question':
-        'O que você viu na tela anterior', //Se <> Null -> Apresenta o corpo em uma tela e o options em outra
-    'options': [
-      "Jesus Cristo",
-      "Coração",
-      "Dragão cuspindo fogo",
-      "Árvore",
-      "Não vi nada",
-      "Outra coisa"
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/arvore_free.png', // body_type: image
+        'question':
+            'O que você viu na tela anterior', //Se <> Null -> Apresenta o corpo em uma tela e o options em outra
+        'options': [
+          "Jesus Cristo",
+          "Coração",
+          "Dragão cuspindo fogo",
+          "Árvore",
+          "Não vi nada",
+          "Outra coisa"
+        ],
+      },
     ], // options_type: text
   },
   7: {
@@ -90,15 +94,19 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'question': 'O que você viu na tela anterior',
-    'options': [
-      "Jesus Cristo",
-      "Coração",
-      "Dragão cuspindo fogo",
-      "Árvore",
-      "Não vi nada",
-      "Outra coisa"
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'question': 'O que você viu na tela anterior',
+        'options': [
+          "Jesus Cristo",
+          "Coração",
+          "Dragão cuspindo fogo",
+          "Árvore",
+          "Não vi nada",
+          "Outra coisa"
+        ],
+      },
     ],
   },
   9: {
@@ -115,12 +123,16 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '2 - 7',
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_columns_size': 3,
-    'options': ["1 - 5", "4 - 7", "2 - 7", "2 - 8", "9 - 4", "7 - 2"],
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '2 - 7',
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options_columns_size': 3,
+        'options': ["1 - 5", "4 - 7", "2 - 7", "2 - 8", "9 - 4", "7 - 2"],
+      },
+    ],
   },
   11: {
     'hasProx': true,
@@ -128,18 +140,22 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '5 - 6 - 4',
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_columns_size': 2,
-    'options': [
-      "5 - 7 - 1",
-      "1 - 3 - 4",
-      "5 - 6 - 3",
-      "4 - 6 - 5",
-      "5 - 4 - 6",
-      "5 - 6 - 4"
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '5 - 6 - 4',
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options_columns_size': 2,
+        'options': [
+          "5 - 7 - 1",
+          "1 - 3 - 4",
+          "5 - 6 - 3",
+          "4 - 6 - 5",
+          "5 - 4 - 6",
+          "5 - 6 - 4"
+        ],
+      },
     ], // options_type: text || image
   },
   12: {
@@ -148,19 +164,23 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '6 - 4 - 3 - 9', // mode_card: text || image || audio
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_columns_size': 2,
-    'options': [
-      "6 - 4 - 9 - 3",
-      "4 - 8 - 9 - 1",
-      "6 - 4 - 3 - 9",
-      "5 - 4 - 3 - 8",
-      "1 - 5 - 2 - 9",
-      "6 - 4 - 3 - 7"
-    ], // options_type: text || image
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '6 - 4 - 3 - 9', // mode_card: text || image || audio
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options_columns_size': 2,
+        'options': [
+          "6 - 4 - 9 - 3",
+          "4 - 8 - 9 - 1",
+          "6 - 4 - 3 - 9",
+          "5 - 4 - 3 - 8",
+          "1 - 5 - 2 - 9",
+          "6 - 4 - 3 - 7"
+        ], // options_type: text || image
+      },
+    ],
   },
   13: {
     'hasProx': true,
@@ -168,19 +188,23 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '4 - 2 - 7 - 3 - 1', // mode_card: text || image || audio
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options_columns_size': 2,
-    'options': [
-      "2 - 1 - 4 - 7 - 9",
-      "4 - 3 - 9 - 8",
-      "4 - 2 - 6 - 3 - 1",
-      "7 - 5 - 1 - 4 - 2 ",
-      "4 - 2 - 7 - 3 - 1",
-      "6 - 3 - 1 - 5 - 9"
-    ], // options_type: text || image
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '4 - 2 - 7 - 3 - 1', // mode_card: text || image || audio
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options_columns_size': 2,
+        'options': [
+          "2 - 1 - 4 - 7 - 9",
+          "4 - 3 - 9 - 8",
+          "4 - 2 - 6 - 3 - 1",
+          "7 - 5 - 1 - 4 - 2 ",
+          "4 - 2 - 7 - 3 - 1",
+          "6 - 3 - 1 - 5 - 9"
+        ], // options_type: text || image
+      },
+    ],
   },
   14: {
     'hasProx': true,
@@ -188,18 +212,22 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '6 - 1 - 9 - 4 - 7 - 3', // mode_card: text || image || audio
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options': [
-      "6 - 1 - 4 - 7 - 3 - 9",
-      "2 - 1 - 8 - 3 - 9 - 5",
-      "6 - 1 - 9 - 4 - 7 - 3",
-      "6 - 4 - 5 - 8 - 3 - 7",
-      "2 - 8 - 6 - 4 - 7 - 3",
-      "6 - 1 - 9 - 4 - 5 - 2"
-    ], // options_type: text || image
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '6 - 1 - 9 - 4 - 7 - 3', // mode_card: text || image || audio
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options': [
+          "6 - 1 - 4 - 7 - 3 - 9",
+          "2 - 1 - 8 - 3 - 9 - 5",
+          "6 - 1 - 9 - 4 - 7 - 3",
+          "6 - 4 - 5 - 8 - 3 - 7",
+          "2 - 8 - 6 - 4 - 7 - 3",
+          "6 - 1 - 9 - 4 - 5 - 2"
+        ], // options_type: text || image
+      },
+    ],
   },
   15: {
     'hasProx': true,
@@ -207,17 +235,22 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Atente-se para a sequência de números apresentada', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': '5 - 9 - 1 - 7 - 4 - 2 - 8', // mode_card: text || image || audio
-    'question':
-        'Qual foi a sequência correta dos números apresentados na tela anterior?',
-    'options': [
-      "5 - 8 - 1 - 7 - 4 - 3 - 8",
-      "5 - 9 - 1 - 7 - 4 - 8",
-      "8 - 9 - 0 - 7 - 3 - 1",
-      "5 - 9 - 1 - 7 - 4 - 2 - 8",
-      "5 - 2 - 3 - 7 - 4 - 9 - 8",
-      "5 - 9 - 1 - 7 - 8 - 0 - 9"
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body':
+            '5 - 9 - 1 - 7 - 4 - 2 - 8', // mode_card: text || image || audio
+        'question':
+            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options': [
+          "5 - 8 - 1 - 7 - 4 - 3 - 8",
+          "5 - 9 - 1 - 7 - 4 - 8",
+          "8 - 9 - 0 - 7 - 3 - 1",
+          "5 - 9 - 1 - 7 - 4 - 2 - 8",
+          "5 - 2 - 3 - 7 - 4 - 9 - 8",
+          "5 - 9 - 1 - 7 - 8 - 0 - 9"
+        ],
+      },
     ],
   },
   16: {
@@ -234,17 +267,92 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': 'assets/intel_1.png',
-    'options_columns_size': 3,
-    'options': [
-      'assets/intel_1a.png',
-      'assets/intel_1b.png',
-      'assets/intel_1c.png',
-      'assets/intel_1d.png',
-      'assets/intel_1e.png',
-      'assets/intel_1f.png'
-    ],
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho1.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho2.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho3.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho4.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho5.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho6.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho7.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho8.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho9.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho10.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho11.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho12.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho13.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/olho14.png',
+        'options_columns_size': 2,
+        'options': ['Inquieta', 'Pensativa', 'Irritada', 'Desconfiada']
+      },
+    ]
   },
   18: {
     'hasProx': true,
@@ -264,16 +372,20 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': 'assets/intel_1.png',
-    'options_columns_size': 3,
-    'options': [
-      'assets/intel_1a.png',
-      'assets/intel_1b.png',
-      'assets/intel_1c.png',
-      'assets/intel_1d.png',
-      'assets/intel_1e.png',
-      'assets/intel_1f.png'
+    'items': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/intel_1.png',
+        'options_columns_size': 3,
+        'options': [
+          'assets/intel_1a.png',
+          'assets/intel_1b.png',
+          'assets/intel_1c.png',
+          'assets/intel_1d.png',
+          'assets/intel_1e.png',
+          'assets/intel_1f.png'
+        ],
+      },
     ],
   },
   20: {

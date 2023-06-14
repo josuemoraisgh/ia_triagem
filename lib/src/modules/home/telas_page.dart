@@ -9,7 +9,6 @@ import '../../components/type_quest.dart';
 import '../../components/type_sobre.dart';
 import '../../components/type_terms.dart';
 import '../../components/type_yes_no.dart';
-import '../../modelView/display_frame.dart';
 import '../../notfound_page.dart';
 import 'parameters.dart';
 import 'telas_controller.dart';
@@ -82,8 +81,8 @@ class _TelasPageState extends State<TelasPage> {
 
   Widget typeMainFunciton() {
     switch (telas[widget.id]!['style'] as String) {
-      case 'display_Frame':
-        return (DisplayFrame(id: widget.id!));
+      /*case 'display_Frame':
+        return (DisplayFrame(id: widget.id!));*/
       case 'clean':
         return (TypeClean(id: widget.id!));
       case 'sobre':
