@@ -14,7 +14,13 @@ class TypeTextForm extends StatefulWidget {
 
 class _TypeTextFormState extends State<TypeTextForm> {
   final _formKey = GlobalKey<FormState>();
-  List<String> answer = [];
+  late List<String> answer;
+
+  @override
+  void initState() {
+    super.initState();
+    answer = List.filled((telas[widget.id]!['options'] as List).length, "");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +37,10 @@ class _TypeTextFormState extends State<TypeTextForm> {
         ),
         child: Form(
           key: _formKey,
+          autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
+          child: Column(
+            children: _montaAlternativas(),
+          ),
           onChanged: () {
             if (_formKey.currentState!.validate()) {
               _formKey.currentState!.save();
@@ -39,21 +49,16 @@ class _TypeTextFormState extends State<TypeTextForm> {
               widget.answer.value = [];
             }
           },
-          autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
-          child: Column(
-            children: _montaAternativas(),
-          ),
         ),
       ),
     );
   }
 
-  List<Widget> _montaAternativas() {
+  List<Widget> _montaAlternativas() {
     List<Widget> widgetList = [];
-    final bool hasText = (telas[widget.id]!['labelText'] as List).isEmpty;
     for (int i = 0; i < (telas[widget.id]!['labelText'] as List).length; i++) {
-      answer.add("");
-      if (hasText) {
+      if (telas[widget.id]!['options'][i] != "" &&
+          telas[widget.id]!['options'][i] != null) {
         widgetList.add(const SizedBox(width: 15));
         widgetList.add(Text(
           telas[widget.id]!['options'][i],

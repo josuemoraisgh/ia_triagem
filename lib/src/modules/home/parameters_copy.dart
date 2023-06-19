@@ -2,7 +2,8 @@ const Map<int, Map<String, dynamic>> telas2 = {
   1: {
     'hasProx': true,
     'isSendAnswer': false,
-    'header': "Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnicas de Inteligência Artificial",
+    'header':
+        "Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnicas de Inteligência Artificial",
     'type': 'terms',
     'body1': """
 
@@ -19,19 +20,16 @@ Você é livre para deixar de participar da pesquisa a qualquer momento sem qual
 Você poderá também entrar em contato com o CEP - Comitê de Ética na Pesquisa com Seres Humanos na Universidade Federal de Uberlândia, localizado na Av. João Naves de Ávila, nº 2121, bloco A, sala 224, campus Santa Mônica – Uberlândia/MG, 38408-100; telefone: 34-3239-4131 ou pelo e-mail: cep@propp.ufu.br. O CEP é um colegiado independente criado para defender os interesses dos participantes das pesquisas em sua integridade e dignidade e para contribuir para o desenvolvimento da pesquisa dentro de padrões éticos conforme resoluções do Conselho Nacional de Saúde.
 Ao assinalar a opção “Concordo”, a seguir, você declara que aceita participar do projeto citado acima, voluntariamente, após ter sido devidamente esclarecido, pelos pesquisadores; que entendeu como é a pesquisa, que pode solicitar esclarecimentos em relação as dúvidas com o/a pesquisador/a via e-mail (duvidaspsicopatologiacomia@gmail.com); e que pode desistir em qualquer momento, durante e depois de participar; você autoriza a divulgação dos dados obtidos neste estudo mantendo em sigilo sua identidade. 
 """,
-  'body2': """
+    'body2': """
 Solicitamos que você salve este documento em seus arquivos. Se desejar receber uma cópia deste registro de consentimento por e-mail, por favor, preencha-o abaixo e clique no botão de enviar:
 """,
-  'body3': """
+    'body3': """
 
   DECLARAÇÃO DOS PESQUISADORES
 
 Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livre e Esclarecido deste participante para a participação neste estudo. Declaramos ainda que nos comprometemos a cumprir todos os termos aqui descritos;
 """,
-    'image': [
-      'assets/assinatura_keiji.png',
-      'assets/assinatura_resia.png'      
-    ],
+    'image': ['assets/assinatura_keiji.png', 'assets/assinatura_resia.png'],
   },
   2: {
     'hasProx': true,

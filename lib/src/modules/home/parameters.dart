@@ -372,7 +372,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'style': 'form',
     'header':
         'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
-    'items': [
+    'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': 'assets/intel_1.png',
@@ -441,8 +441,10 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'isSendAnswer': true,
     'style': 'form',
     'header': 'Observe as palavras a seguir:',
-    'body_hasFrame': false, //Imprime um quadro em volta do body
-    'body': """
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': """
 
     1) MUITOS    2) OCEANO    3) PEIXES    4) E
 
@@ -450,15 +452,16 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
 
 Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque a ordem correta:
 """,
-    'options_columns_size': 2,
-    'options': [
-      '1 - 4 - 6 - 2 - 5 - 3 - 7',
-      '6 - 2 - 4 - 7 - 5 - 1 - 3',
-      '5 - 1 - 3 - 4 - 6 - 7 - 2',
-      '6 - 2 - 5 - 1 - 3 - 4 - 7',
-      '7 - 4 - 3 - 5 - 1 - 2 - 6 ',
-      '7 - 4 - 3 - 5 - 1 - 2 - 6 '
-    ]
+        'options_columns_size': 2,
+        'options': [
+          '1 - 4 - 6 - 2 - 5 - 3 - 7',
+          '6 - 2 - 4 - 7 - 5 - 1 - 3',
+          '5 - 1 - 3 - 4 - 6 - 7 - 2',
+          '6 - 2 - 5 - 1 - 3 - 4 - 7',
+          '7 - 4 - 3 - 5 - 1 - 2 - 6 '
+        ],
+      },
+    ],
   },
   26: {
     'hasProx': true,
@@ -487,14 +490,18 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'isSendAnswer': true,
     'style': 'form',
     'header': "Selecione qual o período do dia atual.",
-    'body_hasFrame': false, //Imprime um quadro em volta do body
-    'options_columns_size': 1,
-    'options': [
-      'Manhã: 6:00 às 11:59 horas',
-      'Tarde: 12:00 às 17:59 horas',
-      'Noite: 18:00 às 23:59 horas',
-      'Madrugada: 00:00 às 05:59 horas',
-    ]
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'options_columns_size': 1,
+        'options': [
+          'Manhã: 6:00 às 11:59 horas',
+          'Tarde: 12:00 às 17:59 horas',
+          'Noite: 18:00 às 23:59 horas',
+          'Madrugada: 00:00 às 05:59 horas',
+        ]
+      },
+    ],
   },
   29: {
     'hasProx': true,
@@ -507,29 +514,6 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   30: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': '',
-  },
-  36: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'form',
-    'header': '',
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
-    'question': 'Qual das opções corresponde ao som escutado?',
-    'options_columns_size': 2,
-    'options': [
-      "Pássaros",
-      "Barulho de água",
-      "Aspirador de pó",
-      "Choro de criança",
-      "Chuva",
-      "Sem som"
-    ],
-  },
-  37: {
-    'hasProx': true,
-    'isSendAnswer': true,
     'style': 'yes_no',
     'header': 'Responda as questões abaixo:',
     'options': [
@@ -540,44 +524,48 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Tem notado muita preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.',
     ],
   },
-  38: {
+  31: {
+    'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'sobre',
+    'header': 'Informações',
+    'body':
+        "Seis (6) imagens foram apresentadas em algum momento do teste. Vamos encontrá-los? Clique nas figuras que você lembrou. Não é obrigado(a) a encontrar todas as imagens. Faça o seu melhor!",
+  },
+  32: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'header': '',
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
-    'question': 'Qual das opções corresponde ao som escutado?',
-    'options_columns_size': 2,
-    'options': [
-      "Pássaros",
-      "Barulho de água",
-      "Aspirador de pó",
-      "Choro de criança",
-      "Chuva",
-      "Sem som"
+    'header': 'Avalie e responda !!',
+    'itens': [
+      {
+        'body': "assets/questao32.png",
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+      },
+      {
+        'body':
+            "\nSe você puder, por alguns minutos, visualizar e ficar sabendo de alguém ou de alguma coisa através de uma fenda no tempo e espaço, qual dessas ações você escolheria? Marque apenas duas alternativas que mais lhe atenderia.",
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'options_columns_size': 1,
+        'options': [
+          'Ver alguém que já morreu',
+          'Ver uma pessoa nua',
+          'Voltar na minha infância e recomeçar tudo',
+          'Voltar na minha adolescência e recomeçar tudo',
+          'Saber se meu namorado (a) ou esposo (a) está me traindo',
+          'Saber como poderia ser o futuro da minha família e ajudá-los',
+          'Desaparecer no tempo e espaço, ao entrar pela fenda',
+          'Saber quem é minha alma gêmea',
+          'Ver meu futuro profissional',
+          'Saber como faço para não pensar coisas bizarras',
+          'Saber se ficarei rico(a)',
+          'Saber quem está me perseguindo na rua',
+          'Não gostaria de ver ou saber de nada',
+        ]
+      },
     ],
   },
-  39: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'form',
-    'header':
-        'Observe a imagem a seguir e selecione qual alternativa corresponde ao que você vê',
-    'body_hasFrame': true, //Imprime um quadro em volta do body
-    'body': 'assets/Ebbinghaus.png', // body_type: audio
-    'question': 'Qual das opções corresponde ao som escutado?',
-    'options_columns_size': 2,
-    'options': [
-      'Pessoa',
-      'Bola rabiscada',
-      'Cachorro',
-      'Prédio',
-      'Dinossauro',
-      'Borboleta'
-    ]
-  },
-  40: {
+  33: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -589,14 +577,199 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Já testemunhou e/ou ainda é exposto (a) de forma repetida ou extrema a detalhes aversivos do evento traumático?',
     ],
   },
+  34: {
+    'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'sobre',
+    'header': 'Atenção !!',
+    'body': "Atente-se ao som que será reproduzido na próxima tela.",
+  },
+  35: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': '',
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
+        'question': 'Qual das opções corresponde ao som escutado?',
+        'options_columns_size': 2,
+        'options': [
+          "Pássaros",
+          "Barulho de água",
+          "Aspirador de pó",
+          "Choro de criança",
+          "Chuva",
+          "Sem som"
+        ],
+      },
+    ],
+  },
+  36: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Observe a imagem e selecione qual alternativa corresponde ao que você vê.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': "assets/Ebbinghaus.png", // body_type: audio
+        'options_columns_size': 1,
+        'options': [
+          'A Reta A é maior que a Reta B',
+          'A Reta A é menor que a Reta B',
+          'Retas A e B, são do mesmo tamanho',
+        ],
+      },
+    ],
+  },
+  37: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Observe a imagem e selecione qual alternativa corresponde ao que você vê.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': "assets/Ebbinghaus.png", // body_type: audio
+        'options_columns_size': 1,
+        'options': [
+          'A Reta A é maior que a Reta B',
+          'A Reta A é menor que a Reta B',
+          'Retas A e B, são do mesmo tamanho',
+        ],
+      },
+    ],
+  },
+  38: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'yes_no',
+    'header': "Responda as questões abaixo:",
+    'options': [
+      'Você tem escutado Zumbido no ouvido?',
+      'Você tem dificuldades em jogar fora objetos usados ou sem valor, mesmo quando não têm valor sentimental. Ultimamente guarda muitas coisas, papeis, recibos, com a ideia de que poderá precisar algum dia?',
+      'Você apresenta comportamentos repetitivos (p. ex., lavar as mãos, organizar, verificar) ou atos mentais (p. ex., orar, contar ou repetir palavras em silêncio).',
+      'Você tem visto algo estranho como figuras, sombras, fogo, fantasmas, demônios, pessoas estranhas ou algo do tipo, no seu dia a dia?',
+    ],
+  },
+  39: {
+    'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'five_errors',
+    'header':
+        'A figura à direita possui 5 alterações e você deverá apontar onde estão essas pequenas diferenças clicando na imagem da figura à esquerda.',
+    'image1': 'assets/five_errors1.jpg',
+    'image2': 'assets/five_errors2.jpg',
+  },
+  40: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'yes_no',
+    'header': "Responda as questões abaixo:",
+    'options': [
+      'Nos últimos meses, você tem ouvido vozes de pessoas estranhas?',
+      'As vozes são seu próprio pensamento em voz alta?',
+      'Alguém tem desejado envenená-lo?',
+      'Você tem dificuldade para relaxar? Está sempre ocupado?',
+      'Eu não possuo fraquezas. Consigo tudo o que quero?',
+    ],
+  },
   41: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': "Qual das imagens abaixo completa a sequência a seguir?",
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/intel_2.png',
+        'options_columns_size': 3,
+        'options': [
+          'assets/intel_2a.png',
+          'assets/intel_2b.png',
+          'assets/intel_2c.png',
+          'assets/intel_2d.png',
+          'assets/intel_2e.png',
+          'assets/intel_2f.png'
+        ],
+      },
+    ],
+  },
+  42: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'yes_no',
+    'header': "Responda as questões abaixo:",
+    'options': [
+      'Você tem-se irritado com mais facilidade que antes?',
+      'Nos últimos meses você sente dificuldades de parar de se preocupar?',
+      'Você pensa muitas coisas ao mesmo tempo?',
+      'Você sente dificuldade em se concentrar?',
+      'Evita realizar atividades profissionais ou estudantis que impliquem contato interpessoal, pois tem muito medo de críticas, desaprovação ou rejeição?',
+    ],
+  },
+  43: {
+    'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'sobre',
+    'header': 'Atenção!!',
+    'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
+  },
+  44: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/audios/quatro_palavras.mp3',
+        'options_columns_size': 1,
+      },
+    ],
+  },
+  45: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': '', // body_type: audio
+        'mim_size_awnser': 1,
+        'max_size_awnser': 2,
+        'options_columns_size': 3,
+        'options': [
+          'assets/questao45leao.png',
+          'assets/questao45coquetel.png',
+          'assets/questao45humburgue.png',
+          'assets/questao45gato.png',
+          'assets/questao45carro.png',
+          'assets/questao45cachorro.png',
+          'assets/questao45passaro.png',
+          'assets/questao45cerveja.png',
+          'assets/questao45cocacola.png',
+          'assets/questao45cafe.png',
+          'assets/questao45bombons.png',
+          'assets/questao45casa.png',
+        ]
+      },
+    ],
+  },
+
+  49: {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
     'header': 'Atenção!!',
     'body': "Atente-se ao som que será reproduzido na proxima tela.",
   },
-  42: {
+  51: {
     'hasProx': true,
     'isSendAnswer': true,
     'content': '',
@@ -610,7 +783,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       "Sem som"
     ],
   },
-  43: {
+  46: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -627,53 +800,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_4f.png'
     ],
   },
-  45: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'yes_no',
-    'header': "Responda as questões abaixo:",
-    'options': [
-      'Você tem escutado Zumbido no ouvido?',
-      'Você tem dificuldades em jogar fora objetos usados ou sem valor, mesmo quando não têm valor sentimental. Ultimamente guarda muitas coisas, papeis, recibos, com a ideia de que poderá precisar algum dia?',
-      'Você apresenta comportamentos repetitivos (p. ex., lavar as mãos, organizar, verificar) ou atos mentais (p. ex., orar, contar ou repetir palavras em silêncio).',
-      'Você tem visto algo estranho como figuras, sombras, fogo, fantasmas, demônios, pessoas estranhas ou algo do tipo, no seu dia a dia?',
-    ],
-  },
-  46: {
-    'hasProx': true,
-    'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
-  },
   47: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'two_screens',
-    'mode_card': 'audio', // mode_card: text || image || audiheader '',
-    'content': 'assets/audios/aguacorrente-edited_v2.mp3',
-    'question': 'Qual das opções corresponde ao som escutado?',
-    'options': [
-      "Rua - Madeira - Paz - Pastel",
-      "Lua - Cadeira - Raiz - Chapéu",
-      "Rua - Cadeira - Paz - Chapéu",
-      "CLua - Cadeira - Paz - Pastel",
-    ],
-  },
-  48: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'yes_no',
-    'header': "Responda as questões abaixo:",
-    'options': [
-      'Nos últimos meses, você tem ouvido vozes de pessoas estranhas?',
-      'As vozes são seu próprio pensamento em voz alta?',
-      'Alguém tem desejado envenená-lo?',
-      'Você tem dificuldade para relaxar? Está sempre ocupado?'
-          'Eu não possuo fraquezas. Consigo tudo o que quero?',
-    ],
-  },
-  49: {
     //não foi mostrado no questionário
     'hasProx': true,
     'isSendAnswer': true,
@@ -706,19 +833,6 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_2d.png',
       'assets/one_screem_2e.png',
       'assets/one_screem_2f.png'
-    ],
-  },
-  51: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'yes_no',
-    'header': "Responda as questões abaixo:",
-    'options': [
-      'Você tem-se irritado com mais facilidade que antes?',
-      'Nos últimos meses você sente dificuldades de parar de se preocupar?',
-      'Você pensa muitas coisas ao mesmo tempo?',
-      'Você sente dificuldade em se concentrar?',
-      'Evita realizar atividades profissionais ou estudantis que impliquem contato interpessoal, pois tem muito medo de críticas, desaprovação ou rejeição?',
     ],
   },
   52: {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:just_audio/just_audio.dart';
 import '../modelView/display_frame.dart';
 import '../modelView/header_card.dart';
@@ -16,13 +17,15 @@ class TypeForm extends StatefulWidget {
 }
 
 class _TypeFormState extends State<TypeForm> {
+  final _formKey = GlobalKey<FormState>();
+  late List<String> answer;
   var player = AudioPlayer();
   bool imageClose = false;
-  String answer = "";
 
   @override
   void initState() {
     super.initState();
+    answer = List.filled((telas[widget.id]!['itens'] as List).length, "");
     final String body = telas[widget.id]!['itens'][0]['body'] ?? "";
     if ((telas[widget.id]!['itens'][0]['question'] != null) &&
         !body.contains('.mp3')) {
@@ -47,6 +50,8 @@ class _TypeFormState extends State<TypeForm> {
           setState(() {
             if (question != null) {
               imageClose = true;
+            } else {
+              Modular.to.popAndPushNamed("/", arguments: widget.id + 1);
             }
           });
         });
@@ -56,7 +61,11 @@ class _TypeFormState extends State<TypeForm> {
     } else {
       Future.delayed(const Duration(seconds: 3)).then((value) {
         setState(() {
-          imageClose = true;
+          if (question != null) {
+            imageClose = true;
+          } else {
+            widget.answer.value = ['Sucess'];
+          }
         });
       });
     }
@@ -88,25 +97,55 @@ class _TypeFormState extends State<TypeForm> {
                     style: const TextStyle(
                         fontSize: 26, height: 2, color: Colors.white),
                   ),
-        widgetBody: Column(
-          children: (telas[widget.id]!['itens'] as List)
-              .map<Widget>(
-                (item) => imageClose
-                    ? QuestionFrame(item: item, answer: widget.answer)
-                    : DisplayFrame(
-                        item: item,
-                        widgets: item['question'] != null
-                            ? []
-                            : [
-                                QuestionFrame(item: item, answer: widget.answer)
-                              ],
-                        playMusic: playMusic,
-                      ),
-              )
-              .toList()
-              .cast<Widget>(),
+        widgetBody: Form(
+          key: _formKey,
+          onChanged: () {
+            if (_formKey.currentState!.validate()) {
+              _formKey.currentState!.save();
+              widget.answer.value = [answer.join(";")];
+            } else {
+              widget.answer.value = [];
+            }
+          },
+          autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
+          child: Column(
+            children: _montaAternativas(telas[widget.id]!['itens']),
+          ),
         ),
       ),
     );
+  }
+
+  List<Widget> _montaAternativas(List<Map<String, dynamic>> items) {
+    List<Widget> widgetList = [];
+    for (int i = 0; i < items.length; i++) {
+      widgetList.add(
+        imageClose && items[i]['options'] != null
+            ? QuestionFrame(
+                item: items[i],
+                answerFunc: (value) {
+                  answer[i] = "$value; ${DateTime.now().toString()}";
+                  //state.didChange(answer[i]);
+                },
+              )
+            : DisplayFrame(
+                item: items[i],
+                widgets: items[i]['question'] != null ||
+                        items[i]['options'] == null
+                    ? []
+                    : [
+                        QuestionFrame(
+                          item: items[i],
+                          answerFunc: (value) {
+                            answer[i] = "$value; ${DateTime.now().toString()}";
+                            //state.didChange(answer[i]);
+                          },
+                        )
+                      ],
+                playMusic: playMusic,
+              ),
+      );
+    }
+    return (widgetList);
   }
 }

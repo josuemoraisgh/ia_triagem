@@ -59,7 +59,21 @@ flutter:
     - assets/intel_1d.png
     - assets/intel_1e.png
     - assets/intel_1f.png
+    - assets/questao32.png
     - assets/Ebbinghaus.png
+    - assets/questao45leao.png
+    - assets/questao45coquetel.png
+    - assets/questao45passaro.png
+    - assets/questao45gato.png
+    - assets/questao45cachorro.png
+    - assets/questao45bombons.png
+    - assets/questao45cafe.png
+    - assets/questao45carro.png
+    - assets/questao45casa.png
+    - assets/questao45cerveja.png
+    - assets/questao45cocacola.png
+    - assets/questao45humburgue.png
+    - assets/questao45passaro.png
     - assets/audios/aguacorrente-edited_v2.mp3
     - assets/audios/chuva_edited.mp3
     - assets/audios/chuva.mp3
