@@ -1,6 +1,6 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 
 class CustomRadioList extends StatefulWidget {
   final Function(String) anwserFunc;
@@ -57,102 +57,82 @@ class _CustomRadioListState extends State<CustomRadioList> {
             ],
           ),
         if (widget.description != null) const SizedBox(height: 15),
-        FormField(
-          initialValue: anwser,
-          autovalidateMode: AutovalidateMode.always,
-          builder: (FormFieldState<String> state) {
-            return _montaAternativas(state);
-          },
-          validator: widget.validator,
-        ),
-      ],
-    );
-  }
-
-  Widget _montaAternativas(FormFieldState<String> state) {
-    List<Widget> widgetListRow = widget.itens
-            .map(
-              (iten) => Expanded(
+        MontaAlternativas(
+          optionsColumnsSize: widget.optionsColumnsSize,
+          length: widget.itens.length,
+          builder: (int id) => Expanded(
+            child: RadioListTile(
+              //contentPadding: const EdgeInsets.all(2),
+              title: widget.itens[id].contains('.png') &&
+                      widget.itens[id].contains('.mp3')
+                  ? Text(widget.itens[id],
+                      style: const TextStyle(fontSize: fontSize))
+                  : Image.asset(
+                      widget.itens[id],
+                      height: 100.0,
+                      width: 300.0,
+                      alignment: Alignment.bottomCenter,
+                    ),
+              value: widget.itens[id],
+              groupValue: anwser,
+              onChanged: (e) {
+                anwser = e.toString();
+                widget.anwserFunc(anwser);
+              },
+            ),
+          ),
+          childList: <Widget>[
+            if (widget.hasPrefiroNaoDizer)
+              Expanded(
                 child: RadioListTile(
-                  //contentPadding: const EdgeInsets.all(2),
-                  title: !iten.contains('.png') && !iten.contains('.mp3')
-                      ? Text(iten, style: const TextStyle(fontSize: fontSize))
-                      : Image.asset(
-                          iten,
-                          height: 100.0,
-                          width: 300.0,
-                          alignment: Alignment.bottomCenter,
-                        ),
-                  value: iten,
+                  title: const Text("Prefiro não dizer",
+                      style: TextStyle(fontSize: fontSize)),
+                  value: "Prefiro não dizer",
                   groupValue: anwser,
                   onChanged: (e) {
                     anwser = e.toString();
                     widget.anwserFunc(anwser);
-                    state.didChange(anwser);
                   },
                 ),
               ),
-            )
-            .toList()
-            .cast<Widget>() +
-        <Widget>[
-          if (widget.hasPrefiroNaoDizer)
-            Expanded(
-              child: RadioListTile(
-                title: const Text("Prefiro não dizer",
-                    style: TextStyle(fontSize: fontSize)),
-                value: "Prefiro não dizer",
-                groupValue: anwser,
-                onChanged: (e) {
-                  anwser = e.toString();
-                  widget.anwserFunc(anwser);
-                  state.didChange(anwser);
-                },
-              ),
-            ),
-          if (widget.labelText != null)
-            Expanded(
-              child: RadioListTile(
-                title: Text(
-                    widget.otherLabel == null
-                        ? "Outro (Qual?)"
-                        : widget.otherLabel!,
-                    style: const TextStyle(fontSize: fontSize)),
-                value: widget.otherLabel == null ? "other" : widget.otherLabel!,
-                groupValue: anwser,
-                onChanged: (value) {
-                  anwser = value.toString();
-                  state.didChange(anwser);
-                },
-              ),
-            ),
-          if (anwser ==
-              (widget.otherLabel == null ? "other" : widget.otherLabel!))
-            Expanded(
-              child: TextFormField(
-                initialValue: anwserOther,
-                decoration: InputDecoration(
-                  border: const UnderlineInputBorder(),
-                  labelText: widget.labelText,
+            if (widget.labelText != null)
+              Expanded(
+                child: RadioListTile(
+                  title: Text(
+                      widget.otherLabel == null
+                          ? "Outro (Qual?)"
+                          : widget.otherLabel!,
+                      style: const TextStyle(fontSize: fontSize)),
+                  value:
+                      widget.otherLabel == null ? "other" : widget.otherLabel!,
+                  groupValue: anwser,
+                  onChanged: (value) {
+                    anwser = value.toString();
+                  },
                 ),
-                keyboardType: TextInputType.name,
-                inputFormatters: widget.inputFormatters,
-                autovalidateMode: AutovalidateMode.always,
-                validator: widget.validator,
-                onChanged: (value) {
-                  anwserOther = value.toString();
-                  widget.anwserFunc(anwserOther);
-                  state.didChange(anwserOther);
-                },
               ),
-            ),
-        ];
-    widgetListRow = widgetListRow
-        .slices(widget.optionsColumnsSize ?? 1)
-        .map<Widget>(
-          (e) => Row(children: e),
+            if (anwser ==
+                (widget.otherLabel == null ? "other" : widget.otherLabel!))
+              Expanded(
+                child: TextFormField(
+                  initialValue: anwserOther,
+                  decoration: InputDecoration(
+                    border: const UnderlineInputBorder(),
+                    labelText: widget.labelText,
+                  ),
+                  keyboardType: TextInputType.name,
+                  inputFormatters: widget.inputFormatters,
+                  autovalidateMode: AutovalidateMode.always,
+                  validator: widget.validator,
+                  onChanged: (value) {
+                    anwserOther = value.toString();
+                    widget.anwserFunc(anwserOther);
+                  },
+                ),
+              ),
+          ],
         )
-        .toList();
-    return Column(children: (widgetListRow));
+      ],
+    );
   }
 }

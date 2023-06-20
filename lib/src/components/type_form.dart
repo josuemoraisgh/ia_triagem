@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:just_audio/just_audio.dart';
 import '../modelView/display_frame.dart';
 import '../modelView/header_card.dart';
+import '../modelView/monta_alternativas.dart';
 import '../modelView/question_frame.dart';
 import '../modules/home/parameters.dart';
 
@@ -108,44 +109,82 @@ class _TypeFormState extends State<TypeForm> {
             }
           },
           autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
-          child: Column(
-            children: _montaAternativas(telas[widget.id]!['itens']),
+          child: FormField<List<String>>(
+            initialValue: answer,
+            autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
+            validator: (List<String>? value) {
+              if (value == null) {
+                return 'Por favor responda todas as questões';
+              } else {
+                final count = value.where((item) => item != "").length;
+                if (count < value.length) {
+                  return 'Por favor responda todas as questões';
+                }
+              }
+              return (null);
+            },
+            builder: (FormFieldState<List<String>> state) => MontaAlternativas(
+              length: telas[widget.id]!['itens'] != null
+                  ? telas[widget.id]!['itens'].length
+                  : 1,
+              builder: (int i) => Expanded(
+                child: Column(
+                  children: i != 0
+                      ? const <Widget>[
+                          SizedBox(height: 15),
+                          Divider(),
+                          SizedBox(height: 15),
+                        ]
+                      : const <Widget>[] +
+                          <Widget>[
+                            imageClose &&
+                                    telas[widget.id]!['itens'][i]['options'] !=
+                                        null
+                                ? QuestionFrame(
+                                    item: telas[widget.id]!['itens'][i],
+                                    answerFunc: (value) {
+                                      if (value == "") {
+                                        answer[i] =
+                                            "$value; ${DateTime.now().toString()}";
+                                      } else {
+                                        answer[i] = "";
+                                      }
+                                      state.didChange(answer);
+                                    },
+                                  )
+                                : DisplayFrame(
+                                    item: telas[widget.id]!['itens'][i],
+                                    widgets: telas[widget.id]!['itens'][i]
+                                                    ['question'] !=
+                                                null ||
+                                            telas[widget.id]!['itens'][i]
+                                                    ['options'] ==
+                                                null
+                                        ? []
+                                        : [
+                                            QuestionFrame(
+                                              item: telas[widget.id]!['itens']
+                                                  [i],
+                                              answerFunc: (value) {
+                                                if (value != "") {
+                                                  answer[i] =
+                                                      "$value; ${DateTime.now().toString()}";
+                                                } else {
+                                                  answer[i] = "";
+                                                }
+                                                state.didChange(answer);
+                                              },
+                                            )
+                                          ],
+                                    playMusic: playMusic,
+                                  ),
+                          ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
     );
-  }
-
-  List<Widget> _montaAternativas(List<Map<String, dynamic>> items) {
-    List<Widget> widgetList = [];
-    for (int i = 0; i < items.length; i++) {
-      widgetList.add(
-        imageClose && items[i]['options'] != null
-            ? QuestionFrame(
-                item: items[i],
-                answerFunc: (value) {
-                  answer[i] = "$value; ${DateTime.now().toString()}";
-                  //state.didChange(answer[i]);
-                },
-              )
-            : DisplayFrame(
-                item: items[i],
-                widgets: items[i]['question'] != null ||
-                        items[i]['options'] == null
-                    ? []
-                    : [
-                        QuestionFrame(
-                          item: items[i],
-                          answerFunc: (value) {
-                            answer[i] = "$value; ${DateTime.now().toString()}";
-                            //state.didChange(answer[i]);
-                          },
-                        )
-                      ],
-                playMusic: playMusic,
-              ),
-      );
-    }
-    return (widgetList);
   }
 }

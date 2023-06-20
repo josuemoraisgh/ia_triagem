@@ -478,12 +478,18 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   27: {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'text_form',
+    'style': 'form',
     'header':
         'Preencha o campo a seguir com o nome da cidade e estado onde você está agora.',
-    //'options': ['CIDADE:', 'ESTADO:'],
-    'labelText': ['CIDADE:', 'ESTADO:'],
-    'icons': [Icons.location_city, Icons.location_history],
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'labelText': ['CIDADE:', 'ESTADO:'],
+        'icons': [Icons.location_city, Icons.location_history],
+        'options_columns_size': 1,
+        'options': ['', ''],
+      },
+    ]
   },
   28: {
     'hasProx': true,

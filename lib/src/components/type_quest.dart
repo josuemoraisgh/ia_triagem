@@ -142,7 +142,7 @@ class _TypeQuestState extends State<TypeQuest> {
                     },
                     onChanged: (v) => setState(() {
                       idade = v;
-                      _formKey.currentState!.didChangeDependencies();
+                      _formKey.currentState?.didChangeDependencies();
                     }),
                   ),
                   const SizedBox(height: 15),
