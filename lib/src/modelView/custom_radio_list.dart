@@ -63,8 +63,8 @@ class _CustomRadioListState extends State<CustomRadioList> {
           builder: (int id) => Expanded(
             child: RadioListTile(
               //contentPadding: const EdgeInsets.all(2),
-              title: widget.itens[id].contains('.png') &&
-                      widget.itens[id].contains('.mp3')
+              title: !widget.itens[id].contains('.png') &&
+                      !widget.itens[id].contains('.mp3')
                   ? Text(widget.itens[id],
                       style: const TextStyle(fontSize: fontSize))
                   : Image.asset(

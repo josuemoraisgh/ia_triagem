@@ -122,8 +122,8 @@ class _TelasPageState extends State<TelasPage> {
             ? null
             : () {
                 debugPrint("${(widget.id! + 1).toString()};${resp.toString()}");
+                controller.answer += answerNotifier.value;                
                 Modular.to.popAndPushNamed("/", arguments: widget.id! + 1);
-                controller.answer += answerNotifier.value;
               },
         child: const Row(
           children: [

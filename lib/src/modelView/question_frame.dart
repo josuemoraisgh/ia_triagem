@@ -38,6 +38,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
                   },
                 )
               : CustomRadioList(
+                  description: widget.item['title'],
                   anwserFunc: widget
                       .answerFunc, //(value) => widget.answer.value = "$value; ${DateTime.now().toString()}",
                   hasPrefiroNaoDizer: false,
@@ -53,6 +54,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
                   },
                 )
           : CustomSelectIconList(
+              description: widget.item['title'],            
               answerFunc: widget.answerFunc,
               itens: widget.item['options'],
               optionsColumnsSize: widget.item['options_columns_size'],

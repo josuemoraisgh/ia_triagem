@@ -5,19 +5,19 @@ const Map<int, Map<String, dynamic>> telas = {
     'hasProx': true,
     'isSendAnswer': false,
     'header':
-        "Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnicas de one_screemigência Artificial",
+        "Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnicas de Inteligência Artificial",
     'style': 'terms',
     'body1': """
 
   TERMO DE CONSENTIMENTO LIVRE E ESCLARECIDO
 
   
-Você está sendo convidado (a) a participar da pesquisa intitulada “Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnica de one_screemigência Artificial”, sob a responsabilidade dos pesquisadores Prof. Dr. Keiji Yamanaka, Ms. Résia da Silva Morais (da Faculdade de Engenharia Elétrica da Universidade Federal de Uberlândia). Nesta pesquisa nós estamos buscando confirmar a possibilidade de usar técnicas de one_screemigência artificial para avaliar as estruturas de saúde mental chamadas de Funções Mentais Psíquicas (atenção, consciência, orientação, experiências de tempo e de espaço, sensopercepção, memória, afetividade, vontade e psicomotricidade, pensamento, juízos de realidade, linguagem, one_screemigência e cognição social), essenciais para uma excelente avaliação psicopatológica com o objetivo de ajudar os profissionais da área da saúde mental. 
+Você está sendo convidado (a) a participar da pesquisa intitulada “Sistematização de ferramentas para Avaliação Psicopatológica utilizando técnica de Inteligência Artificial”, sob a responsabilidade dos pesquisadores Prof. Dr. Keiji Yamanaka, Ms. Résia da Silva Morais (da Faculdade de Engenharia Elétrica da Universidade Federal de Uberlândia). Nesta pesquisa nós estamos buscando confirmar a possibilidade de usar técnicas de Inteligência artificial para avaliar as estruturas de saúde mental chamadas de Funções Mentais Psíquicas (atenção, consciência, orientação, experiências de tempo e de espaço, sensopercepção, memória, afetividade, vontade e psicomotricidade, pensamento, juízos de realidade, linguagem, Inteligência e cognição social), essenciais para uma excelente avaliação psicopatológica com o objetivo de ajudar os profissionais da área da saúde mental. 
 O Termo/Registro de Consentimento Livre e Esclarecido está sendo obtido pelos pesquisadores Dr. Keiji Yamanaka e Ms. Résia da Silva Morais, antecedendo toda e qualquer experimentação que envolva a pesquisa. Conforme o item IV da Resol. CNS 466/12 ou Cap. III da Resol. 510/2016, o participante terá o tempo que julgar necessário para decidir se deseja participar da pesquisa. Se você tiver qualquer dúvida em relação à pesquisa, você pode entrar em contato com o(a) pesquisador(a) pelo e-mail duvidaspsicopatologiacomia@gmail.com para discutir as informações do estudo
 Na sua participação, após você ter compreendido as informações que constituem o Termo de Consentimento Livre e Esclarecido e após ter assinado eletronicamente o campo no qual “Concorda” participar da pesquisa, serão apresentadas telas com as instruções das tarefas que você irá responder. Certifique-se que esteja em um ambiente silencioso, sem estímulos de distração. Em algumas telas serão apresentados sons, sendo assim, fundamental o uso de fones ou que você ligue os alto-falantes do seu dispositivo. A avaliação das Funções Psíquicas será através de 45 testes apresentados através de 66 telas e você gastará em torno de 25 minutos. Em algumas questões, será solicitado que você ouça primeiramente alguns sons para respondê-las, e cada tela apresentada pelo questionário interativo permitirá a identificação da relação entre as respostas dadas por você e sinais de possíveis funções mentais afetadas.
 As respostas serão coletadas e registradas por meio da plataforma do Google Forms e do sistema TensorFlow que agrupará os dados possibilitando a análise das ferramentas de avaliação psicopatológica. O pesquisador responsável atenderá as orientações das Resoluções nº 466/2012, Capítulo XI, Item Xl.2: f e nº 510/2016, Capítulo VI, Art. 28: IV; e manterá os dados da pesquisa em arquivo, físico ou digital, sob sua guarda e responsabilidade, por um período mínimo de 5 (cinco) anos após o término da pesquisa. Uma vez concluída a coleta de dados, o pesquisador responsável irá fazer o download dos dados coletados para um dispositivo eletrônico local, apagando todo e qualquer registro de qualquer plataforma virtual, ambiente compartilhado ou "nuvem". Em nenhum momento você será identificado. Os resultados da pesquisa serão publicados e ainda assim a sua identidade será preservada.
 Você não terá nenhum gasto e nem ganho financeiro por participar na pesquisa. Você não receberá pagamentos por ser participante.  Todas as informações obtidas por meio de sua participação serão de uso exclusivo para esta pesquisa e ficarão sob a guarda do/da pesquisador/a responsável. Havendo algum dano decorrente da pesquisa, você terá direito a solicitar indenização através das vias judiciais (Código Civil, Lei 10.406/2002, Artigos 927 a 954 e Resolução CNS nº 510 de 2016, Artigo 19).
-Os riscos consistem em possibilidade de cansaço durante a realização da prova e algum desconforto relacionado a utilização dos testes. Para minimizar os riscos o instrumento de coleta de dados será respondido de forma virtual e anônima. Os pesquisadores se comprometem a tomar medidas de proteção e confidencialidade dos dados para que o sigilo da sua identidade seja preservado. Na possibilidade de ocorrer algum desconforto emocional durante a realização da prova, fique à vontade para entrar em contato pelo e-mail duvidaspsicopatologiacomia@gmail.com, e será acolhido pelo pesquisador assistente (Psicólogo Clínico). Caso o pesquisador identificar necessidade de continuidade da assistência, de forma virtual, você receberá orientações psicoterapêuticas breve e será encaminhado (a) para atendimento psicológico na rede pública mais próxima da sua residência. Os benefícios serão a expansão do seu conhecimento sobre a importância da one_screemigência artificial como um meio auxiliar no processo de avaliação psicológica, o que pode facilitar o trabalho clínico interventivo dos profissionais da saúde mental. Os dados da pesquisa serão mantidos em arquivo, físico e digital, sob sua guarda e responsabilidade, por um período mínimo de 5 (cinco) anos após o término da pesquisa, conforme capítulo VI da resolução CNS 510, de 07 de abril de 2016. 
+Os riscos consistem em possibilidade de cansaço durante a realização da prova e algum desconforto relacionado a utilização dos testes. Para minimizar os riscos o instrumento de coleta de dados será respondido de forma virtual e anônima. Os pesquisadores se comprometem a tomar medidas de proteção e confidencialidade dos dados para que o sigilo da sua identidade seja preservado. Na possibilidade de ocorrer algum desconforto emocional durante a realização da prova, fique à vontade para entrar em contato pelo e-mail duvidaspsicopatologiacomia@gmail.com, e será acolhido pelo pesquisador assistente (Psicólogo Clínico). Caso o pesquisador identificar necessidade de continuidade da assistência, de forma virtual, você receberá orientações psicoterapêuticas breve e será encaminhado (a) para atendimento psicológico na rede pública mais próxima da sua residência. Os benefícios serão a expansão do seu conhecimento sobre a importância da Inteligência artificial como um meio auxiliar no processo de avaliação psicológica, o que pode facilitar o trabalho clínico interventivo dos profissionais da saúde mental. Os dados da pesquisa serão mantidos em arquivo, físico e digital, sob sua guarda e responsabilidade, por um período mínimo de 5 (cinco) anos após o término da pesquisa, conforme capítulo VI da resolução CNS 510, de 07 de abril de 2016. 
 Você é livre para deixar de participar da pesquisa a qualquer momento sem qualquer prejuízo ou coação. Até o momento da divulgação dos resultados, você também é livre para solicitar a retirada dos seus dados da pesquisa. Uma via original deste Termo de Consentimento Livre e Esclarecido ficará com você, você poderá salvar em seu dispositivo eletrônico. Em caso de qualquer dúvida ou reclamação a respeito da pesquisa, você poderá entrar em contato com: Dr. Keiji Yamanaka, Faculdade de Engenharia Elétrica da Universidade Federal de Uberlândia. Av. João Naves de Ávila, 2121 Campus Santa Mônica - Universidade Federal de Uberlândia CEP 38400-902 - Uberlândia MG - Brasil - Fone (sala coordenação): (34) 3239-4706, ou com a Pesquisadora Psicóloga Ms. Résia Silva de Morais, Faculdade de Engenharia Elétrica da Universidade Federal de Uberlândia. Av. João Naves de Ávila, 2121Campus Santa Mônica - Universidade Federal de Uberlândia, CEP 38400-902 - Uberlândia MG - Brasil – e-mail: duvidaspsicopatologiacomia@gmail.com. Para obter orientações quanto aos direitos dos participantes de pesquisa acesse a cartilha no link:https://conselho.saude.gov.br/images/comissoes/conep/documentos/Cartilha_Direitos_Eticos_2020.pdf.
 Você poderá também entrar em contato com o CEP - Comitê de Ética na Pesquisa com Seres Humanos na Universidade Federal de Uberlândia, localizado na Av. João Naves de Ávila, nº 2121, bloco A, sala 224, campus Santa Mônica – Uberlândia/MG, 38408-100; telefone: 34-3239-4131 ou pelo e-mail: cep@propp.ufu.br. O CEP é um colegiado independente criado para defender os interesses dos participantes das pesquisas em sua integridade e dignidade e para contribuir para o desenvolvimento da pesquisa dentro de padrões éticos conforme resoluções do Conselho Nacional de Saúde.
 Ao assinalar a opção “Concordo”, a seguir, você declara que aceita participar do projeto citado acima, voluntariamente, após ter sido devidamente esclarecido, pelos pesquisadores; que entendeu como é a pesquisa, que pode solicitar esclarecimentos em relação as dúvidas com o/a pesquisador/a via e-mail (duvidaspsicopatologiacomia@gmail.com); e que pode desistir em qualquer momento, durante e depois de participar; você autoriza a divulgação dos dados obtidos neste estudo mantendo em sigilo sua identidade. 
@@ -37,7 +37,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'hasProx': true,
     'isSendAnswer': true,
     'header':
-        'Ferramenta de Avaliação Psicopatológica usando one_screemigência Artificial',
+        'Ferramenta de Avaliação Psicopatológica usando Inteligência Artificial',
     'style': 'quest',
   },
   3: {
@@ -621,7 +621,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'itens': [
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
-        'body': "assets/Ebbinghaus.png", // body_type: audio
+        'body': "assets/Ebbinghaus.png", // body_type: image
         'options_columns_size': 1,
         'options': [
           'A Reta A é maior que a Reta B',
@@ -640,7 +640,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'itens': [
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
-        'body': "assets/Ebbinghaus.png", // body_type: audio
+        'body': "assets/Ebbinghaus.png", // body_type: image
         'options_columns_size': 1,
         'options': [
           'A Reta A é maior que a Reta B',
@@ -767,8 +767,121 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-
-  49: {
+  46: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'yes_no',
+    'header': "Responda as questões abaixo:",
+    'options': [
+      'Você acredita que precisa fazer as coisas de forma perfeita, caso contrário não será aceito (a)? ',
+      'Você acredita que as pessoas estão julgando suas atitudes e comportamentos, mesmo que não estejam dizendo?',
+      'Você tem ideias negativas, como pensar em morrer?',
+      'Você se sente inadequado (a) inquieto (a) e conversa de forma excessiva?',
+      'Adio ou evito fazer as coisas até o último segundo?',
+    ],
+  },
+  47: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Responda de acordo com o som escutado anteriormente!!',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': 'Qual das opções corresponde ao som escutado?',
+        'options_columns_size': 1,
+        'options': [
+          "Rua - Madeira - Paz - Pastel",
+          "Lua - Cadeira - Raiz - Chapéu",
+          "Rua - Cadeira - Paz - Chapéu",
+          "Lua - Cadeira - Paz - Pastel",
+        ],
+      },
+    ],
+  },
+  48: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Dentre as opções abaixo marque a expressão que melhor corresponde a emoção básica descrita.',
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/questao48.png',
+        'title': 'a) Nojo:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      },  
+      {
+        'title': 'b)	Tristeza:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      }, 
+      {
+        'title': 'c)	Medo:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      }, 
+      {
+        'title': 'd)	Raiva:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      }, 
+      {
+        'title': 'e)	Alegria:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      }, 
+      {
+        'title': 'f)	Surpresa:',        
+        'options_columns_size': 6,
+        'options': [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",          
+        ],
+      },                                   
+    ],
+  },
+  100: {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
@@ -789,7 +902,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       "Sem som"
     ],
   },
-  46: {
+  55: {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -806,7 +919,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_4f.png'
     ],
   },
-  47: {
+  101: {
     //não foi mostrado no questionário
     'hasProx': true,
     'isSendAnswer': true,
@@ -848,20 +961,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'header': 'Atenção!!',
     'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
   },
-  53: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'two_screens',
-    'mode_card': 'audio', // mode_card: text || image || audiheader '',
-    'content': 'assets/audios/aguacorrente-edited_v2.mp3',
-    'question': 'Qual das opções corresponde ao som escutado?',
-    'options': [
-      "Rua - Madeira - Paz - Pastel",
-      "Lua - Cadeira - Raiz - Chapéu",
-      "Rua - Cadeira - Paz - Chapéu",
-      "CLua - Cadeira - Paz - Pastel",
-    ],
-  },
+
   54: {
     'hasProx': true,
     'isSendAnswer': false,
@@ -869,19 +969,6 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'header': '',
     'body': "",
   }, //não foi criado ainda (colocado como tela 62)
-  55: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'yes_no',
-    'header': "Responda as questões abaixo:",
-    'options': [
-      'Você acredita que precisa fazer as coisas de forma perfeita, caso contrário não será aceito (a)? ',
-      'Você acredita que as pessoas estão julgando suas atitudes e comportamentos, mesmo que não estejam dizendo?',
-      'Você tem ideias negativas, como pensar em morrer?',
-      'Você se sente inadequado (a) inquieto (a) e conversa de forma excessiva?',
-      'Adio ou evito fazer as coisas até o último segundo?',
-    ],
-  },
   56: {
     'hasProx': true,
     'isSendAnswer': false,

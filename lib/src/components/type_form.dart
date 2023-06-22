@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:just_audio/just_audio.dart';
-import '../modelView/display_frame.dart';
-import '../modelView/header_card.dart';
-import '../modelView/monta_alternativas.dart';
-import '../modelView/question_frame.dart';
+import '../modelView/custom_card_question.dart';
 import '../modules/home/parameters.dart';
 
 class TypeForm extends StatefulWidget {
@@ -18,15 +15,12 @@ class TypeForm extends StatefulWidget {
 }
 
 class _TypeFormState extends State<TypeForm> {
-  final _formKey = GlobalKey<FormState>();
-  late List<String> answer;
   var player = AudioPlayer();
   bool imageClose = false;
 
   @override
   void initState() {
     super.initState();
-    answer = List.filled((telas[widget.id]!['itens'] as List).length, "");
     final String body = telas[widget.id]!['itens'][0]['body'] ?? "";
     if ((telas[widget.id]!['itens'][0]['question'] != null) &&
         !body.contains('.mp3')) {
@@ -78,6 +72,20 @@ class _TypeFormState extends State<TypeForm> {
     super.dispose();
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return CustomCardQuestion(
+        answer: widget.answer,
+        header: imageClose
+            ? telas[widget.id]!['itens'][0]['question']
+            : (telas[widget.id]!['header'] ?? "") != ""
+                ? telas[widget.id]!['header']
+                : null,
+        body: telas[widget.id]!['itens'],
+        playMusic: playMusic);
+  }
+
+  /*
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -186,5 +194,5 @@ class _TypeFormState extends State<TypeForm> {
         ),
       ),
     );
-  }
+  }*/
 }
