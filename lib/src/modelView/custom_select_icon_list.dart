@@ -75,12 +75,12 @@ class _CustomSelectIconListState extends State<CustomSelectIconList> {
               builder: (int i) => Expanded(
                 child: TextButton(
                   child: Image.asset(widget.itens[i],
-                      opacity: answers[i] == widget.itens[i]
+                      opacity: answers[i] != ""
                           ? null
                           : const AlwaysStoppedAnimation(.3)),
                   onPressed: () {
                     setState(() {
-                      if (answers[i] == widget.itens[i]) {
+                      if (answers[i] != "") {
                         answers[i] = "";
                       } else {
                         answers[i] =

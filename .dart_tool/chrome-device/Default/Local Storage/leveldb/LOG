@@ -1,9 +1,3 @@
-<<<<<<< Updated upstream
-2023/06/23-20:26:31.583 42f8 Reusing MANIFEST C:\Users\josue\AppData\Local\Temp\flutter_tools.36ae2639\flutter_tools_chrome_device.9b70966c\Default\Local Storage\leveldb/MANIFEST-000001
-2023/06/23-20:26:31.607 42f8 Recovering log #3
-2023/06/23-20:26:31.622 42f8 Reusing old log C:\Users\josue\AppData\Local\Temp\flutter_tools.36ae2639\flutter_tools_chrome_device.9b70966c\Default\Local Storage\leveldb/000003.log 
-=======
-2023/06/21-16:58:15.837 1c5c Reusing MANIFEST C:\Users\josue\AppData\Local\Temp\flutter_tools.9c3f33d8\flutter_tools_chrome_device.f9a58874\Default\Local Storage\leveldb/MANIFEST-000001
-2023/06/21-16:58:15.839 1c5c Recovering log #3
-2023/06/21-16:58:15.846 1c5c Reusing old log C:\Users\josue\AppData\Local\Temp\flutter_tools.9c3f33d8\flutter_tools_chrome_device.f9a58874\Default\Local Storage\leveldb/000003.log 
->>>>>>> Stashed changes
+2023/06/24-13:39:13.376 4618 Reusing MANIFEST C:\Users\josue\AppData\Local\Temp\flutter_tools.3c83c22a\flutter_tools_chrome_device.c7ef09b1\Default\Local Storage\leveldb/MANIFEST-000001
+2023/06/24-13:39:13.379 4618 Recovering log #3
+2023/06/24-13:39:13.402 4618 Reusing old log C:\Users\josue\AppData\Local\Temp\flutter_tools.3c83c22a\flutter_tools_chrome_device.c7ef09b1\Default\Local Storage\leveldb/000003.log 

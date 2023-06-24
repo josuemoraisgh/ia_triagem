@@ -41,72 +41,121 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
-      child: FormField<List<String>>(
-        initialValue: answer,
-        autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
-        validator: widget.validator,
-        builder: (FormFieldState<List<String>> state) => MontaAlternativas(
-          optionsColumnsSize: widget.optionsColumnsSize,
-          length: widget.itens['options']?.length ?? 1,
-          builder: (int id) => Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: ((widget.itens['title']?[id] ?? "") != ""
-                      ? <Widget>[
-                          const SizedBox(width: 15),
-                          Center(
-                            child: Text(
-                              widget.itens['title']![id],
-                              textAlign: TextAlign.justify,
-                              style: const TextStyle(
-                                  fontSize: 35,
-                                  color: Colors.black,
-                                  decorationColor: Colors.black),
-                            ),
-                          ),
-                        ]
-                      : <Widget>[]) +
-                  <Widget>[
-                    const SizedBox(width: 15),
-                    TextFormField(
-                      decoration: InputDecoration(
-                        border: const UnderlineInputBorder(),
-                        icon: widget.itens['icons']?[id] != null
-                            ? Icon(widget.itens['icons']![id])
-                            : null,
-                        labelText: widget.itens['options']?[id],
-                      ),
-                      keyboardType: widget.itens['keyboardType']?[id],
-                      inputFormatters: widget.itens['inputFormatters']?[id],
-                      autovalidateMode: AutovalidateMode.always,
-                      validator: widget.itens['validator']?[id] ??
-                          ((value) {
-                            if (value == null) {
-                              return 'Opção invalida!! Corrija por favor';
-                            } else if (value == "") {
-                              return 'Opção invalida!! Corrija por favor';
-                            }
-                            return null;
-                          }),
-                      onChanged: (value) {
-                        setState(
-                          () {
-                            if (value != "") {
-                              answer[id] =
-                                  "$value - ${DateTime.now().toString()}";
-                            } else {
-                              answer[id] = "";
-                            }
-                            state.didChange(answer);
-                          },
-                        );
-                      },
-                    ),
-                  ],
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border.all(width: 3.0, color: Colors.black),
+          color: Colors.white,
+        ),
+        child: Padding(
+          padding:
+              const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
+          child: FormField<List<String>>(
+            initialValue: answer,
+            autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
+            validator: widget.validator,
+            builder: (FormFieldState<List<String>> state) => MontaAlternativas(
+              optionsColumnsSize: widget.optionsColumnsSize,
+              length: widget.itens['options']?.length ?? 1,
+              builder: (int id) => Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: ((widget.itens['title']?[id] ?? "") != ""
+                          ? <Widget>[
+                              const SizedBox(width: 15),
+                              Center(
+                                child: Text(
+                                  widget.itens['title']![id],
+                                  textAlign: TextAlign.justify,
+                                  style: const TextStyle(
+                                      fontSize: 35,
+                                      color: Colors.black,
+                                      decorationColor: Colors.black),
+                                ),
+                              ),
+                            ]
+                          : <Widget>[]) +
+                      <Widget>[
+                        const SizedBox(width: 15),
+                        widget.itens['options_fix']?[id] == null
+                            ? _montaEdit(id, state)
+                            : Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  widget.itens['options_fix']?[id][0] == "-"
+                                      ? _montaEdit(id, state)
+                                      : _montaTexto(id),
+                                  const SizedBox(width: 5),
+                                  widget.itens['options_fix']?[id][0] == "-"
+                                      ? _montaTexto(id)
+                                      : _montaEdit(id, state),
+                                ],
+                              ),
+                      ],
+                ),
+              ),
             ),
           ),
         ),
       ),
+    );
+  }
+
+  BoxDecoration myContainerDecoration() {
+    return BoxDecoration(
+      border: Border.all(width: 3.0, color: Colors.redAccent),
+      color: Colors.white70,
+    );
+  }
+
+  Widget _montaTexto(int id) {
+    return (Container(
+      alignment: Alignment.center,
+      height: 50,
+      width: 100,
+      decoration: myContainerDecoration(),
+      child: Text(
+        widget.itens['options_fix']?[id],
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+            color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18.0),
+      ),
+    ));
+  }
+
+  Widget _montaEdit(int id, FormFieldState<List<String>> state) {
+    return TextFormField(
+      decoration: InputDecoration(
+        border: const UnderlineInputBorder(),
+        icon: widget.itens['icons']?[id] != null
+            ? Icon(widget.itens['icons']![id])
+            : null,
+        labelText: widget.itens['options']?[id],
+      ),
+      keyboardType: widget.itens['keyboardType']?[id],
+      inputFormatters: widget.itens['inputFormatters']?[id],
+      autovalidateMode: AutovalidateMode.always,
+      validator: widget.itens['validator']?[id] ??
+          ((value) {
+            if (value == null) {
+              return 'Opção invalida!! Corrija por favor';
+            } else if (value == "") {
+              return 'Opção invalida!! Corrija por favor';
+            }
+            return null;
+          }),
+      onChanged: (value) {
+        setState(
+          () {
+            if (value != "") {
+              answer[id] = "$value - ${DateTime.now().toString()}";
+            } else {
+              answer[id] = "";
+            }
+            state.didChange(answer);
+          },
+        );
+      },
     );
   }
 }

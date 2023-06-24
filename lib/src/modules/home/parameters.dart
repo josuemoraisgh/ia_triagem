@@ -1047,7 +1047,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'delay': 3,
     'itens': 'Atente-se ao som que será reproduzido na próxima tela.',
   },
-  231: const {
+  46: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1056,7 +1056,16 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
-        'title': 'Qual das opções corresponde ao som escutado?',
+      },
+    ],
+  },
+  47: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Qual das opções corresponde ao som escutado?',
+    'itens': [
+      {
         'options_columns_size': 2,
         'options': [
           "Pássaros",
@@ -1069,7 +1078,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  232: const {
+  48: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1088,10 +1097,10 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  230: const {
+  49: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'form',
+    'style': 'dots_line',
     'header':
         'Observe a imagem e selecione qual alternativa corresponde ao que você vê.',
     'itens': [
