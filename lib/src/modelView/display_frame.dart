@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DisplayFrame extends StatefulWidget {
   final Map<String, dynamic> item;
   final List<Widget>? widgets;
-  final void Function(String audio, String? question)? playMusic;
+  final void Function(String audio)? playMusic;
   const DisplayFrame(
       {super.key, required this.item, this.widgets, this.playMusic});
 
@@ -48,10 +48,7 @@ class _DisplayFrameState extends State<DisplayFrame> {
                                   icon: const Icon(Icons.play_arrow),
                                   onPressed: () async {
                                     if (widget.playMusic != null) {
-                                      widget.playMusic!(
-                                        widget.item['body'],
-                                        widget.item['question'],
-                                      );
+                                      widget.playMusic!(widget.item['body']);
                                     }
                                     setState(() {
                                       isPlaying = true;

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import '../../components/type_five_errors.dart';
-import '../../components/type_text_form.dart';
-import '../../components/type_clean.dart';
 import '../../components/type_form.dart';
-import '../../components/type_laudo.dart';
-import '../../components/type_quest.dart';
-import '../../components/type_sobre.dart';
 import '../../components/type_terms.dart';
 import '../../components/type_yes_no.dart';
 import '../../notfound_page.dart';
@@ -46,15 +41,25 @@ class _TelasPageState extends State<TelasPage> {
         ? const NotFoundPage()
         : Scaffold(
             body: Container(
-                padding:
-                    EdgeInsets.only(left: tam, top: 10, right: tam, bottom: 10),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.lightGreen.shade100,
-                child: SingleChildScrollView(
-                    child: Column(
+              padding:
+                  EdgeInsets.only(left: tam, top: 10, right: tam, bottom: 10),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              color: Colors.lightGreen.shade100,
+              child: SingleChildScrollView(
+                child: Column(
                   children: <Widget>[
-                    typeMainFunciton(),
+                    switch (telas[widget.id]!['style'] ?? 'form') {
+                      'terms' =>
+                        TypeTerms(id: widget.id!, answer: answerNotifier),
+                      'form' =>
+                        TypeForm(id: widget.id!, answer: answerNotifier),
+                      'yes_no' =>
+                        TypeYesNo(id: widget.id!, answer: answerNotifier),
+                      'five_errors' => TypeFiveErrors(id: widget.id!),
+                      _ =>
+                        const Center(child: Text("Pagina não Encontrada !!")),
+                    },
                     Row(
                       children: [
                         Container(
@@ -76,34 +81,10 @@ class _TelasPageState extends State<TelasPage> {
                       ],
                     ),
                   ],
-                ))));
-  }
-
-  Widget typeMainFunciton() {
-    switch (telas[widget.id]!['style'] as String) {
-      /*case 'display_Frame':
-        return (DisplayFrame(id: widget.id!));*/
-      case 'clean':
-        return (TypeClean(id: widget.id!));
-      case 'sobre':
-        return (TypeSobre(id: widget.id!, answer: answerNotifier));
-      case 'terms':
-        return (TypeTerms(id: widget.id!, answer: answerNotifier));
-      case 'quest':
-        return (TypeQuest(id: widget.id!, answer: answerNotifier));
-      case 'laudo':
-        return (TypeLaudo(id: widget.id!, answer: answerNotifier));
-      case 'form':
-        return (TypeForm(id: widget.id!, answer: answerNotifier));
-      case 'yes_no':
-        return (TypeYesNo(id: widget.id!, answer: answerNotifier));
-      case 'five_errors':
-        return (TypeFiveErrors(id: widget.id!));
-      case 'text_form':
-        return (TypeTextForm(id: widget.id!, answer: answerNotifier));
-      default:
-        return (const Center(child: Text("Pagina não Encontrada !!")));
-    }
+                ),
+              ),
+            ),
+          );
   }
 
   Widget _proximaButton() {
@@ -121,8 +102,8 @@ class _TelasPageState extends State<TelasPage> {
         onPressed: resp.isEmpty
             ? null
             : () {
-                debugPrint("${(widget.id! + 1).toString()};${resp.toString()}");
-                controller.answer += answerNotifier.value;                
+                debugPrint("${widget.id!.toString()};${resp.toString()}");
+                controller.answer += answerNotifier.value;
                 Modular.to.popAndPushNamed("/", arguments: widget.id! + 1);
               },
         child: const Row(

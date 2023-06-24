@@ -1,7 +1,9 @@
+import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-const Map<int, Map<String, dynamic>> telas = {
-  1: {
+Map<int, Map<String, dynamic>> telas = {
+  1: const {
     'hasProx': true,
     'isSendAnswer': false,
     'header':
@@ -36,42 +38,348 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
   2: {
     'hasProx': true,
     'isSendAnswer': true,
-    'header':
-        'Ferramenta de Avaliação Psicopatológica usando Inteligência Artificial',
-    'style': 'quest',
+    'style': 'form',
+    'header': 'Questionário Sociodemográfico',
+    'itens': [
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'options': ['Que horas são neste instante?', 'Data de hoje?'],
+        'icons': [Icons.lock_clock, Icons.date_range],
+        'keyboardType': [TextInputType.datetime, TextInputType.datetime],
+        'inputFormatters': [
+          [FilteringTextInputFormatter.digitsOnly, HoraInputFormatter()],
+          [FilteringTextInputFormatter.digitsOnly, DataInputFormatter()],
+        ],
+        'validator': [
+          (value) {
+            if (value == null) {
+              return 'Horário Inválido!!';
+            } else if ((value.isEmpty) || (value.length != 5)) {
+              return 'Horário Inválido!!';
+            }
+            return null;
+          },
+          (value) {
+            if (value == null) {
+              return 'Data atual Incorreta!!';
+            } else if ((value.isEmpty) || (value.length != 10)) {
+              return 'Data atual Incorreta!!';
+            }
+            return null;
+          },
+        ],
+        'has_divider': true,
+      },
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'options': ['Qua a sua Idade?'],
+        'icons': [Icons.cake],
+        'keyboardType': [TextInputType.number],
+        'inputFormatters': [
+          [FilteringTextInputFormatter.digitsOnly]
+        ],
+        'validator': [
+          (value) {
+            if (value == null) {
+              return 'Idade invalida!! Corrija por favor';
+            } else if ((value.isEmpty) ||
+                (int.parse(value) <= 0) ||
+                (int.parse(value) >= 130)) {
+              return 'Idade invalida!! Corrija por favor';
+            }
+            return null;
+          }
+        ],
+        'has_divider': true,
+      },
+      {
+        'title': 'Gênero *',
+        'icon': Icons.transgender,
+        'hasPrefiroNaoDizer': true,
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
+        'options': ["Feminino", "Masculino"],
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Qual o seu gênero?"],
+          'keyboardType': [TextInputType.number],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.singleLineFormatter]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Descrição invalida!! Corrija por favor';
+              } else if ((value.isEmpty) || (value.length < 3)) {
+                return 'Descrição invalida!! Corrija por favor';
+              }
+              return null;
+            },
+          ]
+        },
+        'has_divider': true,
+      },
+      {
+        'title': 'Qual foi o sexo atribuído no seu nascimento?',
+        'icon': Icons.wc,
+        'hasPrefiroNaoDizer': false,
+        'options': const ["Feminino", "Masculino"],
+        'has_divider': true,
+      },
+      {
+        'title': "Assinale a alternativa que identifica a sua Cor ou Raça:",
+        'icon': Icons.person,
+        'hasPrefiroNaoDizer': true,
+        'options': const ["Preta", "Branca", "Parda", "Amarela", "IndÍgena"],
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Qual a sua Cor ou Raça ?"],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.singleLineFormatter]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Descrição invalida!! Corrija por favor';
+              } else if ((value.isEmpty) || (value.length < 3)) {
+                return 'Descrição invalida!! Corrija por favor';
+              }
+              return null;
+            },
+          ]
+        },
+        'has_divider': true,
+      },
+      {
+        'title': "Dentro de sua família, você é o(a) único(a) filho(a)?",
+        'icon': Icons.diversity_3,
+        'hasPrefiroNaoDizer': false,
+        'options': const ["Sim"],
+        'otherLabel': "Não",
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Quantos irmãos voçê tem?"],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.digitsOnly]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Quantidade invalida!! Corrija por favor';
+              } else if ((value.isEmpty)) {
+                return 'Quantidade invalida!! Corrija por favor';
+              }
+              return null;
+            },
+          ]
+        },
+        'has_divider': true,
+      },
+      {
+        'title': "Qual o seu estado civil?",
+        'icon': Icons.diversity_2,
+        'hasPrefiroNaoDizer': false,
+        'options': const [
+          "Solteiro (a):",
+          "Casado (a)",
+          "Viúvo (a)",
+          "Separação legal (judicial ou divórcio)",
+          "Amaziado",
+        ],
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Qual estado civil ?"],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.singleLineFormatter]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Descrição invalida!! Corrija por favor';
+              } else if ((value.isEmpty) || (value.length < 3)) {
+                return 'Descrição invalida!! Corrija por favor';
+              }
+              return null;
+            },
+          ],
+        },
+        'has_divider': true,
+      },
+      {
+        'title': "Possui filhos(as)?",
+        'icon': Icons.group_add,
+        'hasPrefiroNaoDizer': false,
+        'options': const ["Não"],
+        'otherLabel': "Sim",
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Quantos filhos voçê tem?"],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.singleLineFormatter]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Quantidade invalida!! Corrija por favor';
+              } else if ((value.isEmpty)) {
+                return 'Quantidade invalida!! Corrija por favor';
+              }
+              return null;
+            },
+          ],
+        },
+        'has_divider': true,
+      },
+      {
+        'title': "Possui filhos(as) menores de 6 anos?",
+        'icon': Icons.child_friendly,
+        'hasPrefiroNaoDizer': false,
+        'options': const ["Não", "Sim"],
+        'has_divider': true,
+      },
+      {
+        'title': "Religião *",
+        'icon': Icons.church,
+        'hasPrefiroNaoDizer': false,
+        'options': const ["Sem religião"],
+        'otherLabel': "Tenho religião (Qual?)",
+        'otherItem': {
+          'options_style': 'textForm', //selectIcon,textForm,checkBox
+          'options': ["Qual estado civil ?"],
+          'inputFormatters': [
+            [FilteringTextInputFormatter.singleLineFormatter]
+          ],
+          'validator': [
+            (value) {
+              if (value == null) {
+                return 'Religião invalida!! Corrija por favor';
+              } else if ((value.isEmpty)) {
+                return 'Religião invalida!! Corrija por favor';
+              }
+              return null;
+            }
+          ],
+        },
+        'has_divider': true,
+      },
+      {
+        'title': "Escolaridade *",
+        'icon': Icons.school,
+        'hasPrefiroNaoDizer': false,
+        'options': const [
+          "Sem Escolaridade",
+          "Ensino Fundamental (1º grau) incompleto",
+          "Ensino Fundamental (1º grau) completo",
+          "Ensino Médio (2º grau) incompleto",
+          "Ensino Médio (2º grau) completo",
+          "Superior Incompleto",
+          "Superior Completo",
+          "Mestrado",
+          "Doutorado",
+        ],
+        'has_divider': true,
+      },
+      {
+        'title': "Renda familiar mensal de sua casa (somatória)",
+        'icon': Icons.attach_money,
+        'hasPrefiroNaoDizer': false,
+        'options': const [
+          "Até 1 salário mínimo",
+          "Mais de 1 a 2 salários mínimos",
+          "Mais de 2 a 3 salários mínimos",
+          "Mais de 3 a 5 salários mínimos",
+          "Mais de 5 a 8 salários mínimos",
+          "Mais de 8 a 12 salários mínimos",
+          "Mais de 12 a 20 salários mínimos",
+          "Mais de 20 salários mínimos",
+        ],
+      }
+    ], // options_type: text
   },
   3: {
     'hasProx': true,
     'isSendAnswer': true,
+    'style': 'form',
     'header':
         'Você possui algum diagnóstico em relação ao seu estado de saúde mental, laudado por um profissional da saúde?',
-    'style': 'laudo',
+    'itens': [
+      {
+        'options': const ["Não"],
+        'otherLabel': "Sim",
+        'otherItem': {
+          'title':
+              "Caso afirmativo, selecione o diagnóstico\n correspondente. *",
+          'icon': Icons.admin_panel_settings,
+          'hasPrefiroNaoDizer': false,
+          'options': const [
+            "Transtornos de Ansiedade",
+            "Transtornos Alimentares",
+            "Transtorno Bipolar",
+            "Transtornos Depressivos",
+            "Transtorno Obsessivo-compulsivo",
+            "Transtorno da personalidade borderline",
+            "Transtorno da personalidade histriônica",
+            "Transtorno da personalidade narcisista",
+            "Transtorno da personalidade paranoide",
+          ],
+          'otherLabel': "Outro tipo de transtorno",
+          'otherItem': {
+            'options_style': 'textForm', //selectIcon,textForm,checkBox
+            'options': ['Digite a denominação desse outro tipo de transtorno'],
+            'inputFormatters': [
+              [FilteringTextInputFormatter.singleLineFormatter]
+            ],
+            'validator': [
+              (value) {
+                if (value == null) {
+                  return 'Digite a denominação desse outro tipo de transtorno';
+                } else if (value.length < 4) {
+                  return 'Digite a denominação desse outro tipo de transtorno';
+                }
+                return null;
+              }
+            ],
+          },
+        },
+      },
+    ],
   },
-  4: {
+  4: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
     'header': 'Informações',
-    'body':
+    'delay': 3,
+    'itens':
         'A partir de agora serão apresentadas telas com as instruções das tarefas que você irá responder.\n\nCertifique-se que esteja em um ambiente silencioso, sem estímulos de distração.\n\nEm algumas telas serão apresentados sons, sendo assim, fundamental o uso de fones ou que você ligue os alto-falantes do seu dispositivo.',
   },
-  5: {
+  5: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': 'Olhe atentamente para a figura apresentada na proxima tela.',
-  },
-  6: {
-    'hasProx': true,
-    'isSendAnswer': true,
     'style': 'form',
+    'header': 'Atenção!!',
+    'delay': 3,
+    'itens': 'Olhe atentamente para a figura apresentada na proxima tela.',
+  },
+  6: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': 'assets/arvore_free.png', // body_type: image
-        'question':
-            'O que você viu na tela anterior', //Se <> Null -> Apresenta o corpo em uma tela e o options em outra
+      },
+    ], // options_type: text
+  },
+  7: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'O que você viu na tela anterior',
+    'itens': [
+      {
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
         'options': [
           "Jesus Cristo",
           "Coração",
@@ -83,21 +391,34 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ], // options_type: text
   },
-  7: {
+  8: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': "Olhe atentamente para a figura apresentada na proxima tela.",
-  },
-  8: {
-    'hasProx': true,
-    'isSendAnswer': true,
     'style': 'form',
+    'header': 'Atenção!!',
+    'delay': 3,
+    'itens': 'Olhe atentamente para a figura apresentada na proxima tela.',
+  },
+  9: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
-        'question': 'O que você viu na tela anterior',
+        'body': '', // body_type: image
+      },
+    ], // options_type: text
+  },
+  10: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'O que você viu na tela anterior',
+    'itens': [
+      {
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
         'options': [
           "Jesus Cristo",
           "Coração",
@@ -109,43 +430,64 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  9: {
+  11: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
     'header': 'Informações',
-    'body':
+    'delay': 3,
+    'itens':
         "Nas próximas telas, serão apresentadas algumas sequências de números, após visualizá-las você deverá marcar a resposta que corresponde à sequência correta.",
   },
-  10: {
-    'hasProx': true,
-    'isSendAnswer': true,
+  12: const {
+    'hasProx': false,
+    'isSendAnswer': false,
     'style': 'form',
-    'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': '2 - 7',
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+      },
+    ], // options_type: text
+  },
+  13: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Qual foi a sequência correta dos números apresentados na tela anterior?',
+    'itens': [
+      {
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': ["1 - 5", "4 - 7", "2 - 7", "2 - 8", "9 - 4", "7 - 2"],
       },
     ],
   },
-  11: {
-    'hasProx': true,
-    'isSendAnswer': true,
+  14: const {
+    'hasProx': false,
+    'isSendAnswer': false,
     'style': 'form',
-    'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': '5 - 6 - 4',
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+      },
+    ], // options_type: text
+  },
+  15: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Qual foi a sequência correta dos números apresentados na tela anterior?', //Titulo do card
+    'itens': [
+      {
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
         'options_columns_size': 2,
         'options': [
           "5 - 7 - 1",
@@ -158,18 +500,28 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ], // options_type: text || image
   },
-  12: {
+  16: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '6 - 4 - 3 - 9',
+      },
+    ], // options_type: text
+  },
+  17: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+        'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'itens': [
       {
-        'body_hasFrame': true, //Imprime um quadro em volta do body
-        'body': '6 - 4 - 3 - 9', // mode_card: text || image || audio
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
+        'options_style': 'radioList', //selectIcon,textForm,checkBox
         'options_columns_size': 2,
         'options': [
           "6 - 4 - 9 - 3",
@@ -182,18 +534,27 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  13: {
+  18: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '4 - 2 - 7 - 3 - 1',
+      },
+    ], // options_type: text
+  },
+  19: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+        'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'itens': [
       {
-        'body_hasFrame': true, //Imprime um quadro em volta do body
-        'body': '4 - 2 - 7 - 3 - 1', // mode_card: text || image || audio
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
         'options_columns_size': 2,
         'options': [
           "2 - 1 - 4 - 7 - 9",
@@ -206,18 +567,27 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  14: {
+  20: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '6 - 1 - 9 - 4 - 7 - 3',
+      },
+    ], // options_type: text
+  },
+  21: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+        'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'itens': [
       {
-        'body_hasFrame': true, //Imprime um quadro em volta do body
-        'body': '6 - 1 - 9 - 4 - 7 - 3', // mode_card: text || image || audio
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
         'options': [
           "6 - 1 - 4 - 7 - 3 - 9",
           "2 - 1 - 8 - 3 - 9 - 5",
@@ -229,19 +599,27 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  15: {
+  22: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Atente-se para a sequência de números apresentada',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': '5 - 9 - 1 - 7 - 4 - 2 - 8',
+      },
+    ],
+  },
+  23: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
-        'Atente-se para a sequência de números apresentada', //Titulo do card
+        'Qual foi a sequência correta dos números apresentados na tela anterior?',
     'itens': [
       {
-        'body_hasFrame': true, //Imprime um quadro em volta do body
-        'body':
-            '5 - 9 - 1 - 7 - 4 - 2 - 8', // mode_card: text || image || audio
-        'question':
-            'Qual foi a sequência correta dos números apresentados na tela anterior?',
         'options': [
           "5 - 8 - 1 - 7 - 4 - 3 - 8",
           "5 - 9 - 1 - 7 - 4 - 8",
@@ -253,15 +631,16 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  16: {
+  24: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
     'header': 'Informações',
-    'body':
+    'delay': 3,
+    'itens':
         "Identifique algumas expressões e intenções, considerando apenas a região dos olhos. Para cada imagem, escolha a palavra que melhor descreve o que a pessoa em questão está sentindo, pensando ou aparentando ser.",
   },
-  17: {
+  25: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -354,7 +733,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ]
   },
-  18: {
+  26: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -366,7 +745,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       'Há muitos momentos que você se alimenta de forma exagerada?',
     ],
   },
-  19: {
+  27: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -376,6 +755,9 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': 'assets/intel_1.png',
+        'mim_size_awnser': 1,
+        'max_size_awnser': 1,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
           'assets/intel_1a.png',
@@ -388,7 +770,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       },
     ],
   },
-  20: {
+  28: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -400,43 +782,39 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
       'Percebo que sou uma pessoa especial e único/a? Espero que um dia as pessoas possam reconhecer meu valor.'
     ],
   },
-  21: {
+  29: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'text_form',
-    'header': 'Complete a sequência a seguir:',
-    'options': ['2, 4, 8, 16, ?'],
-    'labelText': ["Seguência *"],
-    'icons': [Icons.confirmation_num],
+    'style': 'form',
+    'header': 'Complete as sequências a seguir:',
+    'itens': [
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'title': ['2, 4, 8, 16, ?'],
+        'options': ["Seguência *"],
+        'icons': [Icons.confirmation_num],
+      },
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'title': ['1, 3, 9, ?'],
+        'options': ["Seguência *"],
+        'icons': [Icons.confirmation_num],
+      },
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'title': ['3, 7, 11, 15, ? '],
+        'options': ["Seguência *"],
+        'icons': [Icons.confirmation_num],
+      },
+      {
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'title': ['32, 16, 8, ? '],
+        'options': ["Seguência *"],
+        'icons': [Icons.confirmation_num],
+      },
+    ],
   },
-  22: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'text_form',
-    'header': 'Complete a sequência a seguir:',
-    'options': ['1, 3, 9, ?'],
-    'labelText': ["Seguência *"],
-    'icons': [Icons.confirmation_num],
-  },
-  23: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'text_form',
-    'header': 'Complete a sequência a seguir:',
-    'options': ['3, 7, 11, 15, ? '],
-    'labelText': ["Seguência *"],
-    'icons': [Icons.confirmation_num],
-  },
-  24: {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'text_form',
-    'header': 'Complete a sequência a seguir:',
-    'options': ['32, 16, 8, ? '],
-    'labelText': ["Seguência *"],
-    'icons': [Icons.confirmation_num],
-  },
-  25: {
+  30: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -452,7 +830,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
 
 Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque a ordem correta:
 """,
-        'options_columns_size': 2,
+        'options_columns_size': 1,
         'options': [
           '1 - 4 - 6 - 2 - 5 - 3 - 7',
           '6 - 2 - 4 - 7 - 5 - 1 - 3',
@@ -463,7 +841,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  26: {
+  31: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -475,7 +853,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Possui a sensação de falta de controle durante a alimentação; não consegue parar de comer ou controlar a quantidade que está ingerindo?',
     ],
   },
-  27: {
+  32: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -483,15 +861,14 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'Preencha o campo a seguir com o nome da cidade e estado onde você está agora.',
     'itens': [
       {
-        'body_hasFrame': true, //Imprime um quadro em volta do body
-        'labelText': ['CIDADE:', 'ESTADO:'],
         'icons': [Icons.location_city, Icons.location_history],
         'options_columns_size': 1,
-        'options': ['', ''],
+        'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
+        'options': ['CIDADE:', 'ESTADO:'],
       },
     ]
   },
-  28: {
+  33: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -509,15 +886,88 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  29: {
+  34: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
     'header': 'Informações',
-    'body':
+    'delay': 3,
+    'itens':
         "Seis (6) imagens serão apresentadas. Fique atendo! Em um certo momento do teste, elas serão escondidas em uma figura e você deverá encontrá-las.",
   },
-  30: {
+  35: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/CORREDOR.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  36: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/PAPAI NOEL.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  37: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/circo.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  38: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/mascara.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  39: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/NUMERO8.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  40: const {
+    'hasProx': false,
+    'isSendAnswer': false,
+    'style': 'form',
+    'delay': 3,
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/reciclagem.png', // body_type: image
+      },
+    ], // options_type: text
+  },
+  41: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -530,15 +980,20 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Tem notado muita preocupação com um ou mais defeitos ou falhas percebidas na aparência física que não são observáveis ou que parecem leves para os outros.',
     ],
   },
-  31: {
+  42: const {
     'hasProx': true,
-    'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Informações',
-    'body':
-        "Seis (6) imagens foram apresentadas em algum momento do teste. Vamos encontrá-los? Clique nas figuras que você lembrou. Não é obrigado(a) a encontrar todas as imagens. Faça o seu melhor!",
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Seis (6) imagens foram apresentadas em algum momento do teste. Vamos encontrá-los? Clique nas figuras que você lembrou. Não é obrigado(a) a encontrar todas as imagens. Faça o seu melhor!',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': 'assets/seisimagens.png',
+      },
+    ],
   },
-  32: {
+  43: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -550,9 +1005,10 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
       {
         'body':
-            "\nSe você puder, por alguns minutos, visualizar e ficar sabendo de alguém ou de alguma coisa através de uma fenda no tempo e espaço, qual dessas ações você escolheria? Marque apenas duas alternativas que mais lhe atenderia.",
+            "Se você puder, por alguns minutos, visualizar e ficar sabendo de alguém ou de alguma coisa através de uma fenda no tempo e espaço, qual dessas ações você escolheria? Marque apenas duas alternativas que mais lhe atenderia.",
         'body_hasFrame': false, //Imprime um quadro em volta do body
         'options_columns_size': 1,
+        'options_style': 'checkBox', // radioList,selectIcon,textForm
         'options': [
           'Ver alguém que já morreu',
           'Ver uma pessoa nua',
@@ -571,7 +1027,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  33: {
+  44: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -583,14 +1039,15 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Já testemunhou e/ou ainda é exposto (a) de forma repetida ou extrema a detalhes aversivos do evento traumático?',
     ],
   },
-  34: {
+  45: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
     'header': 'Atenção !!',
-    'body': "Atente-se ao som que será reproduzido na próxima tela.",
+    'delay': 3,
+    'itens': 'Atente-se ao som que será reproduzido na próxima tela.',
   },
-  35: {
+  231: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -599,7 +1056,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': "assets/audios/aguacorrente-edited_v2.mp3", // body_type: audio
-        'question': 'Qual das opções corresponde ao som escutado?',
+        'title': 'Qual das opções corresponde ao som escutado?',
         'options_columns_size': 2,
         'options': [
           "Pássaros",
@@ -612,7 +1069,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  36: {
+  232: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -631,7 +1088,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  37: {
+  230: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -650,7 +1107,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  38: {
+  238: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -662,7 +1119,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Você tem visto algo estranho como figuras, sombras, fogo, fantasmas, demônios, pessoas estranhas ou algo do tipo, no seu dia a dia?',
     ],
   },
-  39: {
+  239: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'five_errors',
@@ -671,7 +1128,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'image1': 'assets/five_errors1.jpg',
     'image2': 'assets/five_errors2.jpg',
   },
-  40: {
+  240: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -684,7 +1141,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Eu não possuo fraquezas. Consigo tudo o que quero?',
     ],
   },
-  41: {
+  241: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -693,6 +1150,9 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': 'assets/intel_2.png',
+        'mim_size_awnser': 1,
+        'max_size_awnser': 1,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
           'assets/intel_2a.png',
@@ -705,7 +1165,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  42: {
+  242: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -718,14 +1178,14 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Evita realizar atividades profissionais ou estudantis que impliquem contato interpessoal, pois tem muito medo de críticas, desaprovação ou rejeição?',
     ],
   },
-  43: {
+  243: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
     'header': 'Atenção!!',
     'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
   },
-  44: {
+  244: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -737,7 +1197,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  45: {
+  245: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -749,6 +1209,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'body': '', // body_type: audio
         'mim_size_awnser': 1,
         'max_size_awnser': 2,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
           'assets/questao45leao.png',
@@ -767,7 +1228,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  46: {
+  246: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -780,7 +1241,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Adio ou evito fazer as coisas até o último segundo?',
     ],
   },
-  47: {
+  247: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -799,16 +1260,17 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  48: {
+  248: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
-    'header': 'Dentre as opções abaixo marque a expressão que melhor corresponde a emoção básica descrita.',
+    'header':
+        'Dentre as opções abaixo marque a expressão que melhor corresponde a emoção básica descrita.',
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
         'body': 'assets/questao48.png',
-        'title': 'a) Nojo:',        
+        'title': 'a) Nojo:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -816,11 +1278,11 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      },  
+      },
       {
-        'title': 'b)	Tristeza:',        
+        'title': 'b)	Tristeza:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -828,11 +1290,11 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      }, 
+      },
       {
-        'title': 'c)	Medo:',        
+        'title': 'c)	Medo:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -840,11 +1302,11 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      }, 
+      },
       {
-        'title': 'd)	Raiva:',        
+        'title': 'd)	Raiva:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -852,11 +1314,11 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      }, 
+      },
       {
-        'title': 'e)	Alegria:',        
+        'title': 'e)	Alegria:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -864,11 +1326,11 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      }, 
+      },
       {
-        'title': 'f)	Surpresa:',        
+        'title': 'f)	Surpresa:',
         'options_columns_size': 6,
         'options': [
           "1",
@@ -876,23 +1338,23 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "3",
           "4",
           "5",
-          "6",          
+          "6",
         ],
-      },                                   
+      },
     ],
   },
-  100: {
+  249: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
     'header': 'Atenção!!',
     'body': "Atente-se ao som que será reproduzido na proxima tela.",
   },
-  51: {
+  251: const {
     'hasProx': true,
     'isSendAnswer': true,
     'content': '',
-    'question': 'Qual das opções corresponde ao som escutado?',
+    'title': 'Qual das opções corresponde ao som escutado?',
     'options': [
       "Pássaros",
       "Barulho de água",
@@ -902,7 +1364,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       "Sem som"
     ],
   },
-  55: {
+  255: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -919,7 +1381,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_4f.png'
     ],
   },
-  101: {
+  201: const {
     //não foi mostrado no questionário
     'hasProx': true,
     'isSendAnswer': true,
@@ -937,7 +1399,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_4f.png'
     ],
   },
-  50: {
+  250: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -954,7 +1416,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/one_screem_2f.png'
     ],
   },
-  52: {
+  252: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
@@ -962,21 +1424,21 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
   },
 
-  54: {
+  254: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
     'header': '',
     'body': "",
   }, //não foi criado ainda (colocado como tela 62)
-  56: {
+  256: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'sobre',
     'header': '',
     'body': "",
   },
-  57: {
+  257: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -994,7 +1456,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  58: {
+  258: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -1012,7 +1474,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  59: {
+  259: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -1030,7 +1492,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  60: {
+  260: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -1048,7 +1510,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  61: {
+  261: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -1066,7 +1528,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  62: {
+  262: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'one_screem',
@@ -1084,7 +1546,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'assets/emotion6.png'
     ]
   },
-  63: {
+  263: const {
     'hasProx': false,
     'isSendAnswer': false,
     'style': 'sobre',

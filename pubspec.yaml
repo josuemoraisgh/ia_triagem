@@ -6,7 +6,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.6'
+  sdk: '>=3.0.0 <4.0.0'
 
 
 dependencies:
@@ -76,6 +76,13 @@ flutter:
     - assets/questao45humburgue.png
     - assets/questao45passaro.png
     - assets/questao48.png
+    - assets/CORREDOR.png
+    - assets/PAPAI NOEL.png
+    - assets/circo.png
+    - assets/mascara.png
+    - assets/NUMERO8.png
+    - assets/reciclagem.png
+    - assets/seisimagens.png
     - assets/audios/aguacorrente-edited_v2.mp3
     - assets/audios/chuva_edited.mp3
     - assets/audios/chuva.mp3

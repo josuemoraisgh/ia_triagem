@@ -9,7 +9,7 @@ class CustomCardQuestion extends StatefulWidget {
   final String? header;
   final dynamic body;
   final ValueNotifier<List<String>> answer;
-  final void Function(String audio, String? question)? playMusic;
+  final void Function(String audio)? playMusic;
   const CustomCardQuestion(
       {super.key,
       required this.answer,
@@ -55,23 +55,20 @@ class _CustomCardQuestionState extends State<CustomCardQuestion> {
                 key: _formKey,
                 onChanged: () {
                   if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
                     widget.answer.value = [answer.join(";")];
                   } else {
                     widget.answer.value = [];
                   }
                 },
-                autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: FormField<List<String>>(
                   initialValue: answer,
-                  autovalidateMode:
-                      AutovalidateMode.always, //.onUserInteraction,
                   validator: (List<String>? value) {
                     if (value == null) {
                       return 'Por favor responda todas as questões';
                     } else {
                       final count = value.where((item) => item != "").length;
-                      if (count < value.length) {
+                      if (count != value.length) {
                         return 'Por favor responda todas as questões';
                       }
                     }
@@ -83,37 +80,32 @@ class _CustomCardQuestionState extends State<CustomCardQuestion> {
                       length: item != null ? item.length : 1,
                       builder: (i) => Expanded(
                         child: Column(
-                          children: (i != 0
-                                  ? const <Widget>[
-                                      SizedBox(height: 15),
-                                      Divider(),
-                                      SizedBox(height: 15),
-                                    ]
-                                  : const <Widget>[]) +
-                              <Widget>[
+                          children: <Widget>[
                                 if (item![i]['body_hasFrame'] != null)
                                   DisplayFrame(
                                     item: item[i],
                                     playMusic: widget.playMusic,
                                   ),
-                                if (item[i]['body_hasFrame'] != null &&
-                                    item[i]['body_hasFrame'] == true &&
-                                    item[i]['body'].isNotEmpty)
+                                if ((item[i]['body_hasFrame'] ?? false) ==
+                                        true &&
+                                    (item[i]['body'] ?? "") != "")
                                   const SizedBox(height: 15),
-                                if (item![i]['options'] != null)
-                                QuestionFrame(
-                                  item: item[i],
-                                  answerFunc: (value) {
-                                    if (value != "") {
-                                      answer[i] =
-                                          "$value; ${DateTime.now().toString()}";
-                                    } else {
-                                      answer[i] = "";
-                                    }
-                                    state.didChange(answer);
-                                  },
-                                ),
-                              ],
+                                if (item[i]['options'] != null)
+                                  QuestionFrame(
+                                    item: item[i],
+                                    answerFunc: (value) {
+                                      answer[i] = value;
+                                      state.didChange(answer);
+                                    },
+                                  ),
+                              ] +
+                              ((item[i]['has_divider'] ?? false) == true
+                                  ? <Widget>[
+                                      const SizedBox(height: 15),
+                                      const Divider(),
+                                      const SizedBox(height: 15),
+                                    ]
+                                  : <Widget>[]),
                         ),
                       ),
                     );

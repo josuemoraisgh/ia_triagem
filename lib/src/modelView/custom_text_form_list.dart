@@ -35,9 +35,9 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          widget.answerFunc(answer.join(";"));
+          widget.answerFunc(answer.join(';'));
         } else {
-          widget.answerFunc("");
+          widget.answerFunc('');
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
@@ -51,12 +51,12 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
           builder: (int id) => Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: (widget.itens['options']?[id] != ""
+              children: ((widget.itens['title']?[id] ?? "") != ""
                       ? <Widget>[
                           const SizedBox(width: 15),
                           Center(
                             child: Text(
-                              widget.itens['options']![id],
+                              widget.itens['title']![id],
                               textAlign: TextAlign.justify,
                               style: const TextStyle(
                                   fontSize: 35,
@@ -74,24 +74,26 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
                         icon: widget.itens['icons']?[id] != null
                             ? Icon(widget.itens['icons']![id])
                             : null,
-                        labelText: widget.itens['labelText']![id],
+                        labelText: widget.itens['options']?[id],
                       ),
-                      keyboardType: TextInputType.name,
+                      keyboardType: widget.itens['keyboardType']?[id],
+                      inputFormatters: widget.itens['inputFormatters']?[id],
                       autovalidateMode: AutovalidateMode.always,
-                      validator: (value) {
-                        if (value == null) {
-                          return 'Opção invalida!! Corrija por favor';
-                        } else if (value == "") {
-                          return 'Opção invalida!! Corrija por favor';
-                        }
-                        return null;
-                      },
+                      validator: widget.itens['validator']?[id] ??
+                          ((value) {
+                            if (value == null) {
+                              return 'Opção invalida!! Corrija por favor';
+                            } else if (value == "") {
+                              return 'Opção invalida!! Corrija por favor';
+                            }
+                            return null;
+                          }),
                       onChanged: (value) {
                         setState(
                           () {
                             if (value != "") {
                               answer[id] =
-                                  "$value; ${DateTime.now().toString()}";
+                                  "$value - ${DateTime.now().toString()}";
                             } else {
                               answer[id] = "";
                             }

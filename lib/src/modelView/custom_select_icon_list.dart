@@ -83,7 +83,8 @@ class _CustomSelectIconListState extends State<CustomSelectIconList> {
                       if (answers[i] == widget.itens[i]) {
                         answers[i] = "";
                       } else {
-                        answers[i] = widget.itens[i];
+                        answers[i] =
+                            "${widget.itens[i]} - ${DateTime.now().toString()}";
                       }
                       state.didChange(answers);
                     });
