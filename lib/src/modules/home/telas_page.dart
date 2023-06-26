@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import '../../components/type_dots_line.dart';
 import '../../components/type_five_errors.dart';
 import '../../components/type_form.dart';
 import '../../components/type_terms.dart';
@@ -58,8 +57,6 @@ class _TelasPageState extends State<TelasPage> {
                       'yes_no' =>
                         TypeYesNo(id: widget.id!, answer: answerNotifier),
                       'five_errors' => TypeFiveErrors(id: widget.id!),
-                      'dots_line' =>
-                        TypeDotsLine(id: widget.id!, answer: answerNotifier),
                       _ =>
                         const Center(child: Text("Pagina não Encontrada !!")),
                     },

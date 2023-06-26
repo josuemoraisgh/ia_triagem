@@ -83,16 +83,24 @@ flutter:
     - assets/NUMERO8.png
     - assets/reciclagem.png
     - assets/seisimagens.png
+    - assets/emoji_sempre_atrasado.png
+    - assets/emoji_poderoso .png
+    - assets/emoji_otimista .png
+    - assets/EMOJI_Em_Panico.png
+    - assets/emoji_indeciso.png
+    - assets/emoji_triste.png
+    - assets/emoji_entediado.png
+    - assets/emoji_pessimista.png
+    - assets/emoji_reflexivo.png
+    - assets/emoji_confiante.png
+    - assets/emoji_forte.png
+    - assets/emoji_nojo.png
     - assets/audios/aguacorrente-edited_v2.mp3
     - assets/audios/chuva_edited.mp3
     - assets/audios/chuva.mp3
     - assets/audios/chuva_edited.wav
     - assets/audios/quatro_palavras.mp3
     - assets/audios/dez_palavras.mp3
-    - assets/AI_1.jpg
-    - assets/coracao_free.png
-    - assets/casa_free.png
-    - assets/rosa_free.png
     - assets/intel_2.png
     - assets/intel_2a.png
     - assets/intel_2b.png
@@ -100,29 +108,7 @@ flutter:
     - assets/intel_2d.png
     - assets/intel_2e.png
     - assets/intel_2f.png
-    - assets/intel_4.png
-    - assets/intel_4a.png
-    - assets/intel_4b.png
-    - assets/intel_4c.png
-    - assets/intel_4d.png
-    - assets/intel_4e.png
-    - assets/intel_4f.png
-    - assets/teste_logica_3.png
-    - assets/emotion1.png
-    - assets/emotion2.png
-    - assets/emotion3.png
-    - assets/emotion4.png
-    - assets/emotion5.png
-    - assets/emotion6.png
     - assets/five_errors1.jpg
     - assets/five_errors2.jpg
-    - assets/pontos.jpg
-    - assets/ponte_free.jpg
-    - assets/car.png
-    - assets/moto_free.png
-    - assets/leao_free.png
-    - assets/passaro_free.png
-    - assets/motorcycle_free.png
-    - assets/cat_free.png
-    - assets/cachorro_free.png
+  
 

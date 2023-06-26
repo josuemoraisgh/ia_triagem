@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:just_audio/just_audio.dart';
-import '../modelView/custom_card_question.dart';
+import '../modelView/card_question.dart';
 import '../modules/home/parameters.dart';
 
 class TypeForm extends StatefulWidget {
@@ -68,7 +68,7 @@ class _TypeFormState extends State<TypeForm> {
 
   @override
   Widget build(BuildContext context) {
-    return CustomCardQuestion(
+    return CardQuestion(
         answer: widget.answer,
         header: (telas[widget.id]!['header'] ?? "") != ""
             ? telas[widget.id]!['header']

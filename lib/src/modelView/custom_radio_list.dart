@@ -3,7 +3,7 @@ import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 import 'package:ia_triagem/src/modelView/question_frame.dart';
 
 class CustomRadioList extends StatefulWidget {
-  final Function(String) anwserFunc;
+  final Function(String) answerFunc;
   final String? description;
   final IconData? icon;
   final List<String> itens;
@@ -13,7 +13,7 @@ class CustomRadioList extends StatefulWidget {
   final Map<String, dynamic>? otherItem;
   const CustomRadioList({
     super.key,
-    required this.anwserFunc,
+    required this.answerFunc,
     this.description,
     this.icon,
     required this.itens,
@@ -39,10 +39,10 @@ class _CustomRadioListState extends State<CustomRadioList> {
       key: _formKey,
       onChanged: () {
         if (_formKey.currentState!.validate()) {
-          widget.anwserFunc(
+          widget.answerFunc(
               "${answer == (widget.otherLabel ?? "Outro (Qual?)") ? answerOther : answer} - ${DateTime.now().toString()}");
         } else {
-          widget.anwserFunc('');
+          widget.answerFunc('');
         }
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ia_triagem/src/modelView/custom_text_form_list.dart';
+import 'package:ia_triagem/src/modelView/dots_line.dart';
 import 'custom_check_box_list.dart';
 import 'custom_select_icon_list.dart';
 import 'custom_radio_list.dart';
@@ -23,12 +24,15 @@ class _QuestionFrameState extends State<QuestionFrame> {
         'radioList' => CustomRadioList(
             icon: widget.item['icon'],
             description: widget.item['title'],
-            anwserFunc: widget.answerFunc,
+            answerFunc: widget.answerFunc,
             hasPrefiroNaoDizer: widget.item['hasPrefiroNaoDizer'] ?? false,
             itens: widget.item['options'],
             otherLabel: widget.item['otherLabel'],
             otherItem: widget.item['otherItem'],
             optionsColumnsSize: widget.item['options_columns_size'],
+          ),
+        'dotLine' => DotsLine(
+            answerFunc: widget.answerFunc,
           ),
         'textForm' => CustomTextFormList(
             optionsColumnsSize: widget.item['options_columns_size'],
@@ -67,16 +71,21 @@ class _QuestionFrameState extends State<QuestionFrame> {
           ),
         'checkBox' => CustomCheckBoxList(
             description: widget.item['title'],
-            anwserFunc: widget
+            answerFunc: widget
                 .answerFunc, //(value) => widget.answer.value = "$value; ${DateTime.now().toString()}",
             hasPrefiroNaoDizer: false,
             itens: widget.item['options'],
             optionsColumnsSize: widget.item['options_columns_size'],
-            validator: (String? value) {
+            validator: (List<String>? value) {
               if (value == null) {
                 return 'Por favor escolha um item';
-              } else if (value.isEmpty) {
-                return 'Por favor escolha um item';
+              } else {
+                final count = value.where((item) => item != "").length;
+                if (count < widget.item['mim_size_awnser']) {
+                  return 'Por favor escolha um item';
+                } else if (count > widget.item['max_size_awnser']) {
+                  return 'Por favor escolha um item';
+                }
               }
               return (null);
             },

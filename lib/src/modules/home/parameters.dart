@@ -1007,6 +1007,8 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'body':
             "Se você puder, por alguns minutos, visualizar e ficar sabendo de alguém ou de alguma coisa através de uma fenda no tempo e espaço, qual dessas ações você escolheria? Marque apenas duas alternativas que mais lhe atenderia.",
         'body_hasFrame': false, //Imprime um quadro em volta do body
+        'max_size_awnser': 2,
+        'mim_size_awnser': 2,
         'options_columns_size': 1,
         'options_style': 'checkBox', // radioList,selectIcon,textForm
         'options': [
@@ -1087,6 +1089,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'itens': [
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
+        //'body_type':
         'body': "assets/Ebbinghaus.png", // body_type: image
         'options_columns_size': 1,
         'options': [
@@ -1100,23 +1103,31 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   49: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'dots_line',
-    'header':
-        'Observe a imagem e selecione qual alternativa corresponde ao que você vê.',
+    'style': 'form',
+    'header': 'Responda !!',
     'itens': [
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
-        'body': "assets/Ebbinghaus.png", // body_type: image
-        'options_columns_size': 1,
+        'body':
+            '       Serão apresentados alguns pontos e ao clicar nos pontos você será capaz de criar algumas imagens, pois os pontos serão interligados com uma reta. Escolha uma das ideias sugeridas, selecionando a alternativa e inicie o desenho. Você terá o tempo que precisar, poderá voltar e apagar.',
         'options': [
-          'A Reta A é maior que a Reta B',
-          'A Reta A é menor que a Reta B',
-          'Retas A e B, são do mesmo tamanho',
+          'Avião',
+          'Borboleta',
+          'Casa',
+          'Estrela',
+          'Quadrado',
+          'Não tenho interesse em fazer',
         ],
+        'has_divider': false,
+      },
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'options_style': 'dotLine',
+        'options': '',
       },
     ],
   },
-  238: const {
+  50: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -1128,7 +1139,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Você tem visto algo estranho como figuras, sombras, fogo, fantasmas, demônios, pessoas estranhas ou algo do tipo, no seu dia a dia?',
     ],
   },
-  239: const {
+  51: const {
     'hasProx': true,
     'isSendAnswer': false,
     'style': 'five_errors',
@@ -1137,7 +1148,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'image1': 'assets/five_errors1.jpg',
     'image2': 'assets/five_errors2.jpg',
   },
-  240: const {
+  52: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -1150,7 +1161,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Eu não possuo fraquezas. Consigo tudo o que quero?',
     ],
   },
-  241: const {
+  53: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1174,7 +1185,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  242: const {
+  54: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -1187,14 +1198,15 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Evita realizar atividades profissionais ou estudantis que impliquem contato interpessoal, pois tem muito medo de críticas, desaprovação ou rejeição?',
     ],
   },
-  243: const {
+  55: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
+    'style': 'form',
+    'header': 'Atenção !!',
+    'delay': 3,
+    'itens': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
   },
-  244: const {
+  56: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1206,7 +1218,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  245: const {
+  57: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1237,7 +1249,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  246: const {
+  58: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'yes_no',
@@ -1250,7 +1262,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       'Adio ou evito fazer as coisas até o último segundo?',
     ],
   },
-  247: const {
+  59: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1269,7 +1281,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  248: const {
+  60: const {
     'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
@@ -1352,208 +1364,240 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  249: const {
+  61: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': "Atente-se ao som que será reproduzido na proxima tela.",
+    'style': 'form',
+    'header': 'Atenção !!',
+    'delay': 3,
+    'itens':
+        "Nas próximas 4 telas serão apresentadas algumas expressões de certos sentimentos. Em cada tela, marque no mínimo 2 e no máximo 6 expressões que melhor correspondem como você tem se sentido nos últimos meses.",
   },
-  251: const {
+  62: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'content': '',
-    'title': 'Qual das opções corresponde ao som escutado?',
-    'options': [
-      "Pássaros",
-      "Barulho de água",
-      "Aspirador de pó",
-      "Choro de criança",
-      "Chuva",
-      "Sem som"
+    'style': 'form',
+    'header':
+        'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
+    'itens': [
+      {
+        'mim_size_awnser': 2,
+        'max_size_awnser': 6,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 3,
+        'options': [
+          'assets/emoji_sempre_atrasado.png',
+          'assets/questao45coquetel.png',
+          'assets/questao45humburgue.png',
+          'assets/questao45gato.png',
+          'assets/questao45carro.png',
+          'assets/questao45cachorro.png',
+          'assets/questao45passaro.png',
+          'assets/questao45cerveja.png',
+          'assets/questao45cocacola.png',
+          'assets/questao45cafe.png',
+          'assets/questao45bombons.png',
+          'assets/questao45casa.png',
+        ]
+      },
     ],
   },
-  255: const {
+  63: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
-    'header': "Qual das imagens abaixo completa a sequência a seguir?",
-    'body': 'assets/one_screem_4.png',
-    'modo_body': 'image',
-    'modo_op': 'image', //Imagem nas respostas
-    'options': [
-      'assets/one_screem_4a.png',
-      'assets/one_screem_4b.png',
-      'assets/one_screem_4c.png',
-      'assets/one_screem_4d.png',
-      'assets/one_screem_4e.png',
-      'assets/one_screem_4f.png'
+    'style': 'form',
+    'header':
+        'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': '', // body_type: audio
+        'mim_size_awnser': 2,
+        'max_size_awnser': 6,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 3,
+        'options': [
+          'assets/emoji_sempre_atrasado.png',
+          'assets/emoji_poderoso.png',
+          'assets/emoji_otimista.png',
+          'assets/EMOJI_Em_Panico.png',
+          'assets/emoji_indeciso.png',
+          'assets/emoji_triste.png',
+          'assets/emoji_entediado.png',
+          'assets/emoji_pessimista.png',
+          'assets/emoji_reflexivo.png',
+          'assets/emoji_confiante.png',
+          'assets/emoji_forte.png',
+          'assets/emoji_nojo.png',
+        ]
+      },
     ],
   },
-  201: const {
-    //não foi mostrado no questionário
+  64: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
-    'header': "Qual das imagens abaixo completa a sequência a seguir?",
-    'body': 'assets/one_screem_4.png',
-    'modo_body': 'image',
-    'modo_op': 'image', //Imagem nas respostas
-    'options': [
-      'assets/one_screem_4a.png',
-      'assets/one_screem_4b.png',
-      'assets/one_screem_4c.png',
-      'assets/one_screem_4d.png',
-      'assets/one_screem_4e.png',
-      'assets/one_screem_4f.png'
+    'style': 'form',
+    'header':
+        'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': '', // body_type: audio
+        'mim_size_awnser': 2,
+        'max_size_awnser': 6,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 3,
+        'options': [
+          'assets/emoji_sempre_atrasado.png',
+          'assets/emoji_poderoso.png',
+          'assets/emoji_otimista.png',
+          'assets/EMOJI_Em_Panico.png',
+          'assets/emoji_indeciso.png',
+          'assets/emoji_triste.png',
+          'assets/emoji_entediado.png',
+          'assets/emoji_pessimista.png',
+          'assets/emoji_reflexivo.png',
+          'assets/emoji_confiante.png',
+          'assets/emoji_forte.png',
+          'assets/emoji_nojo.png',
+        ]
+      },
     ],
   },
-  250: const {
+  65: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
-    'header': "Qual das imagens abaixo completa a sequência a seguir?",
-    'body': 'assets/one_screem_2.png',
-    'modo_body': 'image',
-    'modo_op': 'image', //Imagem nas respostas
-    'options': [
-      'assets/one_screem_2a.png',
-      'assets/one_screem_2b.png',
-      'assets/one_screem_2c.png',
-      'assets/one_screem_2d.png',
-      'assets/one_screem_2e.png',
-      'assets/one_screem_2f.png'
+    'style': 'form',
+    'header':
+        'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
+    'itens': [
+      {
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'body': '', // body_type: audio
+        'mim_size_awnser': 2,
+        'max_size_awnser': 6,
+        'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 3,
+        'options': [
+          'assets/emoji_sempre_atrasado.png',
+          'assets/emoji_poderoso.png',
+          'assets/emoji_otimista.png',
+          'assets/EMOJI_Em_Panico.png',
+          'assets/emoji_indeciso.png',
+          'assets/emoji_triste.png',
+          'assets/emoji_entediado.png',
+          'assets/emoji_pessimista.png',
+          'assets/emoji_reflexivo.png',
+          'assets/emoji_confiante.png',
+          'assets/emoji_forte.png',
+          'assets/emoji_nojo.png',
+        ]
+      },
     ],
   },
-  252: const {
+  66: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Avalie e responda !!',
+    'itens': [
+      {
+        'body':
+            "Selecione as palavras que você mais gosta e, ao mesmo tempo, lhe descreveria. A quantidade é ilimitada, pode escolher quantas palavras quiser, desde que elas fazem sentido na sua vida.",
+        'body_hasFrame': false, //Imprime um quadro em volta do body
+        'max_size_awnser': 2,
+        'mim_size_awnser': 2,
+        'options_columns_size': 1,
+        'options_style': 'checkBox', // radioList,selectIcon,textForm
+        'options': [
+          'ACOMETIDO(A)',
+          'AFEIÇÃO',
+          'AMIUDAR',
+          'ANTIPATIA',
+          'APATIA',
+          'APEGO',
+          'APREENSÃO',
+          'ARQUEJO',
+          'ATONIA',
+          'AUTENTICIDADE',
+          'AUTOCÍDIO',
+          'AUTOESTIMA',
+          'BELEZA',
+          'BONDADE',
+          'COMPLACÊNCIA',
+          'COMPULSÃO',
+          'CORAGEM',
+          'DECÊNCIA',
+          'DESAFETO',
+          'DESÂNIMO',
+          'DESARMONIA',
+          'DESTEMOR',
+          'DIGNIDADE',
+          'ELEGÂNCIA',
+          'EMPATIA',
+          'ENGODO',
+          'ESPERANÇA',
+          'ESTIMA',
+          'ESTREITEZA',
+          'EUFORIA',
+          'FORTÚNIO',
+          'FRACASSO',
+          'FRAQUEZA',
+          'FUGAZ',
+          'GENTILEZA',
+          'GRATIDÃO',
+          'HARMONIA',
+          'HUMILDADE',
+          'IMPAVIDEZ',
+          'IMPOTÊNCIA',
+          'INAPETÊNCIA',
+          'INDIFERENÇA',
+          'INDULGÊNCIA',
+          'INQUIETUDE',
+          'INTELIGÊNCIA',
+          'LETARGIA',
+          'MÁGOA',
+          'MANIA',
+          'MAQUIAVÉLICO',
+          'MELANCOLIA',
+          'NOSTALGIA',
+          'OBCECAÇÃO',
+          'OBSESSÃO',
+          'PERECÍVEL',
+          'PERSISTÊNCIA',
+          'PREOCUPAÇÃO',
+          'PROSTRAÇÃO',
+          'PRUDÊNCIA',
+          'RUMINAÇÃO',
+          'SATISFAÇÃO',
+          'SIGILO',
+          'SUICÍDIO',
+          'TENACIDADE',
+          'VIRTUDE',
+        ]
+      },
+    ],
+  },
+  67: const {
     'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
-    'header': 'Atenção!!',
-    'body': "Na próxima tela será reproduzida algumas palavras. Fique atento.",
+    'style': 'form',
+    'header': 'Atenção !!',
+    'delay': 3,
+    'itens':
+        "\t\tNa próxima tela será reproduzida uma lista de 10 pares de palavras relacionadas logicamente entre si (p. ex., alto-baixo). Depois, você será solicitado para preencher a palavra faltante. Fique atento, você terá que memorizar todos os pares.\n\n\t\tQuando estiver pronto é so clicar em próximo...",
   },
-
-  254: const {
-    'hasProx': true,
-    'isSendAnswer': false,
-    'style': 'sobre',
-    'header': '',
-    'body': "",
-  }, //não foi criado ainda (colocado como tela 62)
-  256: const {
-    'hasProx': true,
-    'isSendAnswer': false,
-    'style': 'sobre',
-    'header': '',
-    'body': "",
-  },
-  257: const {
+  68: const {
     'hasProx': true,
     'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde o sentimento descrito.",
-    'body': 'Tristeza',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
-  },
-  258: const {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde o sentimento descrito.",
-    'body': 'Poderoso',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
-  },
-  259: const {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde o sentimento descrito.",
-    'body': 'Felicidade',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
-  },
-  260: const {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde o sentimento descrito.",
-    'body': 'Raivoso',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
-  },
-  261: const {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde como você tem se sentido nos últimos dias.",
-    'body': '',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
-  },
-  262: const {
-    'hasProx': true,
-    'isSendAnswer': true,
-    'style': 'one_screem',
-    'header':
-        "Dentre as opções abaixo marque a expressão que melhor corresponde o sentimento descrito.",
-    'body': 'Apaixonado',
-    'modo_body': 'text', //Texto nas respostas
-    'modo_op': 'image', //Texto nas respostas
-    'options': [
-      'assets/emotion1.png',
-      'assets/emotion2.png',
-      'assets/emotion3.png',
-      'assets/emotion4.png',
-      'assets/emotion5.png',
-      'assets/emotion6.png'
-    ]
+    'style': 'form',
+    'itens': [
+      {
+        'body_hasFrame': true, //Imprime um quadro em volta do body
+        'body': 'assets/audios/dez_palavras.mp3',
+        'options_columns_size': 1,
+      },
+    ],
   },
   263: const {
     'hasProx': false,
