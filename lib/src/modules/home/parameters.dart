@@ -1381,23 +1381,23 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'Selecione 1 ou 2 imagens que poderia representar você ou seu jeito de ser.',
     'itens': [
       {
-        'mim_size_awnser': 2,
-        'max_size_awnser': 6,
+        'mim_size_awnser': 1,
+        'max_size_awnser': 2,
         'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
           'assets/emoji_sempre_atrasado.png',
-          'assets/questao45coquetel.png',
-          'assets/questao45humburgue.png',
-          'assets/questao45gato.png',
-          'assets/questao45carro.png',
-          'assets/questao45cachorro.png',
-          'assets/questao45passaro.png',
-          'assets/questao45cerveja.png',
-          'assets/questao45cocacola.png',
-          'assets/questao45cafe.png',
-          'assets/questao45bombons.png',
-          'assets/questao45casa.png',
+          'assets/emoji_poderoso.png',
+          'assets/emoji_otimista.png',
+          'assets/emoji_Em_Panico.png',
+          'assets/emoji_indeciso.png',
+          'assets/emoji_triste.png',
+          'assets/emoji_entediado.png',
+          'assets/emoji_pessimista.png',
+          'assets/emoji_reflexivo.png',
+          'assets/emoji_confiante.png',
+          'assets/emoji_forte.png',
+          'assets/emoji_nojo.png',
         ]
       },
     ],
@@ -1412,23 +1412,23 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
         'body': '', // body_type: audio
-        'mim_size_awnser': 2,
-        'max_size_awnser': 6,
+        'mim_size_awnser': 1,
+        'max_size_awnser': 2,
         'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
-          'assets/emoji_sempre_atrasado.png',
-          'assets/emoji_poderoso.png',
-          'assets/emoji_otimista.png',
-          'assets/EMOJI_Em_Panico.png',
-          'assets/emoji_indeciso.png',
-          'assets/emoji_triste.png',
-          'assets/emoji_entediado.png',
-          'assets/emoji_pessimista.png',
-          'assets/emoji_reflexivo.png',
-          'assets/emoji_confiante.png',
-          'assets/emoji_forte.png',
-          'assets/emoji_nojo.png',
+          'assets/emoji_esperancoso.png',
+          'assets/emoji_pura_alegria.png',
+          'assets/emoji_burro.png',
+          'assets/emoji_surpreso.png',
+          'assets/emoji_feliz.png',
+          'assets/emoji_velho.png',
+          'assets/emoji_frustrado.png',
+          'assets/emoji_ansioso.png',
+          'assets/emoji_EMOCIONADO.png',
+          'assets/emoji_em_paz.png',
+          'assets/emoji_inteligente.png',
+          'assets/emoji_preocupado.png',
         ]
       },
     ],
@@ -1443,23 +1443,23 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
         'body': '', // body_type: audio
-        'mim_size_awnser': 2,
-        'max_size_awnser': 6,
+        'mim_size_awnser': 1,
+        'max_size_awnser': 2,
         'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
-          'assets/emoji_sempre_atrasado.png',
-          'assets/emoji_poderoso.png',
-          'assets/emoji_otimista.png',
-          'assets/EMOJI_Em_Panico.png',
-          'assets/emoji_indeciso.png',
-          'assets/emoji_triste.png',
-          'assets/emoji_entediado.png',
-          'assets/emoji_pessimista.png',
-          'assets/emoji_reflexivo.png',
-          'assets/emoji_confiante.png',
-          'assets/emoji_forte.png',
-          'assets/emoji_nojo.png',
+          'assets/emoji_apaixonado.png',
+          'assets/emoji_desesperado.png',
+          'assets/emoji_envergonhado.png',
+          'assets/emoji_abencoado.png',
+          'assets/emoji_impulsivo.png',
+          'assets/emoji_amado.png',
+          'assets/emoji_confuso.png',
+          'assets/emoji_sem_forcas.png',
+          'assets/emoji_sonolento.png',
+          'assets/emoji_gordo.png',
+          'assets/emoji_sem_paciencia.png',
+          'assets/emoji_com_ciumes.png',
         ]
       },
     ],
@@ -1474,23 +1474,23 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
         'body': '', // body_type: audio
-        'mim_size_awnser': 2,
-        'max_size_awnser': 6,
+        'mim_size_awnser': 1,
+        'max_size_awnser': 2,
         'options_style': 'selectIcon', //radioList,selectIcon,textForm,checkBox
         'options_columns_size': 3,
         'options': [
-          'assets/emoji_sempre_atrasado.png',
-          'assets/emoji_poderoso.png',
-          'assets/emoji_otimista.png',
-          'assets/EMOJI_Em_Panico.png',
-          'assets/emoji_indeciso.png',
-          'assets/emoji_triste.png',
-          'assets/emoji_entediado.png',
-          'assets/emoji_pessimista.png',
-          'assets/emoji_reflexivo.png',
-          'assets/emoji_confiante.png',
-          'assets/emoji_forte.png',
-          'assets/emoji_nojo.png',
+          'assets/emoji_com_raiva.png',
+          'assets/emoji_silenciado.png',
+          'assets/emoji_desanimado.png',
+          'assets/emoji_COM_gratidao.png',
+          'assets/EMOJI_fraude.png',
+          'assets/emoji_agressivo.png',
+          'assets/emoji_desequilibrado.png',
+          'assets/emoji_comendo_muito.png',
+          'assets/emoji_fumando_muito.png',
+          'assets/emoji_jesus.png',
+          'assets/emoji_bebendo_muito.png',
+          'assets/emoji_animado.png',
         ]
       },
     ],
@@ -1505,9 +1505,9 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'body':
             "Selecione as palavras que você mais gosta e, ao mesmo tempo, lhe descreveria. A quantidade é ilimitada, pode escolher quantas palavras quiser, desde que elas fazem sentido na sua vida.",
         'body_hasFrame': false, //Imprime um quadro em volta do body
-        'max_size_awnser': 2,
-        'mim_size_awnser': 2,
-        'options_columns_size': 1,
+        'max_size_awnser': 65,
+        'mim_size_awnser': 1,
+        'options_columns_size': 2,
         'options_style': 'checkBox', // radioList,selectIcon,textForm
         'options': [
           'ACOMETIDO(A)',
@@ -1585,7 +1585,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
     'header': 'Atenção !!',
     'delay': 3,
     'itens':
-        "\t\tNa próxima tela será reproduzida uma lista de 10 pares de palavras relacionadas logicamente entre si (p. ex., alto-baixo). Depois, você será solicitado para preencher a palavra faltante. Fique atento, você terá que memorizar todos os pares.\n\n\t\tQuando estiver pronto é so clicar em próximo...",
+        "Na próxima tela será reproduzida uma lista de 10 pares de palavras relacionadas logicamente entre si (p. ex., alto-baixo). Depois, você será solicitado para preencher a palavra faltante.\n\nFique atento, você terá que memorizar todos os pares.\n\nQuando estiver pronto é so clicar em próximo...",
   },
   68: const {
     'hasProx': true,
@@ -1599,12 +1599,198 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       },
     ],
   },
-  263: const {
-    'hasProx': false,
+  69: {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'type': 'form',
+    'header1': "Complete com o par correspondente escutado anteriormente",
+    'itens': [
+      {
+        'options_style': 'textForm',
+        'options_columns_size': 1,
+        'options': ['', '', '', '', '', '', '', '', ''],
+        'options_fix': [
+          'chuva -',
+          'criança -',
+          '- verão',
+          'mostro -',
+          '- água',
+          'dinheiro -',
+          '- pequeno',
+          'livro -',
+          '- móvel',
+        ],
+      },
+    ],
+  },
+  70: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'yes_no',
+    'header': "Responda as questões abaixo:",
+    'options': [
+      'Tem sentido muito medo de perder o controle ou enlouquecer?',
+      'Já teve ataques ou crises de medo intenso, em que se sentiu muito mal?',
+      'Tende a se ver como socialmente incapaz, sem atrativos pessoais ou inferior aos outros?',
+      'Tem relutado em delegar tarefas ou de trabalhar com outras pessoas, pois precisa estar no controle de tudo.',
+      'Há esforços excessivos para evitar ser abandonado (a), seja ele real ou imaginário?',
+    ],
+  },
+  71: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Com que frequência você pausa e consome estas substâncias?',
+    'itens': [
+      {
+        'title': '1) Cafeina:',
+        'options_columns_size': 1,
+        'options': [
+          'Nunca ',
+          'Uma vez por mês ou menos (raramente)',
+          'Duas a quatro vezes ao mês (às vezes)',
+          'Duas a três vezes por semana (quase sempre)',
+          'Quatro ou mais vezes por semana (na maioria dos dias ou sempre)',
+        ],
+      },
+      {
+        'title': '2)	Álcool:',
+        'options_columns_size': 1,
+        'options': [
+          'Nunca ',
+          'Uma vez por mês ou menos (raramente)',
+          'Duas a quatro vezes ao mês (às vezes)',
+          'Duas a três vezes por semana (quase sempre)',
+          'Quatro ou mais vezes por semana (na maioria dos dias ou sempre)',
+        ],
+      },
+      {
+        'title': '3)	Tabaco:',
+        'options_columns_size': 1,
+        'options': [
+          'Nunca ',
+          'Uma vez por mês ou menos (raramente)',
+          'Duas a quatro vezes ao mês (às vezes)',
+          'Duas a três vezes por semana (quase sempre)',
+          'Quatro ou mais vezes por semana (na maioria dos dias ou sempre)',
+        ],
+      },
+      {
+        'title': '4)	Maconha:',
+        'options_columns_size': 1,
+        'options': [
+          'Nunca ',
+          'Uma vez por mês ou menos (raramente)',
+          'Duas a quatro vezes ao mês (às vezes)',
+          'Duas a três vezes por semana (quase sempre)',
+          'Quatro ou mais vezes por semana (na maioria dos dias ou sempre)',
+        ],
+      },
+      {
+        'title': '5)	Cocaína/crack:',
+        'options_columns_size': 1,
+        'options': [
+          'Nunca ',
+          'Uma vez por mês ou menos (raramente)',
+          'Duas a quatro vezes ao mês (às vezes)',
+          'Duas a três vezes por semana (quase sempre)',
+          'Quatro ou mais vezes por semana (na maioria dos dias ou sempre)',
+        ],
+      },
+    ],
+  },
+  72: const {
+    'hasProx': true,
     'isSendAnswer': false,
-    'style': 'sobre',
+    'style': 'form',
+    'header':
+        'Daltonismo é o termo usado para denominar a falta de sensibilidade ocular que algumas pessoas possuem na percepção de determinadas cores.\n\nVocê tem Daltonismo?\n\nFoi diagnosticado por algum especialista?\n\nCaso afirmativo, você pode pular o próximo texte ou tentar fazê-lo, porém se você tentar realizar a atividade, não será prejudicado(a), é só clicar em SIM.',
+    'delay': 3,
+    'itens': [
+      {
+        'options_style': 'radioList', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 2,
+        'options': [
+          'Sim',
+          'Não',
+          'Pular o Teste',
+        ]
+      },
+    ],
+  },
+  73: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Marque a cor que você mais gosta e pinte os retângulos e os círculos das figuras abaixo.\n\nFaça da forma que mais te agrada.',
+    'itens': [
+      {
+        'options_style': 'radioList', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 2,
+        'options': [
+          'Azul'
+              'Verde'
+              'Laranja'
+              'Amarelo'
+              'Vermelho'
+              'Violeta'
+              'Marrom'
+              'Preto'
+              'Branco'
+        ]
+      },
+    ],
+  },
+  74: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header': 'Selecione qual dia da semana é hoje:',
+    'itens': [
+      {
+        'options_style': 'radioList', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 2,
+        'options': [
+          'Segunda-feira',
+          'Terça-feira',
+          'Quarta-feira',
+          'Quinta-feira',
+          'Sexta-feira',
+          'Sábado',
+          'Domingo',
+        ]
+      },
+    ],
+  },
+  75: const {
+    'hasProx': true,
+    'isSendAnswer': true,
+    'style': 'form',
+    'header':
+        'Quanto tempo, aproximadamente, você acha que gastou para fazer este teste?',
+    'itens': [
+      {
+        'options_style': 'radioList', //radioList,selectIcon,textForm,checkBox
+        'options_columns_size': 2,
+        'options': [
+          '5 minutos',
+          '15 minutos',
+          '30 minutos',
+          '40 minutos',
+          '60 minutos',
+          'Mais que 1 hora',
+        ]
+      },
+    ],
+  },
+  76: const {
+    'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'form',
     'header': 'Parabéns!!!!',
-    'body':
+    'delay': 3,
+    'itens':
         "Você terminou o questionário, agradeçemos muito pela sua disponibilidade.\n\nOBS.:Você ja pode fechar esta página.",
   },
 };

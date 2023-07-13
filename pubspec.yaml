@@ -84,8 +84,8 @@ flutter:
     - assets/reciclagem.png
     - assets/seisimagens.png
     - assets/emoji_sempre_atrasado.png
-    - assets/emoji_poderoso .png
-    - assets/emoji_otimista .png
+    - assets/emoji_poderoso.png
+    - assets/emoji_otimista.png
     - assets/EMOJI_Em_Panico.png
     - assets/emoji_indeciso.png
     - assets/emoji_triste.png
@@ -95,6 +95,42 @@ flutter:
     - assets/emoji_confiante.png
     - assets/emoji_forte.png
     - assets/emoji_nojo.png
+    - assets/emoji_esperancoso.png
+    - assets/emoji_PURA_ALEGRIA.png
+    - assets/emoji_burro.png
+    - assets/emoji_surpreso.png
+    - assets/emoji_feliz.png
+    - assets/emoji_velho.png
+    - assets/emoji_frustrado.png
+    - assets/emoji_ansioso.png
+    - assets/emoji_EMOCIONADO.png
+    - assets/emoji_em_paz.png
+    - assets/emoji_inteligente.png
+    - assets/emoji_preocupado.png    
+    - assets/emoji_apaixonado.png
+    - assets/emoji_desesperado.png
+    - assets/emoji_envergonhado.png
+    - assets/EMOJI_abencoado.png
+    - assets/emoji_impulsivo.png
+    - assets/emoji_amado.png
+    - assets/emoji_confuso.png
+    - assets/emoji_sem_forcas.png
+    - assets/emoji_sonolento.png
+    - assets/emoji_gordo.png
+    - assets/emoji_sem_paciencia.png
+    - assets/emoji_com_ciumes.png   
+    - assets/emoji_com_raiva.png
+    - assets/emoji_silenciado.png
+    - assets/emoji_desanimado.png       
+    - assets/emoji_COM_gratidao.png
+    - assets/EMOJI_fraude.png
+    - assets/emoji_agressivo.png
+    - assets/emoji_desequilibrado.png
+    - assets/emoji_comendo_muito.png
+    - assets/emoji_fumando_muito.png
+    - assets/emoji_jesus.png
+    - assets/emoji_bebendo_muito.png
+    - assets/emoji_animado.png
     - assets/audios/aguacorrente-edited_v2.mp3
     - assets/audios/chuva_edited.mp3
     - assets/audios/chuva.mp3

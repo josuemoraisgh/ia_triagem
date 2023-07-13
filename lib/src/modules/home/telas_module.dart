@@ -19,6 +19,6 @@ class TelasModule extends Module {
 
   @override
   final List<ModularRoute> routes = [
-    ChildRoute("/", child: (_, args) => TelasPage(id: args.data ?? 61)),
+    ChildRoute("/", child: (_, args) => TelasPage(id: args.data ?? 70)),
   ];
 }

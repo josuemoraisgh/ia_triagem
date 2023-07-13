@@ -49,51 +49,45 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
         child: Padding(
           padding:
               const EdgeInsets.only(left: 10, top: 10, right: 10, bottom: 10),
-          child: FormField<List<String>>(
-            initialValue: answer,
-            autovalidateMode: AutovalidateMode.always, //.onUserInteraction,
-            validator: widget.validator,
-            builder: (FormFieldState<List<String>> state) => MontaAlternativas(
-              optionsColumnsSize: widget.optionsColumnsSize,
-              length: widget.itens['options']?.length ?? 1,
-              builder: (int id) => Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: ((widget.itens['title']?[id] ?? "") != ""
-                          ? <Widget>[
-                              const SizedBox(width: 15),
-                              Center(
-                                child: Text(
-                                  widget.itens['title']![id],
-                                  textAlign: TextAlign.justify,
-                                  style: const TextStyle(
-                                      fontSize: 35,
-                                      color: Colors.black,
-                                      decorationColor: Colors.black),
-                                ),
-                              ),
-                            ]
-                          : <Widget>[]) +
-                      <Widget>[
-                        const SizedBox(width: 15),
-                        widget.itens['options_fix']?[id] == null
-                            ? _montaEdit(id, state)
-                            : Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                                  widget.itens['options_fix']?[id][0] == "-"
-                                      ? _montaEdit(id, state)
-                                      : _montaTexto(id),
-                                  const SizedBox(width: 5),
-                                  widget.itens['options_fix']?[id][0] == "-"
-                                      ? _montaTexto(id)
-                                      : _montaEdit(id, state),
-                                ],
-                              ),
-                      ],
-                ),
-              ),
+          child: MontaAlternativas(
+            optionsColumnsSize: widget.optionsColumnsSize,
+            length: widget.itens['options']?.length ?? 1,
+            builder: (int id) => Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: ((widget.itens['title']?[id] ?? "") != ""
+                      ? <Widget>[
+                          const SizedBox(width: 15),
+                          Center(
+                            child: Text(
+                              widget.itens['title']![id],
+                              textAlign: TextAlign.justify,
+                              style: const TextStyle(
+                                  fontSize: 35,
+                                  color: Colors.black,
+                                  decorationColor: Colors.black),
+                            ),
+                          ),
+                        ]
+                      : <Widget>[]) +
+                  <Widget>[
+                    const SizedBox(width: 15),
+                    Expanded(
+                      child: widget.itens['options_fix']?[id] == null
+                          ? _montaEdit(id)
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: <Widget>[
+                                widget.itens['options_fix']?[id][0] == "-"
+                                    ? _montaEdit(id)
+                                    : _montaTexto(id),
+                                const SizedBox(width: 5),
+                                widget.itens['options_fix']?[id][0] == "-"
+                                    ? _montaTexto(id)
+                                    : _montaEdit(id),
+                              ],
+                            ),
+                    ),
+                  ],
             ),
           ),
         ),
@@ -123,8 +117,9 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
     ));
   }
 
-  Widget _montaEdit(int id, FormFieldState<List<String>> state) {
+  Widget _montaEdit(int id) {
     return TextFormField(
+      initialValue:answer[id],
       decoration: InputDecoration(
         border: const UnderlineInputBorder(),
         icon: widget.itens['icons']?[id] != null
@@ -152,7 +147,7 @@ class _CustomTextFormListState extends State<CustomTextFormList> {
             } else {
               answer[id] = "";
             }
-            state.didChange(answer);
+            _formKey.currentState?.save();
           },
         );
       },
