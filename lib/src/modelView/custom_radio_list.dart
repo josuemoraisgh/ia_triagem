@@ -3,7 +3,8 @@ import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 import 'package:ia_triagem/src/modelView/question_frame.dart';
 
 class CustomRadioList extends StatefulWidget {
-  final Function(String) answerFunc;
+  final Function(String,int) answerFunc;
+  final int? answerId;
   final String? description;
   final IconData? icon;
   final List<String> itens;
@@ -20,7 +21,8 @@ class CustomRadioList extends StatefulWidget {
     required this.hasPrefiroNaoDizer,
     this.otherLabel,
     this.otherItem,
-    this.optionsColumnsSize,
+    this.optionsColumnsSize, 
+    this.answerId,
   });
 
   @override
@@ -40,9 +42,9 @@ class _CustomRadioListState extends State<CustomRadioList> {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           widget.answerFunc(
-              "${answer == (widget.otherLabel ?? "Outro (Qual?)") ? answerOther : answer} - ${DateTime.now().toString()}");
+              "${answer == (widget.otherLabel ?? "Outro (Qual?)") ? answerOther : answer} - ${DateTime.now().toString()}",widget.answerId??0);
         } else {
-          widget.answerFunc('');
+          widget.answerFunc('',0);
         }
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -59,7 +61,7 @@ class _CustomRadioListState extends State<CustomRadioList> {
                   widget.description!,
                   textAlign: TextAlign.start,
                   style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: fontSize,
                       color: Colors.black,
                       decorationColor: Colors.black),
                 ),
@@ -137,11 +139,12 @@ class _CustomRadioListState extends State<CustomRadioList> {
                 if (answer == (widget.otherLabel ?? "other"))
                   Expanded(
                     child: QuestionFrame(
-                      answerFunc: (value) {
+                      answerFunc: (value, i) {
                         answerOther = value.toString();
                         state.didChange(answerOther);
                       },
-                      item: widget.otherItem!,
+                      item: widget.otherItem!, 
+                      answerId: 0,
                     ),
                   ),
               ],

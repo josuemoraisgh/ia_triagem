@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 
 class CustomCheckBoxList extends StatefulWidget {
-  final Function(String) answerFunc;
+  final Function(String,int) answerFunc;
+  final int? answerId;
   final String? description;
   final Icon? icon;
   final List<String> itens;
@@ -24,7 +25,8 @@ class CustomCheckBoxList extends StatefulWidget {
     this.labelText,
     this.inputFormatters,
     this.validator,
-    this.optionsColumnsSize,
+    this.optionsColumnsSize, 
+    this.answerId,
   });
 
   @override
@@ -50,9 +52,9 @@ class _CustomCheckBoxListState extends State<CustomCheckBoxList> {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          widget.answerFunc(answers.join(";"));
+          widget.answerFunc(answers.join(";"),widget.answerId??0);
         } else {
-          widget.answerFunc("");
+          widget.answerFunc("",0);
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,

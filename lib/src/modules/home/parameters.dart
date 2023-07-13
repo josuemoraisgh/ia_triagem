@@ -70,7 +70,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
         ],
         'has_divider': true,
       },
-      {
+      /*{
         'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
         'options': ['Qua a sua Idade?'],
         'icons': [Icons.cake],
@@ -292,7 +292,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
           "Mais de 12 a 20 salários mínimos",
           "Mais de 20 salários mínimos",
         ],
-      }
+      }*/
     ], // options_type: text
   },
   3: {
@@ -645,7 +645,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
     'isSendAnswer': true,
     'style': 'form',
     'header':
-        'Qual das imagens abaixo completa a sequência a seguir?', //Titulo do card
+        'Dentre as quatro alternativas de cada imagem. Selecione a palavra que melhor a descreve', //Titulo do card
     'itens': [
       {
         'body_hasFrame': true, //Imprime um quadro em volta do body
@@ -1074,7 +1074,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
           "Barulho de água",
           "Aspirador de pó",
           "Choro de criança",
-          "Chuva",
+          "Telefone tocando",
           "Sem som"
         ],
       },
@@ -1123,7 +1123,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
       {
         'body_hasFrame': false, //Imprime um quadro em volta do body
         'options_style': 'dotLine',
-        'options': '',
+        'options': ' ', // Quando for dotLine colar uma string com espaço
       },
     ],
   },

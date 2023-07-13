@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 
 class CustomSelectIconList extends StatefulWidget {
-  final Function(String) answerFunc;
+  final Function(String,int) answerFunc;
+  final int? answerId;
   final String? description;
   final Icon? icon;
   final List<String> itens;
@@ -15,7 +16,8 @@ class CustomSelectIconList extends StatefulWidget {
     this.icon,
     required this.itens,
     this.validator,
-    this.optionsColumnsSize,
+    this.optionsColumnsSize, 
+    required this.answerId,
   });
 
   @override
@@ -40,9 +42,9 @@ class _CustomSelectIconListState extends State<CustomSelectIconList> {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           _formKey.currentState!.save();
-          widget.answerFunc(answers.join(";"));
+          widget.answerFunc(answers.join(";"),widget.answerId??0);
         } else {
-          widget.answerFunc("");
+          widget.answerFunc("",0);
         }
       },
       autovalidateMode: AutovalidateMode.always, //.onUserInteraction,

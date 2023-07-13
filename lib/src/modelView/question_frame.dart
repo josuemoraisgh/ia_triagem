@@ -7,9 +7,10 @@ import 'custom_radio_list.dart';
 
 class QuestionFrame extends StatefulWidget {
   final Map<String, dynamic> item;
-  final dynamic Function(String) answerFunc;
+  final int answerId;
+  final dynamic Function(String, int) answerFunc;
   const QuestionFrame(
-      {super.key, required this.item, required this.answerFunc});
+      {super.key, required this.item, required this.answerFunc, required this.answerId});
 
   @override
   State<QuestionFrame> createState() => _QuestionFrameState();
@@ -24,6 +25,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
         'radioList' => CustomRadioList(
             icon: widget.item['icon'],
             description: widget.item['title'],
+            answerId:  widget.answerId,
             answerFunc: widget.answerFunc,
             hasPrefiroNaoDizer: widget.item['hasPrefiroNaoDizer'] ?? false,
             itens: widget.item['options'],
@@ -32,10 +34,12 @@ class _QuestionFrameState extends State<QuestionFrame> {
             optionsColumnsSize: widget.item['options_columns_size'],
           ),
         'dotLine' => DotsLine(
+            answerId:  widget.answerId,          
             answerFunc: widget.answerFunc,
           ),
         'textForm' => CustomTextFormList(
             optionsColumnsSize: widget.item['options_columns_size'],
+            answerId:  widget.answerId,            
             answerFunc: widget.answerFunc,
             itens: widget.item,
             validator: (List<String>? value) {
@@ -52,6 +56,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
           ),
         'selectIcon' => CustomSelectIconList(
             description: widget.item['title'],
+            answerId:  widget.answerId,            
             answerFunc: widget.answerFunc,
             itens: widget.item['options'],
             optionsColumnsSize: widget.item['options_columns_size'],
@@ -71,6 +76,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
           ),
         'checkBox' => CustomCheckBoxList(
             description: widget.item['title'],
+            answerId:  widget.answerId,            
             answerFunc: widget
                 .answerFunc, //(value) => widget.answer.value = "$value; ${DateTime.now().toString()}",
             hasPrefiroNaoDizer: false,

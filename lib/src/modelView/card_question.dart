@@ -79,10 +79,10 @@ class _CardQuestionState extends State<CardQuestion> {
                   },
                   builder: (FormFieldState<List<String>> state) {
                     List<Map<String, dynamic>>? item = widget.body;
+                    int identificador = 0;
                     return MontaAlternativas(
                       length: item != null ? item.length : 1,
                       builder: (i) {
-                        int contador = 0;
                         return Expanded(
                           child: Column(
                             children: <Widget>[
@@ -98,8 +98,9 @@ class _CardQuestionState extends State<CardQuestion> {
                                   if (item[i]['options'] != null)
                                     QuestionFrame(
                                       item: item[i],
-                                      answerFunc: (value) {
-                                        answer[contador++] = value;
+                                      answerId: identificador++,
+                                      answerFunc: (value, id) {
+                                        answer[id] = value;
                                         state.didChange(answer);
                                       },
                                     ),
