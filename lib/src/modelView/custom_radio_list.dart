@@ -3,7 +3,7 @@ import 'package:ia_triagem/src/modelView/monta_alternativas.dart';
 import 'package:ia_triagem/src/modelView/question_frame.dart';
 
 class CustomRadioList extends StatefulWidget {
-  final Function(String,int) answerFunc;
+  final Function(String, int) answerFunc;
   final int? answerId;
   final String? description;
   final IconData? icon;
@@ -21,7 +21,7 @@ class CustomRadioList extends StatefulWidget {
     required this.hasPrefiroNaoDizer,
     this.otherLabel,
     this.otherItem,
-    this.optionsColumnsSize, 
+    this.optionsColumnsSize,
     this.answerId,
   });
 
@@ -42,9 +42,10 @@ class _CustomRadioListState extends State<CustomRadioList> {
       onChanged: () {
         if (_formKey.currentState!.validate()) {
           widget.answerFunc(
-              "${answer == (widget.otherLabel ?? "Outro (Qual?)") ? answerOther : answer} - ${DateTime.now().toString()}",widget.answerId??0);
+              "${answer == (widget.otherLabel ?? "Outro (Qual?)") ? answerOther : answer} - ${DateTime.now().toString()}",
+              widget.answerId ?? 0);
         } else {
-          widget.answerFunc('',0);
+          widget.answerFunc('', widget.answerId ?? 0);
         }
       },
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -143,7 +144,7 @@ class _CustomRadioListState extends State<CustomRadioList> {
                         answerOther = value.toString();
                         state.didChange(answerOther);
                       },
-                      item: widget.otherItem!, 
+                      item: widget.otherItem!,
                       answerId: 0,
                     ),
                   ),

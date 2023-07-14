@@ -7,10 +7,10 @@ import 'custom_radio_list.dart';
 
 class QuestionFrame extends StatefulWidget {
   final Map<String, dynamic> item;
-  final int answerId;
+  final int? answerId;
   final dynamic Function(String, int) answerFunc;
   const QuestionFrame(
-      {super.key, required this.item, required this.answerFunc, required this.answerId});
+      {super.key, required this.item, required this.answerFunc, this.answerId});
 
   @override
   State<QuestionFrame> createState() => _QuestionFrameState();
@@ -25,7 +25,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
         'radioList' => CustomRadioList(
             icon: widget.item['icon'],
             description: widget.item['title'],
-            answerId:  widget.answerId,
+            answerId:  widget.answerId ?? 0,
             answerFunc: widget.answerFunc,
             hasPrefiroNaoDizer: widget.item['hasPrefiroNaoDizer'] ?? false,
             itens: widget.item['options'],
@@ -34,29 +34,18 @@ class _QuestionFrameState extends State<QuestionFrame> {
             optionsColumnsSize: widget.item['options_columns_size'],
           ),
         'dotLine' => DotsLine(
-            answerId:  widget.answerId,          
+            answerId:  widget.answerId ?? 0,          
             answerFunc: widget.answerFunc,
           ),
         'textForm' => CustomTextFormList(
             optionsColumnsSize: widget.item['options_columns_size'],
-            answerId:  widget.answerId,            
+            answerId:  widget.answerId ?? 0,            
             answerFunc: widget.answerFunc,
             itens: widget.item,
-            validator: (List<String>? value) {
-              if (value == null) {
-                return 'Por favor escolha um item';
-              } else {
-                final count = value.where((item) => item != "").length;
-                if (count < value.length) {
-                  return 'Por favor escolha um item';
-                }
-              }
-              return (null);
-            },
           ),
         'selectIcon' => CustomSelectIconList(
             description: widget.item['title'],
-            answerId:  widget.answerId,            
+            answerId:  widget.answerId ?? 0,            
             answerFunc: widget.answerFunc,
             itens: widget.item['options'],
             optionsColumnsSize: widget.item['options_columns_size'],
@@ -76,7 +65,7 @@ class _QuestionFrameState extends State<QuestionFrame> {
           ),
         'checkBox' => CustomCheckBoxList(
             description: widget.item['title'],
-            answerId:  widget.answerId,            
+            answerId:  widget.answerId ?? 0,            
             answerFunc: widget
                 .answerFunc, //(value) => widget.answer.value = "$value; ${DateTime.now().toString()}",
             hasPrefiroNaoDizer: false,

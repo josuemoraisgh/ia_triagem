@@ -5,7 +5,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 
 class DotsLine extends StatefulWidget {
-  final Function(String,int) answerFunc;
+  final Function(String, int) answerFunc;
   final int? answerId;
   const DotsLine({super.key, required this.answerFunc, this.answerId});
 
@@ -108,9 +108,10 @@ class _DotsLineState extends State<DotsLine> {
                   }
                   if (pointSelected.isNotEmpty) {
                     widget.answerFunc(
-                        "${pointSelected.toString().replaceAll('Offset', '')} - ${DateTime.now().toString()}",widget.answerId??0);
+                        "${pointSelected.toString().replaceAll('Offset', '')} - ${DateTime.now().toString()}",
+                        widget.answerId ?? 0);
                   } else {
-                    widget.answerFunc('vazio',0);
+                    widget.answerFunc('vazio', widget.answerId ?? 0);
                   }
                   setState(() {});
                 },

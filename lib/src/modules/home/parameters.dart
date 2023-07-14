@@ -70,7 +70,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
         ],
         'has_divider': true,
       },
-      /*{
+      {
         'options_style': 'textForm', // checkBox,radioList,selectIcon,textForm
         'options': ['Qua a sua Idade?'],
         'icons': [Icons.cake],
@@ -79,10 +79,9 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
           [FilteringTextInputFormatter.digitsOnly]
         ],
         'validator': [
-          (value) {
-            if (value == null) {
-              return 'Idade invalida!! Corrija por favor';
-            } else if ((value.isEmpty) ||
+          (String? value) {
+            if ((value == null) ||
+                (value.isEmpty) ||
                 (int.parse(value) <= 0) ||
                 (int.parse(value) >= 130)) {
               return 'Idade invalida!! Corrija por favor';
@@ -106,7 +105,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
             [FilteringTextInputFormatter.singleLineFormatter]
           ],
           'validator': [
-            (value) {
+            (String? value) {
               if (value == null) {
                 return 'Descrição invalida!! Corrija por favor';
               } else if ((value.isEmpty) || (value.length < 3)) {
@@ -126,7 +125,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
         'has_divider': true,
       },
       {
-        'title': "Assinale a alternativa que identifica a sua Cor ou Raça:",
+        'title': "Assinale a alternativa que identifica a \nsua Cor ou Raça:",
         'icon': Icons.person,
         'hasPrefiroNaoDizer': true,
         'options': const ["Preta", "Branca", "Parda", "Amarela", "IndÍgena"],
@@ -150,7 +149,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
         'has_divider': true,
       },
       {
-        'title': "Dentro de sua família, você é o(a) único(a) filho(a)?",
+        'title': "Dentro de sua família, você é o(a) único(a)\n filho(a)?",
         'icon': Icons.diversity_3,
         'hasPrefiroNaoDizer': false,
         'options': const ["Sim"],
@@ -292,7 +291,7 @@ Declaramos que obtivemos de forma apropriada e voluntária, o Consentimento Livr
           "Mais de 12 a 20 salários mínimos",
           "Mais de 20 salários mínimos",
         ],
-      }*/
+      }
     ], // options_type: text
   },
   3: {
