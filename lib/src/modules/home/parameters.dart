@@ -981,6 +981,16 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   },
   42: const {
     'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Falta Fazer',
+    'delay': 3,
+    'itens':
+        'Seis (6) imagens foram apresentadas em algum momento do teste. Vamos encontrá-los? Clique nas figuras que você lembrou. Não é obrigado(a) a encontrar todas as imagens. Faça o seu melhor!',
+  },
+  /*
+  42: const {
+    'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
@@ -991,7 +1001,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         'body': 'assets/seisimagens.png',
       },
     ],
-  },
+  },*/
   43: const {
     'hasProx': true,
     'isSendAnswer': true,
@@ -1141,12 +1151,22 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   51: const {
     'hasProx': true,
     'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Falta Fazer',
+    'delay': 3,
+    'itens':
+        'A figura à direita possui 5 alterações e você deverá apontar onde estão essas pequenas diferenças clicando na imagem da figura à esquerda.',
+  },
+  /*
+  51: const {
+    'hasProx': true,
+    'isSendAnswer': false,
     'style': 'five_errors',
     'header':
         'A figura à direita possui 5 alterações e você deverá apontar onde estão essas pequenas diferenças clicando na imagem da figura à esquerda.',
     'image1': 'assets/five_errors1.jpg',
     'image2': 'assets/five_errors2.jpg',
-  },
+  },*/
   52: const {
     'hasProx': true,
     'isSendAnswer': true,
@@ -1719,6 +1739,16 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
   },
   73: const {
     'hasProx': true,
+    'isSendAnswer': false,
+    'style': 'form',
+    'header': 'Falta Fazer',
+    'delay': 3,
+    'itens':
+        'Marque a cor que você mais gosta e pinte os retângulos e os círculos das figuras abaixo.\n\nFaça da forma que mais te agrada.',
+  },
+  /*
+  73: const {
+    'hasProx': true,
     'isSendAnswer': true,
     'style': 'form',
     'header':
@@ -1740,7 +1770,7 @@ Agora forme uma frase que faça sentido e contenha todas essas palavras. Marque 
         ]
       },
     ],
-  },
+  },*/
   74: const {
     'hasProx': true,
     'isSendAnswer': true,
